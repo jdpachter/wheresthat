@@ -13,15 +13,22 @@ class NearMe: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var mapView: MKMapView!
     
+    let UR = CLLocationCoordinate2DMake(43.1284, -77.6289)// 0,0 Chicago street coordinates
+
+    
     var model = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        mapView.showsUserLocation = true
+//        mapView.showsUserLocation = true
+        let region = MKCoordinateRegionMakeWithDistance(UR, 2500, 2500)
+        mapView.setRegion(region, animated: true)
     
         model.genEvents()
-//        model.allEvents[0]
+        for i in model.allEvents {
+            mapView.addAnnotation(i)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +38,7 @@ class NearMe: UIViewController, MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, didUpdate
         userLocation: MKUserLocation) {
-        mapView.centerCoordinate = userLocation.location!.coordinate
+//        mapView.centerCoordinate = userLocation.location!.coordinate
     }
     
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -36,11 +36,11 @@ class event : NSObject, MKAnnotation {
 
 class Model {
     
-    var allEvents : [event] = []
+    var allEvents = [event]()
     
     func genEvents() {
         for i in 0..<1 {
-            let name = String(i)
+            let name = "Rush Rhees"
             let location = String(i) + " Location"
 //            let gps = CLLocationCoordinate2DMake(latitude: 43.1284, longitude: -77.6289) //rush rhees
             let details = "This is the description for event #" + String(i)
