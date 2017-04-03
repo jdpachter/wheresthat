@@ -39,17 +39,25 @@ class Model {
     var allEvents = [event]()
     
     func genEvents() {
-        for i in 0..<1 {
-            let name = "Rush Rhees"
-            let location = String(i) + " Location"
-//            let gps = CLLocationCoordinate2DMake(latitude: 43.1284, longitude: -77.6289) //rush rhees
-            let details = "This is the description for event #" + String(i)
-            let eventTime = NSDate(timeIntervalSinceNow: 10000)
-            let submitTime = NSDate(timeIntervalSinceNow: 0)
-            
-            let newEvent = event(name, location, details, eventTime, submitTime, CLLocationDegrees(43.1284), CLLocationDegrees(-77.6289))
-            allEvents.append(newEvent)
-        }
+        let name = "Rush Rhees"
+        let location = String(i) + " Location"
+        //            let gps = CLLocationCoordinate2DMake(latitude: 43.1284, longitude: -77.6289) //rush rhees
+        let details = "This is the description for event #" + String(i)
+        let eventTime = NSDate(timeIntervalSinceNow: 10000)
+        let submitTime = NSDate(timeIntervalSinceNow: 0)
+        
+        let newEvent = event(name, location, details, eventTime, submitTime, CLLocationDegrees(43.1284), CLLocationDegrees(-77.6289))
+        allEvents.append(newEvent)
+        
+        let name = "Wilson Commons"
+        let location = "Location"
+        //            let gps = CLLocationCoordinate2DMake(latitude: 43.1284, longitude: -77.6289) //rush rhees
+        let details = "This is the description for event #" + String(i)
+        let eventTime = NSDate(timeIntervalSinceNow: 10000)
+        let submitTime = NSDate(timeIntervalSinceNow: 0)
+        
+        let newEvent = event(name, location, details, eventTime, submitTime, CLLocationDegrees(43.1284), CLLocationDegrees(-77.6289))
+        allEvents.append(newEvent)
     }
     
 }
