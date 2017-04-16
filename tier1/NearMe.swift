@@ -10,11 +10,13 @@ import UIKit
 import MapKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 
-class NearMe: UIViewController, MKMapViewDelegate {
+class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289)// 0,0 Chicago street coordinates
     
@@ -26,6 +28,9 @@ class NearMe: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
+
         ref = FIRDatabase.database().reference()
 //        let testQ = (ref?.child("events"))!
 
