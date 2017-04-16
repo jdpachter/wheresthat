@@ -10,11 +10,13 @@ import UIKit
 import MapKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 
-class NearMe: UIViewController, MKMapViewDelegate {
+class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289)// 0,0 Chicago street coordinates
     
@@ -26,16 +28,57 @@ class NearMe: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
+
         ref = FIRDatabase.database().reference()
 //        let testQ = (ref?.child("events"))!
 
         ref.child("events").queryOrdered(byChild: "date").observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
-            for child in snap.children{
-                print(child)
-                if let date = (child as AnyObject).childSnapshot(forPath: "date").value {
-                    let uStamp = (Double(String(describing: date))!)
-                    print(NSDate(timeIntervalSince1970: uStamp))
+            for child in snap.children {
+                
+                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int()
+                
+                //get date
+                if let data = (child as AnyObject).childSnapshot(forPath: "date").value {
+                    let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
+                    date = NSDate(timeIntervalSince1970: uStamp)
                 }
+                
+                //get desc
+                if let data = (child as AnyObject).childSnapshot(forPath: "desc").value {
+                    desc = (String(describing: data))
+                }
+                
+                //get type
+                if let data = (child as AnyObject).childSnapshot(forPath: "type").value {
+                    type = (Int(String(describing: data))!)
+                }
+                
+                //get location
+                if let data = (child as AnyObject).childSnapshot(forPath: "location").value {
+                    location = (String(describing: data))
+                }
+                
+                //get long
+                if let data = (child as AnyObject).childSnapshot(forPath: "long").value {
+                    long = (Double(String(describing: data))!)
+                }
+                
+                //get lat
+                if let data = (child as AnyObject).childSnapshot(forPath: "lat").value {
+                    lat = (Double(String(describing: data))!)
+                }
+                
+                //get submitted
+                if let data = (child as AnyObject).childSnapshot(forPath: "submitted").value {
+                    let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
+                    submitted = NSDate(timeIntervalSince1970: uStamp)
+                }
+                
+                let newEvent = event(type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long))
+                self.model.allEvents.append(newEvent)
+                self.mapView.addAnnotation(newEvent)
             }
         }
         
@@ -43,9 +86,9 @@ class NearMe: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
         mapView.setRegion(region, animated: true)
 //        model.genEvents()
-        for i in model.allEvents {
+        /*for i in model.allEvents {
             mapView.addAnnotation(i)
-        }
+        }*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
