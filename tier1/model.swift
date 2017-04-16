@@ -16,19 +16,19 @@ class event : NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D
     
-    var name : String
+    var type : Int
     var location: String        //user reported location
-    var details: String
+    var desc: String
     var eventTime : NSDate      //timestamp for when event to take place
     var submitTime : NSDate     //timestamp for when event reported
     
-    init(_ name : String, _ location : String, _ details : String, _ eventTime : NSDate, _ submitTime : NSDate,
+    init(_ type : Int, _ location : String, _ desc : String, _ eventTime : NSDate, _ submitTime : NSDate,
          _ lat:CLLocationDegrees, _ long:CLLocationDegrees) {
-        self.name = name
-        self.title = name
+        self.type = type
+        self.title = desc
         self.location = location
         self.coordinate =  CLLocationCoordinate2DMake(lat, long)
-        self.details = details
+        self.desc = desc
         self.eventTime = eventTime
         self.submitTime = submitTime
     }
@@ -50,15 +50,10 @@ class Model {
     
     func getEvents() {
         
-//        FIRAuth.auth()?.signInAnonymously() { (user, error) in
-//            let isAnonymous = user!.isAnonymous //true
-//            let uid = user!.uid
-//        }
         
-//        let usersRef = self.myRootRef.childByAppendingPath("events")
         
     }
-   /* func genEvents() {
+  /*  func genEvents() {
         var name = "Puppies"
         var location = "Rush Rhees"
         //            let gps = CLLocationCoordinate2DMake(latitude: 43.1284, longitude: -77.6289) //rush rhees
