@@ -8,6 +8,8 @@
 
 import Foundation
 import MapKit
+import Firebase
+import FirebaseAuth
 
 class event : NSObject, MKAnnotation {
     var identifier = "eventPin"
@@ -37,8 +39,26 @@ class event : NSObject, MKAnnotation {
 class Model {
     
     var allEvents = [event]()
+//    
+//    var ref: FIRDatabaseReference!
+//
+//    init() {
+//        ref = FIRDatabase.database().reference()
+//        let testQ = (ref?.child("events"))!
+//        print(testQ)
+//    }
     
-    func genEvents() {
+    func getEvents() {
+        
+//        FIRAuth.auth()?.signInAnonymously() { (user, error) in
+//            let isAnonymous = user!.isAnonymous //true
+//            let uid = user!.uid
+//        }
+        
+//        let usersRef = self.myRootRef.childByAppendingPath("events")
+        
+    }
+   /* func genEvents() {
         var name = "Puppies"
         var location = "Rush Rhees"
         //            let gps = CLLocationCoordinate2DMake(latitude: 43.1284, longitude: -77.6289) //rush rhees
@@ -59,6 +79,6 @@ class Model {
         var newEvent2 = event(name, location, details, eventTime, submitTime, CLLocationDegrees(43.1286), CLLocationDegrees(-77.6296))
 
         allEvents.append(newEvent2)
-    }
+    }*/
     
 }

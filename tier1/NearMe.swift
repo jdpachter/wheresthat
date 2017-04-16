@@ -8,29 +8,49 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseAuth
+
 
 class NearMe: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var mapView: MKMapView!
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289)// 0,0 Chicago street coordinates
-
     
+
+//    var handle: FIRAuthStateDidChangeListenerHandle?
     var model = Model()
+    var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        ref = FIRDatabase.database().reference()
+//        let testQ = (ref?.child("events"))!
+
+        ref.child("events").queryOrdered(byChild: "date").observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
+            for child in snap.children{
+                print(child)
+                if let date = (child as AnyObject).childSnapshot(forPath: "date").value {
+                    let uStamp = (Double(String(describing: date))!)
+                    print(NSDate(timeIntervalSince1970: uStamp))
+                }
+            }
+        }
+        
 //        mapView.showsUserLocation = true
         let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
         mapView.setRegion(region, animated: true)
-    
-        model.genEvents()
+//        model.genEvents()
         for i in model.allEvents {
             mapView.addAnnotation(i)
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+//        handle = FIRAuth.auth()?.addStateDidChangeListener() {}
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
