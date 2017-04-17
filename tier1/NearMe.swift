@@ -25,20 +25,40 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     var model = Model()
     var ref: FIRDatabaseReference!
     
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
 
         ref = FIRDatabase.database().reference()
-//        let testQ = (ref?.child("events"))!
-
-        ref.child("events").queryOrdered(byChild: "date").observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
+        
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        update()
+        
+//        mapView.showsUserLocation = true
+        let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
+        mapView.setRegion(region, animated: true)
+//        model.genEvents()
+        /*for i in model.allEvents {
+            mapView.addAnnotation(i)
+        }*/
+    }
+    
+    
+    
+    func update()
+    {
+        self.mapView.removeAnnotations(self.model.allEvents)
+        self.model.allEvents.removeAll()
+        let earliest = String(NSDate().timeIntervalSince1970 - 86400)
+        ref.child("events").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
-                
                 var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int()
-                
+                print("inloop")
                 //get date
                 if let data = (child as AnyObject).childSnapshot(forPath: "date").value {
                     let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
@@ -81,19 +101,12 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                 self.mapView.addAnnotation(newEvent)
             }
         }
-        
-//        mapView.showsUserLocation = true
-        let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
-        mapView.setRegion(region, animated: true)
-//        model.genEvents()
-        /*for i in model.allEvents {
-            mapView.addAnnotation(i)
-        }*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
 //        handle = FIRAuth.auth()?.addStateDidChangeListener() {}
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
