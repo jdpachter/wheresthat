@@ -36,8 +36,9 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
 
         ref = FIRDatabase.database().reference()
         
-        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         update()
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        
         
         let barViewControllers = self.tabBarController?.viewControllers
         let svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView

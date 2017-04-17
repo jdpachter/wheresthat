@@ -13,6 +13,18 @@ class eventTableView: UITableViewController {
     
     var model: Model!
     
+    override func viewDidLoad() {
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -28,7 +40,7 @@ class eventTableView: UITableViewController {
         let eventType = model.typeToString(model.allEvents[indexPath.row].type)
         cell.textLabel?.text = eventName
         cell.detailTextLabel?.text = eventType
-        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
+//        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
         return cell
     }
 }
