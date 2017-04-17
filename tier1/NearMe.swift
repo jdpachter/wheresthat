@@ -118,15 +118,27 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "eventPin"
-        
+        let view: MKPinAnnotationView
         if annotation is event {
+            let myAnnotation = annotation as! event
+            let type = myAnnotation.type
+            let pinColor: UIColor
+            switch (type){
+            case 0: pinColor = .green
+            case 1: pinColor = .blue
+            case 2: pinColor = .yellow
+            case 3: pinColor = .black
+            default: pinColor = .red
+            }
             if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-                annotationView.annotation = annotation
+                view = annotationView as! MKPinAnnotationView
+                view.pinTintColor = pinColor
                 return annotationView
             } else {
                 let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:identifier)
                 annotationView.isEnabled = true
                 annotationView.canShowCallout = true
+                annotationView.pinTintColor = pinColor
                 
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
