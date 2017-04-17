@@ -49,9 +49,26 @@ class Model {
 //    }
     
     func getEvents() {
+    
         
-        
-        
+    }
+    
+    func typeToString(_ type: Int) -> String {
+        switch(type) {
+        case 0:
+            return "Free Stuff"
+        case 1:
+            return "Social Gathering"
+        case 2:
+            return "Campus Event"
+        case 3:
+            return "Study Group"
+        case 4:
+            return "Public Safety"
+        default:
+            break
+        }
+        return ""
     }
   /*  func genEvents() {
         var name = "Puppies"

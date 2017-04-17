@@ -11,10 +11,9 @@ import MapKit
 
 class eventPage: UIViewController {
     
-    
-//    @IBOutlet var eventName : UILabel!
-//    @IBOutlet var location : UILabel!
-//    @IBOutlet var time: UILabel!
+    @IBOutlet var eventName : UILabel!
+    @IBOutlet var location : UILabel!
+    @IBOutlet var time: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -39,6 +39,10 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         update()
         
+        let barViewControllers = self.tabBarController?.viewControllers
+        let svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView
+        svc.model = self.model  //shared model
+        
 //        mapView.showsUserLocation = true
         let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
         mapView.setRegion(region, animated: true)
