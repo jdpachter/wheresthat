@@ -11,17 +11,16 @@ import MapKit
 
 class eventPage: UIViewController {
     
-    var model: Model!
     
-    @IBOutlet var eventName : UILabel!
-    @IBOutlet var location : UILabel!
-    @IBOutlet var time: UILabel!
+//    @IBOutlet var eventName : UILabel!
+//    @IBOutlet var location : UILabel!
+//    @IBOutlet var time: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventName.text = model.allEvents[0].desc
-        location.text = model.allEvents[0].location
-        time.text = String(describing: model.allEvents[0].eventTime)
+//        eventName.text = model.allEvents[0].desc
+//        location.text = model.allEvents[0].location
+//        time.text = String(describing: model.allEvents[0].eventTime)
     }
     
     override func didReceiveMemoryWarning() {
