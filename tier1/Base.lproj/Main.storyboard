@@ -55,13 +55,13 @@
                     <navigationItem key="navigationItem" title="Near Me" id="EuP-Xa-cOy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5x4-EF-KcN">
                             <connections>
-                                <segue destination="mjp-HZ-8Xu" kind="show" id="ynQ-1I-NR8"/>
+                                <segue destination="mjp-HZ-8Xu" kind="show" id="oVL-Mp-pxy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="cmH-I5-bWQ" id="4SP-4I-ma9"/>
-                        <segue destination="hp3-gF-U2N" kind="show" identifier="toEventPage" id="0nx-GS-s6z"/>
+                        <segue destination="5o0-s4-Zt9" kind="show" identifier="toEventPage" id="1mz-pv-a2p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -88,50 +88,43 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
         <!--Event Details-->
-        <scene sceneID="uAf-s2-MEe">
+        <scene sceneID="poP-Mc-2TQ">
             <objects>
-                <viewController id="hp3-gF-U2N" customClass="eventPage" customModule="tier1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5o0-s4-Zt9" customClass="eventPage" customModule="tier1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AbC-bw-hGg"/>
-                        <viewControllerLayoutGuide type="bottom" id="PDG-LV-aeq"/>
+                        <viewControllerLayoutGuide type="top" id="PHS-S1-43A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ja2-ho-fR2"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DIC-lt-884">
+                    <view key="view" contentMode="scaleToFill" id="kLU-2z-ZDY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfN-GH-Ln0">
-                                <rect key="frame" x="165" y="96" width="45" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUj-gV-BQZ">
+                                <rect key="frame" x="173" y="77" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlm-Ba-Seb">
-                                <rect key="frame" x="16" y="158" width="71" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSn-fp-HgZ">
+                                <rect key="frame" x="24" y="139" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID7-X3-7A2">
-                                <rect key="frame" x="16" y="227" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Vn-glf">
+                                <rect key="frame" x="24" y="208" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hirst Lounge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jr-yC-DGA">
-                                <rect key="frame" x="166" y="158" width="98" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hirst Lounge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlI-U7-c12">
+                                <rect key="frame" x="174" y="139" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Zh-Ea-B8E">
-                                <rect key="frame" x="16" y="10" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="goBack" destination="hp3-gF-U2N" eventType="touchUpInside" id="1as-5N-5es"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm April 5th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWl-3F-0T9">
-                                <rect key="frame" x="165" y="227" width="137" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm April 5th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsd-qO-Ql6">
+                                <rect key="frame" x="173" y="208" width="137" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -139,31 +132,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ID7-X3-7A2" firstAttribute="top" secondItem="rlm-Ba-Seb" secondAttribute="bottom" constant="48" id="2h9-1o-SSw"/>
-                            <constraint firstItem="ID7-X3-7A2" firstAttribute="baseline" secondItem="nWl-3F-0T9" secondAttribute="baseline" id="FAk-Od-cJh"/>
-                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="leading" secondItem="nWl-3F-0T9" secondAttribute="leading" id="JnZ-MV-Agd"/>
-                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="top" secondItem="AbC-bw-hGg" secondAttribute="bottom" constant="32" id="MJm-2n-O8r"/>
-                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="centerX" secondItem="DIC-lt-884" secondAttribute="centerX" id="RYW-w8-DOk"/>
-                            <constraint firstItem="rlm-Ba-Seb" firstAttribute="baseline" secondItem="1Jr-yC-DGA" secondAttribute="baseline" id="bi1-by-dUs"/>
-                            <constraint firstItem="rlm-Ba-Seb" firstAttribute="leading" secondItem="ID7-X3-7A2" secondAttribute="leading" id="cBq-1b-xtL"/>
-                            <constraint firstItem="AbC-bw-hGg" firstAttribute="top" secondItem="6Zh-Ea-B8E" secondAttribute="bottom" constant="24" id="g4f-xK-qvQ"/>
-                            <constraint firstItem="6Zh-Ea-B8E" firstAttribute="leading" secondItem="DIC-lt-884" secondAttribute="leadingMargin" id="guq-ag-3HK"/>
-                            <constraint firstItem="1Jr-yC-DGA" firstAttribute="top" secondItem="LfN-GH-Ln0" secondAttribute="bottom" constant="41" id="hG4-3t-WKO"/>
-                            <constraint firstItem="1Jr-yC-DGA" firstAttribute="leading" secondItem="rlm-Ba-Seb" secondAttribute="trailing" constant="79" id="leg-9h-R4G"/>
-                            <constraint firstItem="6Zh-Ea-B8E" firstAttribute="leading" secondItem="rlm-Ba-Seb" secondAttribute="leading" id="zpH-k9-Zby"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="baseline" secondItem="XlI-U7-c12" secondAttribute="baseline" id="9fo-iR-sAE"/>
+                            <constraint firstItem="XlI-U7-c12" firstAttribute="top" secondItem="NUj-gV-BQZ" secondAttribute="bottom" constant="41" id="Hhy-vF-bEJ"/>
+                            <constraint firstItem="NUj-gV-BQZ" firstAttribute="leading" secondItem="Hsd-qO-Ql6" secondAttribute="leading" id="QfP-wB-C9c"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="leading" secondItem="kLU-2z-ZDY" secondAttribute="leadingMargin" constant="8" id="ULj-JM-2cv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hsd-qO-Ql6" secondAttribute="trailing" constant="49" id="YAh-Yr-cC0"/>
+                            <constraint firstItem="NUj-gV-BQZ" firstAttribute="top" secondItem="PHS-S1-43A" secondAttribute="bottom" constant="13" id="h3c-R7-wnS"/>
+                            <constraint firstItem="fOW-Vn-glf" firstAttribute="baseline" secondItem="Hsd-qO-Ql6" secondAttribute="baseline" id="nAa-4p-35f"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="leading" secondItem="fOW-Vn-glf" secondAttribute="leading" id="pVT-87-cG2"/>
+                            <constraint firstItem="XlI-U7-c12" firstAttribute="leading" secondItem="eSn-fp-HgZ" secondAttribute="trailing" constant="79" id="qmI-Co-mlw"/>
+                            <constraint firstItem="fOW-Vn-glf" firstAttribute="top" secondItem="eSn-fp-HgZ" secondAttribute="bottom" constant="48" id="tlI-S7-do2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Event Details" id="ps3-p2-BUD"/>
-                    <connections>
-                        <outlet property="back" destination="6Zh-Ea-B8E" id="ubC-0f-Qbp"/>
-                        <outlet property="eventName" destination="LfN-GH-Ln0" id="50y-ET-pwS"/>
-                        <outlet property="location" destination="1Jr-yC-DGA" id="Vvk-7y-dWl"/>
-                        <outlet property="time" destination="nWl-3F-0T9" id="Bui-lf-qQ6"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Event Details" id="CTZ-fy-Vbs"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jvD-GL-Byb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1v-0X-ngc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="-461"/>
+            <point key="canvasLocation" x="2705" y="-498"/>
         </scene>
         <!--Events-->
         <scene sceneID="TpF-eR-DwC">
@@ -319,6 +304,6 @@
         <image name="nearMe" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ynQ-1I-NR8"/>
+        <segue reference="oVL-Mp-pxy"/>
     </inferredMetricsTieBreakers>
 </document>
