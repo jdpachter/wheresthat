@@ -25,22 +25,30 @@ class eventForm: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate 
     
     @IBAction func submit(sender: AnyObject) {
         
-        let locManager = CLLocationManager()
-        let lat = locManager.location?.coordinate.latitude
-        let long = locManager.location?.coordinate.longitude
-        let now = NSDate().timeIntervalSince1970
+        if let desc = name.text, let loc = location.text, let eType = typeText.text {
+            let locManager = CLLocationManager()
+            let lat = locManager.location?.coordinate.latitude
+            let long = locManager.location?.coordinate.longitude
+            let now = NSDate().timeIntervalSince1970
+            
+            let post:[String: String] = [
+                "date":String(now),
+                "desc":desc,
+                "location":loc,
+                "type":String(describing: typeOpts.index(of: eType)!),
+                "lat":String(describing: lat!),
+                "long":String(describing: long!),
+                "submitted":String(now)]
+            
+            ref.child("events").childByAutoId().setValue(post)
+            
+            let saveMyAlert = UIAlertController(title: "Event Submitted!", message: "Go see it on the map!", preferredStyle: UIAlertControllerStyle.alert)
+            saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:
+                UIAlertAction!) in
+            }))
+            present(saveMyAlert, animated: true, completion: nil)
+        }
         
-        let post:[String: String] = [
-        "date":String(now),
-        "desc":name.text!,
-        "location":location.text!,
-        "type":String(describing: typeOpts.index(of: typeText.text!)!),
-        "lat":String(describing: lat!),
-        "long":String(describing: long!),
-        "submitted":String(now)]
-        
-        ref.child("events").childByAutoId().setValue(post)
-
     }
     
     var typeOpts = ["Free Stuff", "Social Gathering", "Campus Event", "Study Group", "Public Safety"]

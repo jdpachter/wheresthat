@@ -25,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ScI-Xf-rUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="-262"/>
+            <point key="canvasLocation" x="930" y="-262"/>
         </scene>
         <!--Near Me-->
         <scene sceneID="tne-QT-ifu">
@@ -45,14 +45,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cmH-I5-bWQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7h9-9w-2ht"/>
-                            <constraint firstItem="cmH-I5-bWQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IAG-Q4-pkS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cmH-I5-bWQ" secondAttribute="bottom" id="Mkf-tu-aoy"/>
-                            <constraint firstAttribute="trailing" secondItem="cmH-I5-bWQ" secondAttribute="trailing" id="kcp-FI-nH3"/>
+                            <constraint firstItem="cmH-I5-bWQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OyQ-BW-x08"/>
+                            <constraint firstAttribute="trailing" secondItem="cmH-I5-bWQ" secondAttribute="trailing" id="fIx-BY-IY6"/>
+                            <constraint firstItem="cmH-I5-bWQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="qXq-nw-1O1"/>
+                            <constraint firstItem="cmH-I5-bWQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sSI-6Q-DFY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Near Me" id="idE-dG-L0O"/>
-                    <navigationItem key="navigationItem" title="Near Me" id="EuP-Xa-cOy"/>
+                    <tabBarItem key="tabBarItem" title="Near Me" image="nearMe" selectedImage="nearMe" id="idE-dG-L0O"/>
+                    <navigationItem key="navigationItem" title="Near Me" id="EuP-Xa-cOy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5x4-EF-KcN">
+                            <connections>
+                                <segue destination="mjp-HZ-8Xu" kind="show" id="ynQ-1I-NR8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="cmH-I5-bWQ" id="4SP-4I-ma9"/>
                         <segue destination="hp3-gF-U2N" kind="show" identifier="toEventPage" id="0nx-GS-s6z"/>
@@ -60,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-213"/>
+            <point key="canvasLocation" x="1882" y="-262"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rry-TS-ocH">
@@ -105,7 +111,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID7-X3-7A2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID7-X3-7A2">
                                 <rect key="frame" x="16" y="227" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -124,7 +130,7 @@
                                     <action selector="goBack" destination="hp3-gF-U2N" eventType="touchUpInside" id="1as-5N-5es"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="12:00pm April 5th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWl-3F-0T9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm April 5th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWl-3F-0T9">
                                 <rect key="frame" x="165" y="227" width="137" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -133,16 +139,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="top" secondItem="AbC-bw-hGg" secondAttribute="bottom" constant="32" id="6zc-70-cV0"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="rlm-Ba-Seb" secondAttribute="leading" id="WyW-Ft-YLL"/>
-                            <constraint firstItem="6Zh-Ea-B8E" firstAttribute="top" secondItem="DIC-lt-884" secondAttribute="topMargin" constant="10" id="XxO-7d-Aj2"/>
-                            <constraint firstItem="nWl-3F-0T9" firstAttribute="leading" secondItem="ID7-X3-7A2" secondAttribute="trailing" constant="107" id="dUB-Pg-LIh"/>
-                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="centerX" secondItem="DIC-lt-884" secondAttribute="centerX" id="jhR-tk-aHQ"/>
-                            <constraint firstItem="1Jr-yC-DGA" firstAttribute="top" secondItem="LfN-GH-Ln0" secondAttribute="bottom" constant="41" id="qVk-Gj-RvJ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ID7-X3-7A2" secondAttribute="leading" id="qm8-zC-xAG"/>
-                            <constraint firstItem="rlm-Ba-Seb" firstAttribute="top" secondItem="AbC-bw-hGg" secondAttribute="bottom" constant="94" id="s4S-aH-BYr"/>
-                            <constraint firstItem="1Jr-yC-DGA" firstAttribute="leading" secondItem="rlm-Ba-Seb" secondAttribute="trailing" constant="79" id="zKM-ar-gNw"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="6Zh-Ea-B8E" secondAttribute="leading" id="zKV-kr-y1l"/>
+                            <constraint firstItem="ID7-X3-7A2" firstAttribute="top" secondItem="rlm-Ba-Seb" secondAttribute="bottom" constant="48" id="2h9-1o-SSw"/>
+                            <constraint firstItem="ID7-X3-7A2" firstAttribute="baseline" secondItem="nWl-3F-0T9" secondAttribute="baseline" id="FAk-Od-cJh"/>
+                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="leading" secondItem="nWl-3F-0T9" secondAttribute="leading" id="JnZ-MV-Agd"/>
+                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="top" secondItem="AbC-bw-hGg" secondAttribute="bottom" constant="32" id="MJm-2n-O8r"/>
+                            <constraint firstItem="LfN-GH-Ln0" firstAttribute="centerX" secondItem="DIC-lt-884" secondAttribute="centerX" id="RYW-w8-DOk"/>
+                            <constraint firstItem="rlm-Ba-Seb" firstAttribute="baseline" secondItem="1Jr-yC-DGA" secondAttribute="baseline" id="bi1-by-dUs"/>
+                            <constraint firstItem="rlm-Ba-Seb" firstAttribute="leading" secondItem="ID7-X3-7A2" secondAttribute="leading" id="cBq-1b-xtL"/>
+                            <constraint firstItem="AbC-bw-hGg" firstAttribute="top" secondItem="6Zh-Ea-B8E" secondAttribute="bottom" constant="24" id="g4f-xK-qvQ"/>
+                            <constraint firstItem="6Zh-Ea-B8E" firstAttribute="leading" secondItem="DIC-lt-884" secondAttribute="leadingMargin" id="guq-ag-3HK"/>
+                            <constraint firstItem="1Jr-yC-DGA" firstAttribute="top" secondItem="LfN-GH-Ln0" secondAttribute="bottom" constant="41" id="hG4-3t-WKO"/>
+                            <constraint firstItem="1Jr-yC-DGA" firstAttribute="leading" secondItem="rlm-Ba-Seb" secondAttribute="trailing" constant="79" id="leg-9h-R4G"/>
+                            <constraint firstItem="6Zh-Ea-B8E" firstAttribute="leading" secondItem="rlm-Ba-Seb" secondAttribute="leading" id="zpH-k9-Zby"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Event Details" id="ps3-p2-BUD"/>
@@ -155,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvD-GL-Byb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2458" y="-213"/>
+            <point key="canvasLocation" x="2705" y="-461"/>
         </scene>
         <!--Events-->
         <scene sceneID="TpF-eR-DwC">
@@ -286,7 +294,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2605.5999999999999" y="615.74212893553226"/>
+            <point key="canvasLocation" x="2705" y="221"/>
         </scene>
         <!--Events-->
         <scene sceneID="kSU-FA-vM3">
@@ -310,4 +318,7 @@
         <image name="event" width="29" height="29"/>
         <image name="nearMe" width="29" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ynQ-1I-NR8"/>
+    </inferredMetricsTieBreakers>
 </document>
