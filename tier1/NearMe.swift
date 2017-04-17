@@ -58,7 +58,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         ref.child("events").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
                 var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int()
-                print("inloop")
                 //get date
                 if let data = (child as AnyObject).childSnapshot(forPath: "date").value {
                     let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
