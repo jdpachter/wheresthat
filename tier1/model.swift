@@ -70,6 +70,24 @@ class Model {
         }
         return ""
     }
+    
+    func typeToColor(_ type: Int) -> UIColor {
+        switch(type) {
+        case 0:
+            return UIColor.green
+        case 1:
+            return UIColor.blue
+        case 2:
+            return UIColor.yellow
+        case 3:
+            return UIColor.black
+        case 4:
+            return UIColor.red
+        default:
+            break
+        }
+        return UIColor.red
+    }
   /*  func genEvents() {
         var name = "Puppies"
         var location = "Rush Rhees"

@@ -28,7 +28,7 @@ class eventTableView: UITableViewController {
         let eventType = model.typeToString(model.allEvents[indexPath.row].type)
         cell.textLabel?.text = eventName
         cell.detailTextLabel?.text = eventType
-        
+        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
         return cell
     }
 }

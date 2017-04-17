@@ -124,25 +124,16 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         let identifier = "eventPin"
         let view: MKPinAnnotationView
         if annotation is event {
-            let myAnnotation = annotation as! event
-            let type = myAnnotation.type
-            let pinColor: UIColor
-            switch (type){
-            case 0: pinColor = .green
-            case 1: pinColor = .blue
-            case 2: pinColor = .yellow
-            case 3: pinColor = .black
-            default: pinColor = .red
-            }
-            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+                let pc = color(annotation)
+                if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
                 view = annotationView as! MKPinAnnotationView
-                view.pinTintColor = pinColor
+                view.pinTintColor = pc
                 return annotationView
             } else {
                 let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:identifier)
                 annotationView.isEnabled = true
                 annotationView.canShowCallout = true
-                annotationView.pinTintColor = pinColor
+                annotationView.pinTintColor = pc
                 
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
@@ -151,6 +142,21 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         }
         
         return nil
+    }
+    
+    func color(_ annotation: MKAnnotation) -> UIColor {
+        let myAnnotation = annotation as! event
+        let type = myAnnotation.type
+        let pinColor: UIColor
+        
+        switch (type){
+            case 0: pinColor = .green
+            case 1: pinColor = .blue
+            case 2: pinColor = .yellow
+            case 3: pinColor = .black
+            default: pinColor = .red
+        }
+        return pinColor
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
