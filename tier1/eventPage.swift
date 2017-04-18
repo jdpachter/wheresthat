@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import MapKit
 
 class eventPage: UIViewController {
@@ -15,11 +16,19 @@ class eventPage: UIViewController {
     @IBOutlet var location : UILabel!
     @IBOutlet var time: UILabel!
     
+    var event: event!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        eventName.text = model.allEvents[0].desc
-//        location.text = model.allEvents[0].location
-//        time.text = String(describing: model.allEvents[0].eventTime)
+        
+        eventName.text = event.desc
+        location.text = event.location
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "EST") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM-dd HH:mm" //Specify your format that you want
+        let strDate = dateFormatter.string(from: event.eventTime as Date)
+        time.text = strDate
     }
     
     override func didReceiveMemoryWarning() {

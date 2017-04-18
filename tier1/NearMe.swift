@@ -18,14 +18,17 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var signInButton: GIDSignInButton!
     
+    var barViewControllers: [UIViewController]!
+    var svc : eventTableView!
+    
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289) //UR coordinates
     
-
-//    var handle: FIRAuthStateDidChangeListenerHandle?
     var model = Model()
     var ref: FIRDatabaseReference!
+    var curEvent: event!
     
     var timer = Timer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +40,19 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         ref = FIRDatabase.database().reference()
         
         update()
-        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         
-        let barViewControllers = self.tabBarController?.viewControllers
-        let svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView
+        barViewControllers = self.tabBarController?.viewControllers
+        svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView!
         svc.model = self.model  //shared model
+
         
-//        mapView.showsUserLocation = true
+        mapView.showsUserLocation = true
         let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
         mapView.setRegion(region, animated: true)
-//        model.genEvents()
-        /*for i in model.allEvents {
-            mapView.addAnnotation(i)
-        }*/
+
     }
     
     
@@ -102,13 +104,14 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                 
                 let newEvent = event(type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long))
                 self.model.allEvents.append(newEvent)
+                self.svc.model = self.model
                 self.mapView.addAnnotation(newEvent)
             }
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        handle = FIRAuth.auth()?.addStateDidChangeListener() {}
+        update()
     }
     
     override func didReceiveMemoryWarning() {
@@ -160,8 +163,19 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         return pinColor
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEventPage" {
+            if let eventPage = segue.destination as? eventPage {
+                eventPage.event = curEvent
+            }
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-         performSegue(withIdentifier: "toEventPage", sender: view)
+        if let e = self.model.lookupEvent(byCoordinate: (view.annotation?.coordinate)!) {
+            curEvent = e
+        }
+        performSegue(withIdentifier: "toEventPage", sender: view)
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

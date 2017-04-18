@@ -48,7 +48,6 @@ class eventForm: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate 
             }))
             present(saveMyAlert, animated: true, completion: nil)
             
-            
         }
         
     }

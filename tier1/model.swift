@@ -48,9 +48,13 @@ class Model {
 //        print(testQ)
 //    }
     
-    func getEvents() {
-    
-        
+    func lookupEvent(byCoordinate coordinate: CLLocationCoordinate2D) -> event? {
+        for e in allEvents {
+            if e.coordinate.latitude == coordinate.latitude && e.coordinate.longitude == coordinate.longitude {
+                return e
+            }
+        }
+        return nil
     }
     
     func typeToString(_ type: Int) -> String {

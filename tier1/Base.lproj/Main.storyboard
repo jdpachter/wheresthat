@@ -100,31 +100,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUj-gV-BQZ">
-                                <rect key="frame" x="173" y="77" width="45" height="21"/>
+                                <rect key="frame" x="165" y="77" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSn-fp-HgZ">
-                                <rect key="frame" x="24" y="139" width="71" height="21"/>
+                                <rect key="frame" x="24" y="139" width="87" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="yeT-us-0hH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Vn-glf">
-                                <rect key="frame" x="24" y="208" width="43" height="21"/>
+                                <rect key="frame" x="24" y="208" width="71" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="8XF-hW-goi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hirst Lounge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlI-U7-c12">
-                                <rect key="frame" x="174" y="139" width="98" height="21"/>
+                                <rect key="frame" x="221" y="139" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm April 5th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsd-qO-Ql6">
-                                <rect key="frame" x="173" y="208" width="137" height="21"/>
+                                <rect key="frame" x="182.5" y="207" width="136.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,23 +138,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="baseline" secondItem="XlI-U7-c12" secondAttribute="baseline" id="9fo-iR-sAE"/>
-                            <constraint firstItem="XlI-U7-c12" firstAttribute="top" secondItem="NUj-gV-BQZ" secondAttribute="bottom" constant="41" id="Hhy-vF-bEJ"/>
-                            <constraint firstItem="NUj-gV-BQZ" firstAttribute="leading" secondItem="Hsd-qO-Ql6" secondAttribute="leading" id="QfP-wB-C9c"/>
-                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="leading" secondItem="kLU-2z-ZDY" secondAttribute="leadingMargin" constant="8" id="ULj-JM-2cv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Hsd-qO-Ql6" secondAttribute="trailing" constant="49" id="YAh-Yr-cC0"/>
-                            <constraint firstItem="NUj-gV-BQZ" firstAttribute="top" secondItem="PHS-S1-43A" secondAttribute="bottom" constant="13" id="h3c-R7-wnS"/>
-                            <constraint firstItem="fOW-Vn-glf" firstAttribute="baseline" secondItem="Hsd-qO-Ql6" secondAttribute="baseline" id="nAa-4p-35f"/>
-                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="leading" secondItem="fOW-Vn-glf" secondAttribute="leading" id="pVT-87-cG2"/>
-                            <constraint firstItem="XlI-U7-c12" firstAttribute="leading" secondItem="eSn-fp-HgZ" secondAttribute="trailing" constant="79" id="qmI-Co-mlw"/>
-                            <constraint firstItem="fOW-Vn-glf" firstAttribute="top" secondItem="eSn-fp-HgZ" secondAttribute="bottom" constant="48" id="tlI-S7-do2"/>
+                            <constraint firstItem="NUj-gV-BQZ" firstAttribute="centerX" secondItem="kLU-2z-ZDY" secondAttribute="centerX" id="E5R-W0-YNi"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="leading" secondItem="fOW-Vn-glf" secondAttribute="leading" id="Ibt-Ht-hRZ"/>
+                            <constraint firstItem="NUj-gV-BQZ" firstAttribute="top" secondItem="PHS-S1-43A" secondAttribute="bottom" constant="13" id="MXr-bD-i7N"/>
+                            <constraint firstItem="Hsd-qO-Ql6" firstAttribute="top" secondItem="XlI-U7-c12" secondAttribute="bottom" constant="47" id="X5p-KK-RaU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XlI-U7-c12" secondAttribute="trailing" constant="40" id="azU-bl-WZ3"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="top" secondItem="PHS-S1-43A" secondAttribute="bottom" constant="75" id="ekj-8s-d81"/>
+                            <constraint firstItem="fOW-Vn-glf" firstAttribute="top" secondItem="eSn-fp-HgZ" secondAttribute="bottom" constant="48" id="g9S-ZG-c7o"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="leading" secondItem="kLU-2z-ZDY" secondAttribute="leadingMargin" constant="8" id="hTr-MS-LF1"/>
+                            <constraint firstItem="XlI-U7-c12" firstAttribute="trailing" secondItem="Hsd-qO-Ql6" secondAttribute="trailing" id="qyW-z4-xYg"/>
+                            <constraint firstItem="eSn-fp-HgZ" firstAttribute="baseline" secondItem="XlI-U7-c12" secondAttribute="baseline" id="sH3-43-s6n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Event Details" id="CTZ-fy-Vbs"/>
+                    <connections>
+                        <outlet property="eventName" destination="NUj-gV-BQZ" id="N0C-5o-MiS"/>
+                        <outlet property="location" destination="XlI-U7-c12" id="UHm-hM-fRn"/>
+                        <outlet property="time" destination="Hsd-qO-Ql6" id="heu-Qj-U0I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1v-0X-ngc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="-498"/>
+            <point key="canvasLocation" x="2704.8000000000002" y="-262.21889055472263"/>
         </scene>
         <!--Events-->
         <scene sceneID="TpF-eR-DwC">
