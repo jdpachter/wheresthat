@@ -25,12 +25,20 @@ class eventPage: UIViewController {
         
         eventName.text = event.desc
         location.text = event.location
+        type.text = event.getType()
+        if let typeImage = event.getImg(true) {
+            img.image = UIImage(named: typeImage)
+            img.sizeToFit()
+
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "EST") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "MM-dd HH:mm" //Specify your format that you want
-        let strDate = dateFormatter.string(from: event.eventTime as Date)
-        time.text = strDate
+        dateFormatter.dateFormat = "EEEE, MMMM dd"
+        let strDateM = dateFormatter.string(from: event.eventTime as Date)
+        dateFormatter.dateFormat = "h:mm a"
+        let strDateTime = dateFormatter.string(from: event.eventTime as Date)
+        time.text = strDateM + " at " + strDateTime
     }
     
     override func didReceiveMemoryWarning() {

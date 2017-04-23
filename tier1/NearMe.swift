@@ -180,7 +180,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
 //                view.pinTintColor = pc
                 annotationView.canShowCallout = true
                 let e = annotation as! event
-                if let img = e.getImg() {
+                if let img = e.getImg(false) {
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
 
@@ -197,7 +197,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
                 let e = annotation as! event
-                if let img = e.getImg() {
+                if let img = e.getImg(false) {
 //                    print(img)
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)

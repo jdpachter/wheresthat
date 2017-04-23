@@ -33,54 +33,72 @@ class event : NSObject, MKAnnotation {
         self.submitTime = submitTime
     }
     
-    func getImg() -> String? {
+    func getImg(_ big: Bool) -> String? {
         switch(type) {
         case 0:
-            return "freeStuff.png"
+            return (big ? "freeStuffBig":"freeStuff.png")
         case 1:
-            return "socialGathering.png"
+            return (big ? "socialGatheringBig":"socialGathering.png")
         case 2:
-            return "campusGathering.png"
+            return (big ? "campusGatheringBig":"campusGathering.png")
         case 3:
-            return "studyGroup.png"
+            return (big ? "studyGroupBig":"studyGroup.png")
         case 4:
-            return "publicSafety.png"
+            return (big ? "publicSafetyBig":"publicSafety.png")
         default:
             return nil
         }
     }
     
+    func getType() -> String {
+        switch(type) {
+        case 0:
+            return "Free Stuff"
+        case 1:
+            return "Social Gathering"
+        case 2:
+            return "Campus Event"
+        case 3:
+            return "Study Group"
+        case 4:
+            return "Public Safety"
+        default:
+            break
+        }
+        return ""
+    }
+    
 }
 
-//http://stackoverflow.com/questions/42351358/swift-custom-mkpointannotation-with-image
-class ImageAnnotationView: MKAnnotationView {
-    private var imageView: UIImageView!
-    
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        
-        self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        self.addSubview(self.imageView)
-        
-        self.imageView.layer.cornerRadius = 5.0
-        self.imageView.layer.masksToBounds = true
-    }
-    
-    override var image: UIImage? {
-        get {
-            return self.imageView.image
-        }
-        
-        set {
-            self.imageView.image = newValue
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+////http://stackoverflow.com/questions/42351358/swift-custom-mkpointannotation-with-image
+//class ImageAnnotationView: MKAnnotationView {
+//    private var imageView: UIImageView!
+//    
+//    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+//        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+//        
+//        self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+//        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+//        self.addSubview(self.imageView)
+//        
+//        self.imageView.layer.cornerRadius = 5.0
+//        self.imageView.layer.masksToBounds = true
+//    }
+//    
+//    override var image: UIImage? {
+//        get {
+//            return self.imageView.image
+//        }
+//        
+//        set {
+//            self.imageView.image = newValue
+//        }
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
 
 
 class Model {

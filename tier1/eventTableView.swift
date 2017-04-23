@@ -13,8 +13,11 @@ class eventTableView: UITableViewController {
     
     var model: Model!
     
+    var curEvent: event!
+    
     override func viewDidLoad() {
         self.tableView.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(eventTableView.unblur), name:NSNotification.Name(rawValue: "unblur"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,6 +34,39 @@ class eventTableView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.allEvents.count
+    }
+    
+    func unblur() {
+        for subview in view.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEventPageT" {
+            if let eventPage = segue.destination as? eventPage {
+                eventPage.event = curEvent
+            }
+        }
+        else if segue.identifier == "newFromTV" {
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.addSubview(blurEffectView)
+            
+        }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("segue")
+        if let e = self.model.lookupEvent(byCoordinate: (model.allEvents[indexPath.row].coordinate)) {
+            curEvent = e
+        }
+        performSegue(withIdentifier: "toEventPageT", sender: self.view)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
