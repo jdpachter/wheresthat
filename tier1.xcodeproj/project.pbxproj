@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C42C3051EABED0F007CF319 /* formVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C42C3041EABED0F007CF319 /* formVC.swift */; };
 		3C479B771E90321500E98998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B761E90321500E98998 /* AppDelegate.swift */; };
 		3C479B791E90321500E98998 /* NearMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B781E90321500E98998 /* NearMe.swift */; };
 		3C479B7C1E90321500E98998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C479B7A1E90321500E98998 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C42C3041EABED0F007CF319 /* formVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = formVC.swift; sourceTree = "<group>"; };
 		3C479B731E90321500E98998 /* tier1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tier1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C479B761E90321500E98998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C479B781E90321500E98998 /* NearMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMe.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				3C479B781E90321500E98998 /* NearMe.swift */,
 				3CBC575C1EA42C5C00038D84 /* eventForm.swift */,
 				3CBC575E1EA56A5900038D84 /* eventTableView.swift */,
+				3C42C3041EABED0F007CF319 /* formVC.swift */,
 			);
 			path = tier1;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			files = (
 				3C479B8C1E90328100E98998 /* Events.swift in Sources */,
 				3CBC575D1EA42C5C00038D84 /* eventForm.swift in Sources */,
+				3C42C3051EABED0F007CF319 /* formVC.swift in Sources */,
 				3C479B791E90321500E98998 /* NearMe.swift in Sources */,
 				3C479B901E903FF900E98998 /* customCell.swift in Sources */,
 				3C479B771E90321500E98998 /* AppDelegate.swift in Sources */,
@@ -377,7 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YVK5BU4LA5;
 				INFOPLIST_FILE = tier1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WT.tier1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,7 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YVK5BU4LA5;
 				INFOPLIST_FILE = tier1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WT.tier1;
 				PRODUCT_NAME = "$(TARGET_NAME)";

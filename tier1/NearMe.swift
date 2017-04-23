@@ -17,6 +17,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var signInButton: GIDSignInButton!
+
     
     var barViewControllers: [UIViewController]!
     var svc : eventTableView!
@@ -29,6 +30,18 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     var timer = Timer()
     
+    @IBAction func updateHit(sender: AnyObject) {
+        update()
+    }
+    
+  /*  @IBAction func addCard(sender: AnyObject) {
+        self.definesPresentationContext = true
+        self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        // Cover Vertical is necessary for CurrentContext
+        self.modalPresentationStyle = .currentContext
+        // Display on top of    current UIView
+        self.present(testVC(), animated: true, completion: nil)
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +54,10 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         
         update()
         
-        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(NearMe.onReturnUpdate), name:NSNotification.Name(rawValue: "unblurUpdate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NearMe.onReturn), name:NSNotification.Name(rawValue: "unblur"), object: nil)
         
         barViewControllers = self.tabBarController?.viewControllers
         svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView!
@@ -55,13 +70,38 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
 
     }
     
+    func onReturn() {
+        for subview in view.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    func onReturnUpdate() {
+        update()
+        for subview in view.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
     
     
     func update()
     {
-        self.mapView.removeAnnotations(self.model.allEvents)
-        self.model.allEvents.removeAll()
+//        self.mapView.removeAnnotations(self.model.allEvents)
+//        self.model.allEvents.removeAll()
+        
         let earliest = String(NSDate().timeIntervalSince1970 - 14400)
+        //get rid of events created more than 4 hours ago
+        for e in 0..<self.model.allEvents.count {
+            if self.model.allEvents[e].eventTime.timeIntervalSince1970 < Double(earliest)! {
+                self.mapView.removeAnnotation(self.model.allEvents[e])  //remove expired annotation from map
+                self.model.allEvents.remove(at: e)  //remove expired event from internal model
+            }
+        }
+        
         ref.child("events").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
                 var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int()
@@ -103,15 +143,21 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                 }
                 
                 let newEvent = event(type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long))
-                self.model.allEvents.append(newEvent)
-                self.svc.model = self.model
-                self.mapView.addAnnotation(newEvent)
+                
+                if(!self.model.contains(newEvent)) {
+                    self.model.allEvents.append(newEvent)
+                    self.svc.model = self.model
+                    self.mapView.addAnnotation(newEvent)
+                }
+               
             }
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        update()
+//        update()
+//        self.view.alpha = 1
+        mapView.layoutSubviews()
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,21 +172,38 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "eventPin"
-        let view: MKPinAnnotationView
+        let _: MKAnnotationView
         if annotation is event {
-                let pc = color(annotation)
+                _ = color(annotation)
                 if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-                view = annotationView as! MKPinAnnotationView
-                view.pinTintColor = pc
+//                view = annotationView as! MKAnnotationView
+//                view.pinTintColor = pc
+                annotationView.canShowCallout = true
+                let e = annotation as! event
+                if let img = e.getImg() {
+                    annotationView.canShowCallout = true
+                    annotationView.image = UIImage(named: img)
+
+//                    annotationView.backgroundColor = UIColor.clear
+           
+                }
                 return annotationView
             } else {
-                let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:identifier)
+                let annotationView = MKAnnotationView(annotation:annotation, reuseIdentifier:identifier)
                 annotationView.isEnabled = true
                 annotationView.canShowCallout = true
-                annotationView.pinTintColor = pc
+//                annotationView.pinTintColor = pc
                 
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
+                let e = annotation as! event
+                if let img = e.getImg() {
+//                    print(img)
+                    annotationView.canShowCallout = true
+                    annotationView.image = UIImage(named: img)
+//                    annotationView.backgroundColor = UIColor.clear
+                    
+                }
                 return annotationView
             }
         }
@@ -168,6 +231,14 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
             if let eventPage = segue.destination as? eventPage {
                 eventPage.event = curEvent
             }
+        }
+        else if segue.identifier == "newEvent" {
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.addSubview(blurEffectView)
+            
         }
     }
     

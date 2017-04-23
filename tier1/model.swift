@@ -16,11 +16,11 @@ class event : NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D
     
-    var type : Int
+    var type: Int
     var location: String        //user reported location
     var desc: String
-    var eventTime : NSDate      //timestamp for when event to take place
-    var submitTime : NSDate     //timestamp for when event reported
+    var eventTime: NSDate      //timestamp for when event to take place
+    var submitTime: NSDate     //timestamp for when event reported
     
     init(_ type : Int, _ location : String, _ desc : String, _ eventTime : NSDate, _ submitTime : NSDate,
          _ lat:CLLocationDegrees, _ long:CLLocationDegrees) {
@@ -33,6 +33,53 @@ class event : NSObject, MKAnnotation {
         self.submitTime = submitTime
     }
     
+    func getImg() -> String? {
+        switch(type) {
+        case 0:
+            return "freeStuff.png"
+        case 1:
+            return "socialGathering.png"
+        case 2:
+            return "campusGathering.png"
+        case 3:
+            return "studyGroup.png"
+        case 4:
+            return "publicSafety.png"
+        default:
+            return nil
+        }
+    }
+    
+}
+
+//http://stackoverflow.com/questions/42351358/swift-custom-mkpointannotation-with-image
+class ImageAnnotationView: MKAnnotationView {
+    private var imageView: UIImageView!
+    
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        
+        self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        self.addSubview(self.imageView)
+        
+        self.imageView.layer.cornerRadius = 5.0
+        self.imageView.layer.masksToBounds = true
+    }
+    
+    override var image: UIImage? {
+        get {
+            return self.imageView.image
+        }
+        
+        set {
+            self.imageView.image = newValue
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 
@@ -55,6 +102,15 @@ class Model {
             }
         }
         return nil
+    }
+    
+    func contains(_ e: event) -> Bool {
+        for i in allEvents {
+            if i.desc == e.desc {
+                return true
+            }
+        }
+        return false
     }
     
     func typeToString(_ type: Int) -> String {

@@ -15,6 +15,8 @@ class eventPage: UIViewController {
     @IBOutlet var eventName : UILabel!
     @IBOutlet var location : UILabel!
     @IBOutlet var time: UILabel!
+    @IBOutlet var img: UIImageView!
+    @IBOutlet var type: UILabel!
     
     var event: event!
     
