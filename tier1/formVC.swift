@@ -12,16 +12,16 @@ import CoreLocation
 import Firebase
 import FirebaseAuth
 
-class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class formVC: UIViewController{
     
     var ref: FIRDatabaseReference!
     
-    var typeOpts = ["Free Stuff", "Social Gathering", "Campus Event", "Study Group", "Public Safety"]
+    var typeOpts = ["Free", "Social Event", "Campus", "Study Group", "Public Safety"]
     
     @IBOutlet var type: UITextField!
     @IBOutlet var name: UITextField!
     @IBOutlet var location: UITextField!
-    @IBOutlet var typePicker: UIPickerView! = UIPickerView()
+//    @IBOutlet var typePicker: UIPickerView! = UIPickerView()
     
     @IBAction func submit(sender: AnyObject) {
         
@@ -80,10 +80,10 @@ class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         
-        typePicker.delegate = self
-        typePicker.dataSource = self
-        type.inputView = typePicker
-        typePicker.showsSelectionIndicator = true
+//        typePicker.delegate = self
+//        typePicker.dataSource = self
+//        type.inputView = typePicker
+//        typePicker.showsSelectionIndicator = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,26 +91,26 @@ class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     @IBAction func tappedOut(sender : AnyObject) {
-        type.resignFirstResponder()
+//        type.resignFirstResponder()
         self.view.endEditing(true)
     }
     
     // The number of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return typeOpts.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return typeOpts[row]
-    }
-    
-    
-    //delegate function for when a selection has been made
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        type.text = typeOpts[row]
-    }
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return typeOpts.count
+//    }
+//    
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return typeOpts[row]
+//    }
+//    
+//    
+//    //delegate function for when a selection has been made
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        type.text = typeOpts[row]
+//    }
 }
