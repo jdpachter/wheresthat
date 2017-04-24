@@ -7,20 +7,38 @@
 //
 
 import UIKit
+import Foundation
 import MapKit
 
 class eventPage: UIViewController {
     
+    @IBOutlet var eventName : UILabel!
+    @IBOutlet var location : UILabel!
+    @IBOutlet var time: UILabel!
+    @IBOutlet var img: UIImageView!
+    @IBOutlet var type: UILabel!
     
-//    @IBOutlet var eventName : UILabel!
-//    @IBOutlet var location : UILabel!
-//    @IBOutlet var time: UILabel!
+    var event: event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        eventName.text = model.allEvents[0].desc
-//        location.text = model.allEvents[0].location
-//        time.text = String(describing: model.allEvents[0].eventTime)
+        
+        eventName.text = event.desc
+        location.text = event.location
+        type.text = event.getType()
+        if let typeImage = event.getImg(true) {
+            img.image = UIImage(named: typeImage)
+            img.sizeToFit()
+
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "EST") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "EEEE, MMMM dd"
+        let strDateM = dateFormatter.string(from: event.eventTime as Date)
+        dateFormatter.dateFormat = "h:mm a"
+        let strDateTime = dateFormatter.string(from: event.eventTime as Date)
+        time.text = strDateM + " at " + strDateTime
     }
     
     override func didReceiveMemoryWarning() {

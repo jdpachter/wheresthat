@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
+        //changed some syntax to supress warnings
+        if (error) != nil {
             return
         }
         
@@ -29,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            if let error = error {
+            //changed some syntax to supress warnings pt2
+            if error != nil {
                 return
             }
         }
