@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +15,7 @@
             <objects>
                 <navigationController id="IN6-5V-7A9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Near me" image="nearMe" selectedImage="nearMe" id="CbW-tS-o4N"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Veo-SG-scP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Veo-SG-scP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -54,18 +53,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Near Me" image="nearMe" selectedImage="nearMe" id="idE-dG-L0O"/>
                     <navigationItem key="navigationItem" title="Near Me" id="EuP-Xa-cOy">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="Exe-ba-oLE">
-                                <connections>
-                                    <segue destination="OoA-1c-XVo" kind="presentation" identifier="newEvent" id="GKv-hK-q63"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="update" id="Kt9-UP-LgC">
-                                <connections>
-                                    <action selector="updateHitWithSender:" destination="BYZ-38-t0r" id="pyS-1P-4uP"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Exe-ba-oLE">
+                            <connections>
+                                <segue destination="OoA-1c-XVo" kind="presentation" identifier="newEvent" id="GKv-hK-q63"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="cmH-I5-bWQ" id="4SP-4I-ma9"/>
@@ -220,22 +212,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" textLabel="dJi-tA-PYD" detailTextLabel="1Wp-ms-jrW" style="IBUITableViewCellStyleSubtitle" id="Eo8-8B-L0P">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" textLabel="oUT-Sp-MLO" detailTextLabel="WpV-jK-eTd" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="Eo8-8B-L0P" customClass="customCell" customModule="tier1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eo8-8B-L0P" id="e6U-zW-lLx">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dJi-tA-PYD">
-                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oUT-Sp-MLO">
+                                            <rect key="frame" x="15" y="13" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Wp-ms-jrW">
-                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WpV-jK-eTd">
+                                            <rect key="frame" x="15" y="33.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -263,14 +255,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPQ-5f-Pgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1883" y="611"/>
+            <point key="canvasLocation" x="1882.4000000000001" y="610.34482758620697"/>
         </scene>
         <!--Events-->
         <scene sceneID="kSU-FA-vM3">
             <objects>
                 <navigationController id="Mho-MV-pdn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="event" selectedImage="event" id="dwj-q1-nKU"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Tk-ce-fQU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4Tk-ce-fQU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -375,7 +367,7 @@
         <image name="nearMe" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ah9-Fw-NX1"/>
-        <segue reference="jYe-YF-fNS"/>
+        <segue reference="GKv-hK-q63"/>
+        <segue reference="PoC-IW-j7r"/>
     </inferredMetricsTieBreakers>
 </document>

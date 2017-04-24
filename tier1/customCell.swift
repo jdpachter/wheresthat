@@ -11,9 +11,21 @@ import Foundation
 
 class customCell : UITableViewCell {
     
-    @IBOutlet var label : UILabel!
+
+    @IBOutlet var desc: UILabel!
+    @IBOutlet var type: UILabel!
+    @IBOutlet var img: UIImageView!
+    
+
     
     func updateLabels() {
+        
+        let bodyFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        desc.font = bodyFont
+        
+        let caption1Font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption1)
+        type.font = caption1Font
+        
         
     }
 }

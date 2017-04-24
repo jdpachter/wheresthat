@@ -30,9 +30,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     var timer = Timer()
     
-    @IBAction func updateHit(sender: AnyObject) {
-        update()
-    }
     
   /*  @IBAction func addCard(sender: AnyObject) {
         self.definesPresentationContext = true
@@ -202,7 +199,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
 //                    annotationView.backgroundColor = UIColor.clear
-                    
                 }
                 return annotationView
             }

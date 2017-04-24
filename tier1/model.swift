@@ -122,6 +122,7 @@ class Model {
         return nil
     }
     
+    //change to UID instead of desc
     func contains(_ e: event) -> Bool {
         for i in allEvents {
             if i.desc == e.desc {

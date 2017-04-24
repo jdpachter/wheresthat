@@ -61,8 +61,21 @@ class eventTableView: UITableViewController {
         
     }
     
+    /*func getTableCell(_ path: IndexPath ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: path) as! customCell
+        
+        cell.updateLabels()
+
+        let current = model.allEvents[path.row]
+        cell.desc?.text = current.desc
+        cell.type?.text = model.typeToString(current.type)
+        if let im = current.getImg(false) {
+            cell.img?.image = UIImage(named: im)
+        }
+        return cell
+    }*/
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("segue")
         if let e = self.model.lookupEvent(byCoordinate: (model.allEvents[indexPath.row].coordinate)) {
             curEvent = e
         }
