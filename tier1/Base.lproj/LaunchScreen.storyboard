@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,24 +21,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThatLogo" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-9C-Nvq">
-                                <rect key="frame" x="84" y="64" width="206" height="206"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_Word_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-9C-Nvq">
+                                <rect key="frame" x="37" y="0.0" width="300" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="HJB-nn-Opn"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where's That?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk3-CG-uBX">
-                                <rect key="frame" x="66" y="312" width="244" height="43.5"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="3" height="3"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zsW-eU-mYb">
+                                <rect key="frame" x="124.5" y="100" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="T3O-RM-WWy"/>
+                                    <constraint firstAttribute="width" constant="125" id="p6b-Cb-JMq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.4849440397" green="0.86558193110000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" multiplier="3.2" id="02g-Qo-V4T"/>
-                            <constraint firstItem="hk3-CG-uBX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="EK1-0M-I8G"/>
-                            <constraint firstItem="hk3-CG-uBX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="R5h-gT-VTI"/>
-                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iDd-i8-H1v"/>
+                            <constraint firstItem="zsW-eU-mYb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5tr-am-h1I"/>
+                            <constraint firstItem="zsW-eU-mYb" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="80" id="IY7-ga-ZRY"/>
+                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eYj-2n-QY4"/>
+                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="f2H-eh-J84"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -49,6 +50,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WheresThatLogo" width="206" height="206"/>
+        <image name="WheresThat_LogoIcon" width="2000" height="2000"/>
+        <image name="WheresThat_Word_Icon" width="2000" height="667"/>
     </resources>
 </document>
