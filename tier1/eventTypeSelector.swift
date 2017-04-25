@@ -75,6 +75,9 @@ class eventTypeSelector: UIViewController {
         if segue.identifier == "toFormVC"{
             if let formVC = segue.destination as? formVC{
                 formVC.presetType = type
+                let backItem = UIBarButtonItem()
+                backItem.title = "Back"
+                navigationItem.backBarButtonItem = backItem
             }
         }
     }
