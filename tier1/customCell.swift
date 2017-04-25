@@ -8,15 +8,16 @@
 
 import UIKit
 import Foundation
+//not in use
 
 class customCell : UITableViewCell {
     
-
     @IBOutlet var desc: UILabel!
+
     @IBOutlet var type: UILabel!
+  
     @IBOutlet var img: UIImageView!
     
-
     
     func updateLabels() {
         

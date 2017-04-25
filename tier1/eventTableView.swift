@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-class eventTableView: UITableViewController {
+class eventTableView: UITableViewController{
     
+    var mapview:
     var model: Model!
     
     var curEvent: event!
@@ -29,11 +30,29 @@ class eventTableView: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch(section) {
+        case 0:
+            return "Free Stuff"
+        case 1:
+            return "Social Gathering"
+        case 2:
+            return "Campus Event"
+        case 3:
+            return "Study Group"
+        case 4:
+            return "Public Safety"
+        default:
+            break
+        }
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.allEvents.count
+        return self.model.getCount(section)
     }
     
     func unblur() {
@@ -84,11 +103,57 @@ class eventTableView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        print(String(describing: indexPath.row) + "\n")
+      
         
-        let eventName = model.allEvents[indexPath.row].desc
-        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
-        cell.textLabel?.text = eventName
-        cell.detailTextLabel?.text = eventType
+
+            
+        switch(indexPath.section) {
+        case 0:
+            
+            let eventName = model.getEvents(ofType: 0)[indexPath.row].desc
+            //need to get current location and location by section.
+            //go through getEvents and calculate location for each event. Similar method to getEvents.
+            //var distance = myLocation.distanceFromLocation(eventPinLoc) / 1000 this converstion is from meters--> miles.
+            let eventType = 0
+            
+            cell.textLabel?.text = eventName
+            cell.detailTextLabel?.text = "0"
+            
+        
+        case 1:
+            
+            let eventName = model.getEvents(ofType: 1)[indexPath.row].desc
+            let eventType = 1
+            
+            cell.textLabel?.text = eventName
+            cell.detailTextLabel?.text = "1"
+        case 2:
+            
+            let eventName = model.getEvents(ofType: 2)[indexPath.row].desc
+            let eventType = 2
+            
+            cell.textLabel?.text = eventName
+            cell.detailTextLabel?.text = "2"
+        case 3:
+            
+            let eventName = model.getEvents(ofType: 3)[indexPath.row].desc
+            let eventType = 3
+            
+            cell.textLabel?.text = eventName
+            cell.detailTextLabel?.text = "3"
+        case 4:
+            
+            let eventName = model.getEvents(ofType: 4)[indexPath.row].desc
+            let eventType = 4
+            
+            cell.textLabel?.text = eventName
+            cell.detailTextLabel?.text = "4"
+        default:
+            break
+        }
+       
+        
 //        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
         return cell
     }
