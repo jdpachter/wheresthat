@@ -17,6 +17,7 @@ class formVC: UIViewController{
     var ref: FIRDatabaseReference!
     
     var typeOpts = ["Free", "Social Event", "Campus", "Study Group", "Public Safety"]
+    var presetType: String!
     
     @IBOutlet var type: UITextField!
     @IBOutlet var name: UITextField!
@@ -72,6 +73,7 @@ class formVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        type.text = presetType
 //        view.backgroundColor = UIColor.clear
 //        view.isOpaque = false
 

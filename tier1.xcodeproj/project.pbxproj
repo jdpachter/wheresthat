@@ -22,6 +22,8 @@
 		3CD945401EA28874003C66AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9453F1EA28874003C66AC /* GoogleService-Info.plist */; };
 		D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */; };
 		D0575FD51EAEE52A00880355 /* HoveringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FD41EAEE52A00880355 /* HoveringView.swift */; };
+		D0575FD71EAF0C0700880355 /* HoveringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FD61EAF0C0700880355 /* HoveringTextField.swift */; };
+		D0575FD91EAF0C8400880355 /* HoveringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FD81EAF0C8400880355 /* HoveringButton.swift */; };
 		F5144004FA5649459CBA3A60 /* Pods_tier1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.debug.xcconfig"; sourceTree = "<group>"; };
 		D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTypeSelector.swift; sourceTree = "<group>"; };
 		D0575FD41EAEE52A00880355 /* HoveringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringView.swift; sourceTree = "<group>"; };
+		D0575FD61EAF0C0700880355 /* HoveringTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringTextField.swift; sourceTree = "<group>"; };
+		D0575FD81EAF0C8400880355 /* HoveringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				D0575FD41EAEE52A00880355 /* HoveringView.swift */,
+				D0575FD61EAF0C0700880355 /* HoveringTextField.swift */,
+				D0575FD81EAF0C8400880355 /* HoveringButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -163,7 +169,6 @@
 				TargetAttributes = {
 					3C479B721E90321500E98998 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = YVK5BU4LA5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
@@ -262,10 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C479B8C1E90328100E98998 /* Events.swift in Sources */,
+				D0575FD71EAF0C0700880355 /* HoveringTextField.swift in Sources */,
 				3CBC575D1EA42C5C00038D84 /* eventForm.swift in Sources */,
 				3C42C3051EABED0F007CF319 /* formVC.swift in Sources */,
 				D0575FD51EAEE52A00880355 /* HoveringView.swift in Sources */,
 				D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */,
+				D0575FD91EAF0C8400880355 /* HoveringButton.swift in Sources */,
 				3C479B791E90321500E98998 /* NearMe.swift in Sources */,
 				3C479B901E903FF900E98998 /* customCell.swift in Sources */,
 				3C479B771E90321500E98998 /* AppDelegate.swift in Sources */,
@@ -395,7 +402,7 @@
 			baseConfigurationReference = AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YVK5BU4LA5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tier1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -411,7 +418,7 @@
 			baseConfigurationReference = A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YVK5BU4LA5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tier1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

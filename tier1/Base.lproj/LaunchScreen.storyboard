@@ -21,26 +21,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_Word_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-9C-Nvq">
-                                <rect key="frame" x="37" y="0.0" width="300" height="667"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zsW-eU-mYb">
+                                <rect key="frame" x="137.5" y="171" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="HJB-nn-Opn"/>
+                                    <constraint firstAttribute="height" constant="100" id="T3O-RM-WWy"/>
+                                    <constraint firstAttribute="width" constant="100" id="p6b-Cb-JMq"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zsW-eU-mYb">
-                                <rect key="frame" x="124.5" y="100" width="125" height="125"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_Word_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-9C-Nvq">
+                                <rect key="frame" x="37.5" y="271" width="300" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="T3O-RM-WWy"/>
-                                    <constraint firstAttribute="width" constant="125" id="p6b-Cb-JMq"/>
+                                    <constraint firstAttribute="width" constant="300" id="HJB-nn-Opn"/>
+                                    <constraint firstAttribute="height" constant="125" id="Igl-2z-njv"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0Uk-y2-Hyo"/>
                             <constraint firstItem="zsW-eU-mYb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5tr-am-h1I"/>
-                            <constraint firstItem="zsW-eU-mYb" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="80" id="IY7-ga-ZRY"/>
-                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eYj-2n-QY4"/>
-                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="f2H-eh-J84"/>
+                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="top" secondItem="zsW-eU-mYb" secondAttribute="bottom" id="HPw-cf-3rG"/>
+                            <constraint firstItem="UMP-9C-Nvq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RG5-4g-Xn3"/>
                         </constraints>
                     </view>
                 </viewController>
