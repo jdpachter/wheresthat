@@ -40,19 +40,19 @@ class eventTypeSelector: UIViewController {
         
         let tapFree = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedFree(_:)))
         tapCampus.numberOfTapsRequired = 1
-        CampusImage.addGestureRecognizer(tapFree)
+        FreeImage.addGestureRecognizer(tapFree)
         
         let tapPS = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedPS(_:)))
         tapCampus.numberOfTapsRequired = 1
-        CampusImage.addGestureRecognizer(tapPS)
+        PSImage.addGestureRecognizer(tapPS)
         
         let tapSocial = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedSocial(_:)))
         tapCampus.numberOfTapsRequired = 1
-        CampusImage.addGestureRecognizer(tapSocial)
+        SocialImage.addGestureRecognizer(tapSocial)
         
         let tapStudy = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedStudy(_:)))
         tapCampus.numberOfTapsRequired = 1
-        CampusImage.addGestureRecognizer(tapStudy)
+        StudyImage.addGestureRecognizer(tapStudy)
         
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
