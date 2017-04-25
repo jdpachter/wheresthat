@@ -73,6 +73,8 @@ class formVC: UIViewController{
         
         self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        
+        navigationController?.navigationBar.layer.shadowOpacity = 0
     }
     
     override func didReceiveMemoryWarning() {

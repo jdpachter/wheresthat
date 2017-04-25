@@ -52,6 +52,8 @@ class eventTypeSelector: UIViewController {
         self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
+        navigationController?.navigationBar.layer.shadowOpacity = 0
+        
 //        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
 //        titleLabel.text = "Add Event"
 //        titleLabel.textColor = DARK_BLUE

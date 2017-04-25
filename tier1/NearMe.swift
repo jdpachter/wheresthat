@@ -68,14 +68,11 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-//        navigationController?.navigationBar.isTranslucent = false
-//        tabBarController?.tabBar.isTranslucent = false
-        
-//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-//        titleLabel.text = "Near Me"
-//        titleLabel.textColor = DARK_BLUE
-//        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)//UIFont(name: "Roboto-Bold", size: 25)
-//        navigationItem.titleView = titleLabel
+        navigationController?.navigationBar.layer.masksToBounds = false
+        navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+        navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        navigationController?.navigationBar.layer.shadowRadius = 2
     }
     
     func onReturn() {
@@ -166,6 +163,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
 //        update()
 //        self.view.alpha = 1
         mapView.layoutSubviews()
+        navigationController?.navigationBar.layer.shadowOpacity = 0.8
     }
     
     override func didReceiveMemoryWarning() {
