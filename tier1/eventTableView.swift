@@ -9,21 +9,26 @@
 import Foundation
 import UIKit
 
-class eventTableView: UITableViewController {
+class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var model: Model!
-    
     var curEvent: event!
     
     override func viewDidLoad() {
         self.tableView.reloadData()
-        NotificationCenter.default.addObserver(self, selector: #selector(eventTableView.unblur), name:NSNotification.Name(rawValue: "unblur"), object: nil)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         navigationController?.navigationBar.layer.masksToBounds = false
         navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,20 +43,23 @@ class eventTableView: UITableViewController {
         
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.allEvents.count
     }
     
-    func unblur() {
-        for subview in view.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+//        
+//        let eventName = model.allEvents[indexPath.row].desc
+//        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
+//        cell.textLabel?.text = eventName
+//        cell.detailTextLabel?.text = eventType
+//        return cell
+        return tableView.dequeueReusableCell(withIdentifier: "eventCell") as! eventCell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,11 +69,6 @@ class eventTableView: UITableViewController {
             }
         }
         else if segue.identifier == "newFromTV" {
-//            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
-//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//            blurEffectView.frame = view.bounds
-//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//            view.addSubview(blurEffectView)
             
         }
         
@@ -85,21 +88,10 @@ class eventTableView: UITableViewController {
         return cell
     }*/
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let e = self.model.lookupEvent(byCoordinate: (model.allEvents[indexPath.row].coordinate)) {
-            curEvent = e
-        }
-        performSegue(withIdentifier: "toEventPageT", sender: self.view)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        
-        let eventName = model.allEvents[indexPath.row].desc
-        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
-        cell.textLabel?.text = eventName
-        cell.detailTextLabel?.text = eventType
-//        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let e = self.model.lookupEvent(byCoordinate: (model.allEvents[indexPath.row].coordinate)) {
+//            curEvent = e
+//        }
+//        performSegue(withIdentifier: "toEventPageT", sender: self.view)
+//    }
 }
