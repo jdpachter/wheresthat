@@ -21,6 +21,7 @@
 		3CBC575F1EA56A5900038D84 /* eventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC575E1EA56A5900038D84 /* eventTableView.swift */; };
 		3CD945401EA28874003C66AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9453F1EA28874003C66AC /* GoogleService-Info.plist */; };
 		D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */; };
+		D0575FD51EAEE52A00880355 /* HoveringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FD41EAEE52A00880355 /* HoveringView.swift */; };
 		F5144004FA5649459CBA3A60 /* Pods_tier1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.release.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.release.xcconfig"; sourceTree = "<group>"; };
 		AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.debug.xcconfig"; sourceTree = "<group>"; };
 		D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTypeSelector.swift; sourceTree = "<group>"; };
+		D0575FD41EAEE52A00880355 /* HoveringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		3C479B6A1E90321500E98998 = {
 			isa = PBXGroup;
 			children = (
+				D0575FD11EAEE47300880355 /* View */,
 				3C479B751E90321500E98998 /* tier1 */,
 				3C479B741E90321500E98998 /* Products */,
 				D6E7F18C9A5384EFE70CD30E /* Pods */,
@@ -98,6 +101,14 @@
 				D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */,
 			);
 			path = tier1;
+			sourceTree = "<group>";
+		};
+		D0575FD11EAEE47300880355 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0575FD41EAEE52A00880355 /* HoveringView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		D6E7F18C9A5384EFE70CD30E /* Pods */ = {
@@ -253,6 +264,7 @@
 				3C479B8C1E90328100E98998 /* Events.swift in Sources */,
 				3CBC575D1EA42C5C00038D84 /* eventForm.swift in Sources */,
 				3C42C3051EABED0F007CF319 /* formVC.swift in Sources */,
+				D0575FD51EAEE52A00880355 /* HoveringView.swift in Sources */,
 				D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */,
 				3C479B791E90321500E98998 /* NearMe.swift in Sources */,
 				3C479B901E903FF900E98998 /* customCell.swift in Sources */,

@@ -13,19 +13,40 @@ import Firebase
 import FirebaseAuth
 
 class eventTypeSelector: UIViewController {
-//    @IBOutlet weak var CampusImage: UIImageView!
+    @IBOutlet weak var CampusImage: UIImageView!
+    @IBOutlet weak var FreeImage: UIImageView!
+    @IBOutlet weak var PSImage: UIImageView!
+    @IBOutlet weak var SocialImage: UIImageView!
+    @IBOutlet weak var StudyImage: UIImageView!
+
     
     var ref: FIRDatabaseReference!
     var type: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        view.backgroundColor = UIColor.clear
-        //        view.isOpaque = false
         
         ref = FIRDatabase.database().reference()
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedType(tapGestureRecognizer:)))
-//        CampusImage.addGestureRecognizer(tapGestureRecognizer)
+        
+        let tapCampus = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedCampus(_:)))
+        tapCampus.numberOfTapsRequired = 1
+        CampusImage.addGestureRecognizer(tapCampus)
+        
+        let tapFree = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedFree(_:)))
+        tapCampus.numberOfTapsRequired = 1
+        CampusImage.addGestureRecognizer(tapFree)
+        
+        let tapPS = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedPS(_:)))
+        tapCampus.numberOfTapsRequired = 1
+        CampusImage.addGestureRecognizer(tapPS)
+        
+        let tapSocial = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedSocial(_:)))
+        tapCampus.numberOfTapsRequired = 1
+        CampusImage.addGestureRecognizer(tapSocial)
+        
+        let tapStudy = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedStudy(_:)))
+        tapCampus.numberOfTapsRequired = 1
+        CampusImage.addGestureRecognizer(tapStudy)
         
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -48,18 +69,20 @@ class eventTypeSelector: UIViewController {
         }
     }
     
-//    func tappedType(tapGestureRecognizer: UITapGestureRecognizer)
-//    {
-//        let selectedType = tapGestureRecognizer.view as! UIImageView
-//        
-//        if selectedType == CampusImage{
-//            print("CAMPUS IMAGE!!!!!!!")
-//            type = "Campus"
-//        }
-//    }
-    
-    @IBAction func selectedCampus(_ sender: Any) {
+    func selectedCampus(_ sender: Any) {
         type = "Campus"
+    }
+    func selectedFree(_ sender: Any) {
+        type = "Free"
+    }
+    func selectedPS(_ sender: Any) {
+        type = "Public Safety"
+    }
+    func selectedSocial(_ sender: Any) {
+        type = "Social"
+    }
+    func selectedStudy(_ sender: Any) {
+        type = "Study Group"
     }
     
     
