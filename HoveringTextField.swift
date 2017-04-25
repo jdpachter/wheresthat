@@ -10,7 +10,6 @@ import UIKit
 
 class HoveringTextField: UITextField {
     
-    let SHADOW_COLOR: CGFloat = 157.0/255.0
     
     override func awakeFromNib() {
         layer.cornerRadius = 2.0

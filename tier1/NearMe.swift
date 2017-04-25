@@ -64,7 +64,18 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         mapView.showsUserLocation = true
         let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
         mapView.setRegion(region, animated: true)
-
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+//        navigationController?.navigationBar.isTranslucent = false
+//        tabBarController?.tabBar.isTranslucent = false
+        
+//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+//        titleLabel.text = "Near Me"
+//        titleLabel.textColor = DARK_BLUE
+//        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)//UIFont(name: "Roboto-Bold", size: 25)
+//        navigationItem.titleView = titleLabel
     }
     
     func onReturn() {
@@ -229,11 +240,11 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
             }
         }
         else if segue.identifier == "newEvent" {
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(blurEffectView)
+//            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//            blurEffectView.frame = view.bounds
+//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//            view.addSubview(blurEffectView)
             
         }
     }

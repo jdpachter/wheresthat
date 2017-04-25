@@ -20,6 +20,7 @@
 		3CBC575D1EA42C5C00038D84 /* eventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC575C1EA42C5C00038D84 /* eventForm.swift */; };
 		3CBC575F1EA56A5900038D84 /* eventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC575E1EA56A5900038D84 /* eventTableView.swift */; };
 		3CD945401EA28874003C66AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9453F1EA28874003C66AC /* GoogleService-Info.plist */; };
+		D01941811EAFC974007FD36F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01941801EAFC974007FD36F /* Constants.swift */; };
 		D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */; };
 		D0575FD51EAEE52A00880355 /* HoveringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FD41EAEE52A00880355 /* HoveringView.swift */; };
 		D0575FD71EAF0C0700880355 /* HoveringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FD61EAF0C0700880355 /* HoveringTextField.swift */; };
@@ -47,6 +48,7 @@
 		8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tier1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.release.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.release.xcconfig"; sourceTree = "<group>"; };
 		AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.debug.xcconfig"; sourceTree = "<group>"; };
+		D01941801EAFC974007FD36F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTypeSelector.swift; sourceTree = "<group>"; };
 		D0575FD41EAEE52A00880355 /* HoveringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringView.swift; sourceTree = "<group>"; };
 		D0575FD61EAF0C0700880355 /* HoveringTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringTextField.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		3C479B6A1E90321500E98998 = {
 			isa = PBXGroup;
 			children = (
+				D019417F1EAFC965007FD36F /* Util */,
 				D0575FD11EAEE47300880355 /* View */,
 				3C479B751E90321500E98998 /* tier1 */,
 				3C479B741E90321500E98998 /* Products */,
@@ -105,6 +108,14 @@
 				D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */,
 			);
 			path = tier1;
+			sourceTree = "<group>";
+		};
+		D019417F1EAFC965007FD36F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D01941801EAFC974007FD36F /* Constants.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		D0575FD11EAEE47300880355 /* View */ = {
@@ -275,6 +286,7 @@
 				D0575FD91EAF0C8400880355 /* HoveringButton.swift in Sources */,
 				3C479B791E90321500E98998 /* NearMe.swift in Sources */,
 				3C479B901E903FF900E98998 /* customCell.swift in Sources */,
+				D01941811EAFC974007FD36F /* Constants.swift in Sources */,
 				3C479B771E90321500E98998 /* AppDelegate.swift in Sources */,
 				3C479B921E91FEE500E98998 /* eventPage.swift in Sources */,
 				3C479B8E1E903FC000E98998 /* Model.swift in Sources */,

@@ -49,12 +49,19 @@ class eventTypeSelector: UIViewController {
         tapCampus.numberOfTapsRequired = 1
         StudyImage.addGestureRecognizer(tapStudy)
         
-        self.modalPresentationStyle = UIModalPresentationStyle.formSheet
-        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        
+//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+//        titleLabel.text = "Add Event"
+//        titleLabel.textColor = DARK_BLUE
+//        titleLabel.font = UIFont(name: "Roboto-Bold", size: 25)
+//        navigationItem.titleView = titleLabel
     }
     
     @IBAction func cancel(sender: AnyObject) {
         let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
+        tabController?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         present(tabController!, animated: true, completion: nil)
     }
     

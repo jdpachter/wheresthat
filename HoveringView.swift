@@ -10,8 +10,6 @@ import UIKit
 
 class HoveringView: UIView {
     
-    let SHADOW_COLOR: CGFloat = 157.0/255.0
-
     override func awakeFromNib() {
         layer.cornerRadius = 0.0
         layer.shadowColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.5).cgColor

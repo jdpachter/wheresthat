@@ -43,16 +43,9 @@ class formVC: UIViewController{
                     "submitted":String(now)]
                 
                 ref.child("events").childByAutoId().setValue(post)
-                
-                let saveMyAlert = UIAlertController(title: "Event Submitted!", message: "Go see it on the map!", preferredStyle: UIAlertControllerStyle.alert)
-                saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:
-                    UIAlertAction!) in
-                }))
-                present(saveMyAlert, animated: true, completion: nil)
-                
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unblurUpdate"), object: nil)
-                dismiss(animated: true, completion: nil)
-                
+                let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
+                tabController?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                present(tabController!, animated: true, completion: nil)
             }
             else {
                 let saveMyAlert = UIAlertController(title: "Missing Information", message: "Please fill in all fields.", preferredStyle: UIAlertControllerStyle.alert)
@@ -67,6 +60,7 @@ class formVC: UIViewController{
     
     @IBAction func cancel(sender: AnyObject) {
         let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
+        tabController?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         present(tabController!, animated: true, completion: nil)
     }
 
@@ -77,8 +71,8 @@ class formVC: UIViewController{
 
         ref = FIRDatabase.database().reference()
         
-        self.modalPresentationStyle = UIModalPresentationStyle.formSheet
-        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
     }
     
     override func didReceiveMemoryWarning() {
