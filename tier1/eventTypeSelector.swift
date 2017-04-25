@@ -22,12 +22,7 @@ class eventTypeSelector: UIViewController {
     var ref: FIRDatabaseReference!
     var typeOpts = ["Free", "Social Event", "Campus", "Study Group", "Public Safety"]
     
-    @IBOutlet weak var formView: UIView!
-    @IBOutlet weak var typeView: UIView!
-    
-    @IBOutlet var type: UITextField!
-    @IBOutlet var name: UITextField!
-    @IBOutlet var location: UITextField!
+    var type: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,86 +49,55 @@ class eventTypeSelector: UIViewController {
         tapCampus.numberOfTapsRequired = 1
         StudyImage.addGestureRecognizer(tapStudy)
         
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.formSheet
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unblur"), object: nil)
-        dismiss(animated: true, completion: nil)
+        let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
+        present(tabController!, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func sendTypeToForm(){
-        typeView.isHidden = true
-        formView.isHidden = false
-    }
-    
-    func selectedCampus(_ sender: Any) {
-        type.text = "Campus"
-        sendTypeToForm()
-        print("CLICKED CAMPUS")
-    }
-    func selectedFree(_ sender: Any) {
-        type.text = "Free"
-        sendTypeToForm()
-        print("CLICKED FREE")
-    }
-    func selectedPS(_ sender: Any) {
-        type.text = "Public Safety"
-        sendTypeToForm()
-        print("CLICKED PS")
-    }
-    func selectedSocial(_ sender: Any) {
-        type.text = "Social Event"
-        sendTypeToForm()
-        print("CLICKED SOCIAL")
-    }
-    func selectedStudy(_ sender: Any) {
-        type.text = "Study Group"
-        sendTypeToForm()
-        print("CLICKED STUDY")
-    }
-    
-    @IBAction func submit(sender: AnyObject) {
-        
-        if let desc = name.text, let loc = location.text, let eType = type.text {
-            if desc != "" && loc != "" && eType != "" {
-                let locManager = CLLocationManager()
-                let lat = locManager.location?.coordinate.latitude
-                let long = locManager.location?.coordinate.longitude
-                let now = NSDate().timeIntervalSince1970
-                
-                let post:[String: String] = [
-                    "date":String(now),
-                    "desc":desc,
-                    "location":loc,
-                    "type":String(describing: typeOpts.index(of: eType)!),
-                    "lat":String(describing: lat!),
-                    "long":String(describing: long!),
-                    "submitted":String(now)]
-                
-                ref.child("events").childByAutoId().setValue(post)
-                
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unblurUpdate"), object: nil)
-                self.dismiss(animated: true, completion: nil)
-            }
-            else {
-                let saveMyAlert = UIAlertController(title: "Missing Information", message: "Please fill in all fields.", preferredStyle: UIAlertControllerStyle.alert)
-                saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:
-                    UIAlertAction!) in
-                }))
-                present(saveMyAlert, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toFormVC"{
+            if let formVC = segue.destination as? formVC{
+                formVC.presetType = type
             }
         }
     }
     
-    @IBAction func tappedOut(sender : AnyObject) {
-        //        type.resignFirstResponder()
-        self.view.endEditing(true)
+    func sendTypeToForm(){
+        performSegue(withIdentifier: "toFormVC", sender: self)
+    }
+    
+    func selectedCampus(_ sender: Any) {
+        type = "Campus"
+        sendTypeToForm()
+        print("CLICKED CAMPUS")
+    }
+    func selectedFree(_ sender: Any) {
+        type = "Free"
+        sendTypeToForm()
+        print("CLICKED FREE")
+    }
+    func selectedPS(_ sender: Any) {
+        type = "Public Safety"
+        sendTypeToForm()
+        print("CLICKED PS")
+    }
+    func selectedSocial(_ sender: Any) {
+        type = "Social Event"
+        sendTypeToForm()
+        print("CLICKED SOCIAL")
+    }
+    func selectedStudy(_ sender: Any) {
+        type = "Study Group"
+        sendTypeToForm()
+        print("CLICKED STUDY")
     }
     
     

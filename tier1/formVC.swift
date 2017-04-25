@@ -66,26 +66,19 @@ class formVC: UIViewController{
 
     
     @IBAction func cancel(sender: AnyObject) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unblur"), object: nil)
-        dismiss(animated: true, completion: nil)
+        let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
+        present(tabController!, animated: true, completion: nil)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         type.text = presetType
-//        view.backgroundColor = UIColor.clear
-//        view.isOpaque = false
 
         ref = FIRDatabase.database().reference()
         
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        
-//        typePicker.delegate = self
-//        typePicker.dataSource = self
-//        type.inputView = typePicker
-//        typePicker.showsSelectionIndicator = true
+        self.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.formSheet
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,26 +86,7 @@ class formVC: UIViewController{
     }
     
     @IBAction func tappedOut(sender : AnyObject) {
-//        type.resignFirstResponder()
         self.view.endEditing(true)
     }
     
-    // The number of columns of data
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-    
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return typeOpts.count
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return typeOpts[row]
-//    }
-//    
-//    
-//    //delegate function for when a selection has been made
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        type.text = typeOpts[row]
-//    }
 }
