@@ -16,7 +16,6 @@ class formVC: UIViewController{
     
     var ref: FIRDatabaseReference!
     
-    var typeOpts = ["Free", "Social Event", "Campus", "Study Group", "Public Safety"]
     var presetType: String!
     
     @IBOutlet var type: UITextField!

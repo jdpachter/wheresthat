@@ -52,14 +52,27 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-//        
-//        let eventName = model.allEvents[indexPath.row].desc
-//        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
-//        cell.textLabel?.text = eventName
-//        cell.detailTextLabel?.text = eventType
-//        return cell
-        return tableView.dequeueReusableCell(withIdentifier: "eventCell") as! eventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
+
+        let eventName = model.allEvents[indexPath.row].desc
+        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
+        cell.eventTitle.text = eventName
+        cell.eventType.text = eventType
+        
+        let typeNum = model.allEvents[indexPath.row].type
+        var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
+        
+        switch(typeNum){
+            case 0: typeImage = #imageLiteral(resourceName: "freeStuffBig")
+            case 1: typeImage = #imageLiteral(resourceName: "socialGatheringBig")
+            case 2: typeImage = #imageLiteral(resourceName: "campusGatheringBig")
+            case 3: typeImage = #imageLiteral(resourceName: "studyGroupBig")
+            case 4: typeImage = #imageLiteral(resourceName: "publicSafetyBig")
+        default:
+            print("Event Icon Grab Error!")
+        }
+        cell.eventTypeIcon.image = typeImage
+        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,9 +80,6 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let eventPage = segue.destination as? eventPage {
                 eventPage.event = curEvent
             }
-        }
-        else if segue.identifier == "newFromTV" {
-            
         }
         
     }

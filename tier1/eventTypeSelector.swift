@@ -19,9 +19,7 @@ class eventTypeSelector: UIViewController {
     @IBOutlet weak var SocialImage: UIImageView!
     @IBOutlet weak var StudyImage: UIImageView!
     
-    var ref: FIRDatabaseReference!
-    var typeOpts = ["Free", "Social Event", "Campus", "Study Group", "Public Safety"]
-    
+    var ref: FIRDatabaseReference!    
     var type: String!
     
     override func viewDidLoad() {

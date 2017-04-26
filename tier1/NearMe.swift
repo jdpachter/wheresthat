@@ -53,9 +53,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         
         timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(NearMe.onReturnUpdate), name:NSNotification.Name(rawValue: "unblurUpdate"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(NearMe.onReturn), name:NSNotification.Name(rawValue: "unblur"), object: nil)
-        
         barViewControllers = self.tabBarController?.viewControllers
         svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView!
         svc.model = self.model  //shared model
@@ -186,9 +183,10 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
 //                view.pinTintColor = pc
                 annotationView.canShowCallout = true
                 let e = annotation as! event
-                if let img = e.getImg(false) {
+                if let img = e.getImg(true) {
                     annotationView.canShowCallout = true
-                    annotationView.image = UIImage(named: img)
+                    let sizedImage = UIImage(named: img)
+                    annotationView.image = sizedImage
 
 //                    annotationView.backgroundColor = UIColor.clear
            
@@ -203,7 +201,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
                 let e = annotation as! event
-                if let img = e.getImg(false) {
+                if let img = e.getImg(true) {
 //                    print(img)
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
@@ -236,14 +234,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
             if let eventPage = segue.destination as? eventPage {
                 eventPage.event = curEvent
             }
-        }
-        else if segue.identifier == "newEvent" {
-//            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
-//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//            blurEffectView.frame = view.bounds
-//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//            view.addSubview(blurEffectView)
-            
         }
     }
     
