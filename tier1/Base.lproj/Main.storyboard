@@ -145,7 +145,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ryr-Z0-Bes">
                                                         <rect key="frame" x="0.0" y="0.0" width="76" height="113"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_CampusEvent" translatesAutoresizingMaskIntoConstraints="NO" id="keJ-VB-oYk">
+                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_CampusEvent" translatesAutoresizingMaskIntoConstraints="NO" id="keJ-VB-oYk" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="za6-gB-VqD"/>
@@ -162,7 +162,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sk9-88-SJY">
                                                         <rect key="frame" x="96" y="0.0" width="76" height="113"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_FreeStuff" translatesAutoresizingMaskIntoConstraints="NO" id="76f-Tt-R9n">
+                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_FreeStuff" translatesAutoresizingMaskIntoConstraints="NO" id="76f-Tt-R9n" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="JSg-Yp-MPR"/>
@@ -179,7 +179,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qLW-Ma-dcf">
                                                         <rect key="frame" x="192" y="0.0" width="76" height="113"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_PublicSafety" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-4j-YU1">
+                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_PublicSafety" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-4j-YU1" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="76" height="76.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="iWN-pQ-2Lp"/>
@@ -201,7 +201,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CsW-WY-V5O">
                                                         <rect key="frame" x="0.0" y="0.0" width="124" height="122"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="2" verticalCompressionResistancePriority="2" image="Icon_SocialEvent" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-1a-qGP">
+                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="2" verticalCompressionResistancePriority="2" image="Icon_SocialEvent" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-1a-qGP" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="76"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="4cr-UH-YQ5"/>
@@ -218,7 +218,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-mZ-Whp">
                                                         <rect key="frame" x="144" y="0.0" width="124" height="122"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_StudyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="lFa-GW-q91">
+                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_StudyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="lFa-GW-q91" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="76"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="icp-6f-rBo"/>
@@ -328,9 +328,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ur3-aJ-cKZ" userLabel="Container" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="8" width="343" height="109.5"/>
+                                                    <rect key="frame" x="0.0" y="8" width="288" height="109.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="studyGroupBig" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-Kk-5Tc">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_StudyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-Kk-5Tc" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="8" width="75" height="75"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -559,18 +559,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4I-6G-EtP" userLabel="BlueBar">
-                                <rect key="frame" x="0.0" y="64" width="320" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXz-pr-axF" userLabel="BlueBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                                 <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Q3Z-nL-g1e"/>
+                                    <constraint firstAttribute="height" constant="128" id="3rK-H6-Prm"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-dq-hUA" userLabel="FormContainer" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
-                                <rect key="frame" x="16" y="142" width="288" height="353"/>
+                                <rect key="frame" x="16" y="78" width="288" height="355"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-xP-hx9" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="40" width="228" height="40"/>
+                                        <rect key="frame" x="20" y="40" width="248" height="40"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="oMa-aP-L3L"/>
@@ -580,21 +580,30 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="2" verticalHuggingPriority="3" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJu-0I-3sl" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="200" width="283" height="40"/>
+                                        <rect key="frame" x="20" y="200" width="248" height="40"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7Tb-Tn-CAg"/>
-                                            <constraint firstAttribute="width" constant="283" id="JWG-Uc-AHH"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cR0-sl-pce" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="120" width="248" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="8me-YB-3n7"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="snM-R3-hUL">
-                                        <rect key="frame" x="30" y="280" width="228" height="36"/>
+                                        <rect key="frame" x="20" y="280" width="248" height="36"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-F5-YMw" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="116.5" height="36"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                 <state key="normal" title="Cancel">
@@ -605,7 +614,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpL-7W-ap6" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
-                                                <rect key="frame" x="121.5" y="0.0" width="106.5" height="36"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="116.5" height="36"/>
                                                 <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
@@ -618,47 +627,34 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cR0-sl-pce" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="120" width="283" height="40"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="8me-YB-3n7"/>
-                                            <constraint firstAttribute="width" constant="283" id="IWi-Z1-uYD"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="cR0-sl-pce" secondAttribute="trailing" constant="30" id="2oj-En-U68"/>
-                                    <constraint firstItem="vfF-xP-hx9" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="40" id="6fE-rl-N17"/>
-                                    <constraint firstItem="snM-R3-hUL" firstAttribute="top" secondItem="tJu-0I-3sl" secondAttribute="bottom" constant="40" id="Bzk-Kk-e0w"/>
-                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="30" id="FVo-LC-e2G"/>
-                                    <constraint firstAttribute="trailing" secondItem="tJu-0I-3sl" secondAttribute="trailing" constant="30" id="ITC-hC-qZe"/>
-                                    <constraint firstAttribute="trailing" secondItem="snM-R3-hUL" secondAttribute="trailing" constant="30" id="MmF-nr-TEg"/>
-                                    <constraint firstAttribute="trailing" secondItem="vfF-xP-hx9" secondAttribute="trailing" constant="30" id="OX7-z0-3Ha"/>
-                                    <constraint firstAttribute="height" constant="353" id="Xaj-iv-qkE"/>
-                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="40" id="XsV-fN-leb"/>
-                                    <constraint firstItem="snM-R3-hUL" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="30" id="iwQ-MQ-Bha"/>
-                                    <constraint firstItem="cR0-sl-pce" firstAttribute="top" secondItem="vfF-xP-hx9" secondAttribute="bottom" constant="40" id="kWI-A8-1rN"/>
-                                    <constraint firstItem="vfF-xP-hx9" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="30" id="pAw-TY-Z08"/>
-                                    <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="30" id="yLS-lP-gOU"/>
+                                    <constraint firstItem="snM-R3-hUL" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="0gE-eP-wwG"/>
+                                    <constraint firstAttribute="trailing" secondItem="cR0-sl-pce" secondAttribute="trailing" constant="20" id="520-C5-NUL"/>
+                                    <constraint firstItem="vfF-xP-hx9" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Fit-gQ-Tm3"/>
+                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Gc2-oE-0Ed"/>
+                                    <constraint firstItem="cR0-sl-pce" firstAttribute="top" secondItem="vfF-xP-hx9" secondAttribute="bottom" constant="40" id="NiN-f5-BzJ"/>
+                                    <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Szv-yP-5VT"/>
+                                    <constraint firstAttribute="trailing" secondItem="tJu-0I-3sl" secondAttribute="trailing" constant="20" id="YQ2-bQ-HPW"/>
+                                    <constraint firstAttribute="trailing" secondItem="vfF-xP-hx9" secondAttribute="trailing" constant="20" id="bVS-ro-efZ"/>
+                                    <constraint firstItem="snM-R3-hUL" firstAttribute="top" secondItem="tJu-0I-3sl" secondAttribute="bottom" constant="40" id="cuj-7r-68m"/>
+                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="40" id="fXF-9o-u6p"/>
+                                    <constraint firstAttribute="trailing" secondItem="snM-R3-hUL" secondAttribute="trailing" constant="20" id="vUy-r3-pWU"/>
+                                    <constraint firstItem="vfF-xP-hx9" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="40" id="yYi-ky-Kea"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="trailing" secondItem="PTd-c7-wFB" secondAttribute="trailingMargin" id="6tU-Gc-Q2w"/>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="centerY" secondItem="PTd-c7-wFB" secondAttribute="centerY" id="9E3-LZ-d0Y"/>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="centerX" secondItem="PTd-c7-wFB" secondAttribute="centerX" id="Aue-8a-cqB"/>
-                            <constraint firstItem="l4I-6G-EtP" firstAttribute="top" secondItem="uhl-D5-qDN" secondAttribute="bottom" id="CVn-0B-4tg"/>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="top" secondItem="l4I-6G-EtP" secondAttribute="bottom" constant="-50" id="XeU-Yq-ebB"/>
-                            <constraint firstItem="l4I-6G-EtP" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leading" id="ZbQ-Rw-JNX"/>
-                            <constraint firstAttribute="trailing" secondItem="l4I-6G-EtP" secondAttribute="trailing" id="n55-dn-NTh"/>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leadingMargin" id="rBP-N5-Y6K"/>
+                            <constraint firstItem="hu6-dq-hUA" firstAttribute="trailing" secondItem="PTd-c7-wFB" secondAttribute="trailingMargin" id="2gS-5y-ydF"/>
+                            <constraint firstItem="hu6-dq-hUA" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leadingMargin" id="8q1-Ux-ctk"/>
+                            <constraint firstItem="fXz-pr-axF" firstAttribute="top" secondItem="PTd-c7-wFB" secondAttribute="top" id="WgQ-0u-f4C"/>
+                            <constraint firstAttribute="trailing" secondItem="fXz-pr-axF" secondAttribute="trailing" id="gvB-dR-v5T"/>
+                            <constraint firstItem="fXz-pr-axF" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leading" id="kDH-Bh-8Tb"/>
+                            <constraint firstItem="sTa-Ui-GOY" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="bottom" constant="135" id="oso-Gx-JVe"/>
+                            <constraint firstItem="hu6-dq-hUA" firstAttribute="top" secondItem="fXz-pr-axF" secondAttribute="bottom" constant="-50" id="v1u-2X-HXF"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="JWm-yD-0kK" appends="YES" id="Gej-eL-O2P"/>
@@ -681,7 +677,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3700" y="609"/>
+            <point key="canvasLocation" x="3699.375" y="608.45070422535207"/>
         </scene>
     </scenes>
     <resources>
@@ -693,7 +689,6 @@
         <image name="event" width="29" height="29"/>
         <image name="nearMe" width="29" height="29"/>
         <image name="quickaction_icon_location_2x" width="57" height="54"/>
-        <image name="studyGroupBig" width="50" height="34"/>
         <image name="thumbs-down-black" width="2000" height="2000"/>
         <image name="thumbs-up-black" width="2000" height="2000"/>
     </resources>

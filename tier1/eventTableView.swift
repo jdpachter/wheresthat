@@ -104,11 +104,11 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
         
         switch(typeNum){
-        case 0: typeImage = #imageLiteral(resourceName: "freeStuffBig")
-        case 1: typeImage = #imageLiteral(resourceName: "socialGatheringBig")
-        case 2: typeImage = #imageLiteral(resourceName: "campusGatheringBig")
-        case 3: typeImage = #imageLiteral(resourceName: "studyGroupBig")
-        case 4: typeImage = #imageLiteral(resourceName: "publicSafetyBig")
+        case 0: typeImage = #imageLiteral(resourceName: "Icon_CampusEvent")
+        case 1: typeImage = #imageLiteral(resourceName: "Icon_FreeStuff")
+        case 2: typeImage = #imageLiteral(resourceName: "Icon_PublicSafety")
+        case 3: typeImage = #imageLiteral(resourceName: "Icon_SocialEvent")
+        case 4: typeImage = #imageLiteral(resourceName: "Icon_StudyGroup")
         default:
             print("Event Icon Grab Error!")
         }
