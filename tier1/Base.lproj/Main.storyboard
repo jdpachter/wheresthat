@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sSt-pf-xRu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sSt-pf-xRu">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,6 +77,24 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Near Me" image="nearMe" selectedImage="nearMe" id="idE-dG-L0O"/>
                     <navigationItem key="navigationItem" title="Near Me" id="EuP-Xa-cOy">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="9Kq-FS-nO6">
+                            <view key="customView" contentMode="scaleToFill" id="qb8-si-VqM">
+                                <rect key="frame" x="16" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-u0-Qqf">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qhr-u0-Qqf" firstAttribute="leading" secondItem="qb8-si-VqM" secondAttribute="leading" id="PMX-rL-tEJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="qhr-u0-Qqf" secondAttribute="bottom" constant="-2" id="Rn7-HH-pgL"/>
+                                    <constraint firstAttribute="trailing" secondItem="qhr-u0-Qqf" secondAttribute="trailing" constant="36" id="VAQ-Z2-N4f"/>
+                                    <constraint firstItem="qhr-u0-Qqf" firstAttribute="top" secondItem="qb8-si-VqM" secondAttribute="top" id="t1S-xt-Lan"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Exe-ba-oLE">
                             <connections>
                                 <segue destination="Kxb-Te-lyS" kind="show" id="4U4-dH-clm"/>
@@ -90,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880.8" y="-262.21889055472263"/>
+            <point key="canvasLocation" x="1880.625" y="-263.02816901408448"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rry-TS-ocH">
@@ -346,7 +364,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7O-EQ-B3Q">
-                                                            <rect key="frame" x="0.0" y="91" width="93" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="91" width="93" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="93" id="1lt-hW-bDF"/>
                                                             </constraints>
@@ -716,6 +734,7 @@
         <image name="Icon_PublicSafety" width="2000" height="2000"/>
         <image name="Icon_SocialEvent" width="2000" height="2000"/>
         <image name="Icon_StudyGroup" width="2000" height="2000"/>
+        <image name="WheresThat_LogoIcon" width="2000" height="2000"/>
         <image name="event" width="29" height="29"/>
         <image name="loc_finder" width="512" height="512"/>
         <image name="nearMe" width="29" height="29"/>
@@ -723,7 +742,7 @@
         <image name="thumbs-up-black" width="2000" height="2000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qv5-Pb-KF4"/>
-        <segue reference="TxF-x8-cPL"/>
+        <segue reference="4U4-dH-clm"/>
+        <segue reference="PoC-IW-j7r"/>
     </inferredMetricsTieBreakers>
 </document>
