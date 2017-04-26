@@ -225,9 +225,12 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     annotationView.image = img
                     
                 }
-                    annotationView.layer.cornerRadius = 2.0
-                    annotationView.layer.borderColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.1).cgColor
-                    annotationView.layer.borderWidth = 1.0
+                    annotationView.layer.cornerRadius = 0.0
+                    annotationView.layer.shadowColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.5).cgColor
+                    annotationView.layer.shadowOpacity = 0.85
+                    annotationView.layer.shadowRadius = 5.0
+                    annotationView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+                    
                 return annotationView
             } else {
                 let annotationView = MKAnnotationView(annotation:annotation, reuseIdentifier:identifier)
@@ -242,9 +245,11 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     annotationView.canShowCallout = true
                     annotationView.image = img
                 }
-                    annotationView.layer.cornerRadius = 2.0
-                    annotationView.layer.borderColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.1).cgColor
-                    annotationView.layer.borderWidth = 1.0
+                    annotationView.layer.cornerRadius = 0.0
+                    annotationView.layer.shadowColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.5).cgColor
+                    annotationView.layer.shadowOpacity = 0.85
+                    annotationView.layer.shadowRadius = 5.0
+                    annotationView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
                 return annotationView
             }
         }
