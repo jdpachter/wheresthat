@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import MapKit
+//import MapKit
 import CoreLocation
 
 class eventTableView: UITableViewController, CLLocationManagerDelegate {
@@ -136,9 +136,11 @@ class eventTableView: UITableViewController, CLLocationManagerDelegate {
             
             let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
             let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
+            var distance = myLoc.distance(from: otherLoc)
             
             cell.textLabel?.text = eventName
+            distance /= 1609.344
+            distance = Double(round(distance*100)/100)
             cell.detailTextLabel?.text = String(describing: distance)
             
         
@@ -153,11 +155,14 @@ class eventTableView: UITableViewController, CLLocationManagerDelegate {
             
             let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
             let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
+            var distance = myLoc.distance(from: otherLoc)
         
             
             cell.textLabel?.text = eventName
+            distance /= 1609.344
+            distance = Double(round(distance*100)/100)
             cell.detailTextLabel?.text = String(describing: distance)
+
         case 2:
             
             let event = model.getEvents(ofType: 2)[indexPath.row]
@@ -169,10 +174,12 @@ class eventTableView: UITableViewController, CLLocationManagerDelegate {
             
             let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
             let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
+            var distance = myLoc.distance(from: otherLoc)
             
             
             cell.textLabel?.text = eventName
+            distance /= 1609.344
+            distance = Double(round(distance*100)/100)
             cell.detailTextLabel?.text = String(describing: distance)
 
         case 3:
@@ -186,10 +193,12 @@ class eventTableView: UITableViewController, CLLocationManagerDelegate {
             
             let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
             let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
+            var distance = myLoc.distance(from: otherLoc)
             
             
             cell.textLabel?.text = eventName
+            distance /= 1609.344
+            distance = Double(round(distance*100)/100)
             cell.detailTextLabel?.text = String(describing: distance)
 
         case 4:
@@ -207,7 +216,7 @@ class eventTableView: UITableViewController, CLLocationManagerDelegate {
             
             
             cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = String(describing: distance)
+            cell.detailTextLabel?.text = String(describing: distance/1609.344)
 
         default:
             break
