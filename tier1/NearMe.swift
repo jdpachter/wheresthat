@@ -13,7 +13,7 @@ import FirebaseAuth
 import GoogleSignIn
 
 
-class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
+class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate  {
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var signInButton: GIDSignInButton!
@@ -24,20 +24,20 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289) //UR coordinates
     
+    let locationManager = CLLocationManager()
+    var locValue: CLLocationCoordinate2D!
+    
     var model = Model()
     var ref: FIRDatabaseReference!
     var curEvent: event!
     
     var timer = Timer()
     
-  /*  @IBAction func addCard(sender: AnyObject) {
-        self.definesPresentationContext = true
-        self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        // Cover Vertical is necessary for CurrentContext
-        self.modalPresentationStyle = .currentContext
-        // Display on top of    current UIView
-        self.present(testVC(), animated: true, completion: nil)
-    }*/
+    @IBAction func goToCurrentLoc(sender: AnyObject) {
+        mapView.showsUserLocation = true
+        let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
+        mapView.setRegion(region, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +60,24 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         svc.model = self.model  //shared model
 
         
+        
+        locValue = CLLocationCoordinate2D()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         mapView.showsUserLocation = true
-        let region = MKCoordinateRegionMakeWithDistance(UR, 1700, 1700)
+        let region = MKCoordinateRegionMakeWithDistance(UR, 950, 950)
         mapView.setRegion(region, animated: true)
 
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locValue = manager.location?.coordinate
     }
     
     func onReturn() {
@@ -86,9 +100,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     func update()
     {
-//        self.mapView.removeAnnotations(self.model.allEvents)
-//        self.model.allEvents.removeAll()
-        
         let earliest = String(NSDate().timeIntervalSince1970 - 14400)
         //get rid of events created more than 4 hours ago
         for e in 0..<self.model.allEvents.count {
@@ -168,8 +179,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        update()
-//        self.view.alpha = 1
         mapView.layoutSubviews()
     }
     
@@ -178,10 +187,10 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         // Dispose of any resources that can be recreated.
     }
 
-    func mapView(_ mapView: MKMapView, didUpdate
-        userLocation: MKUserLocation) {
-//        mapView.centerCoordinate = userLocation.location!.coordinate
-    }
+//    func mapView(_ mapView: MKMapView, didUpdate
+//        userLocation: MKUserLocation) {
+////        mapView.centerCoordinate = userLocation.location!.coordinate
+//    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "eventPin"
@@ -189,15 +198,11 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         if annotation is event {
                 _ = color(annotation)
                 if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-//                view = annotationView as! MKAnnotationView
-//                view.pinTintColor = pc
                 annotationView.canShowCallout = true
                 let e = annotation as! event
                 if let img = e.getImg(false) {
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
-
-//                    annotationView.backgroundColor = UIColor.clear
            
                 }
                 return annotationView
@@ -205,16 +210,13 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
                 let annotationView = MKAnnotationView(annotation:annotation, reuseIdentifier:identifier)
                 annotationView.isEnabled = true
                 annotationView.canShowCallout = true
-//                annotationView.pinTintColor = pc
                 
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
                 let e = annotation as! event
                 if let img = e.getImg(false) {
-//                    print(img)
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
-//                    annotationView.backgroundColor = UIColor.clear
                 }
                 return annotationView
             }
@@ -264,23 +266,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
        
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        mapView.removeAnnotation(newPin)
-//        
-//        let location = locations.last! as CLLocation
-//        
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//        
-//        //set region on the map
-//        map.setRegion(region, animated: true)
-//        
-//        newPin.coordinate = location.coordinate
-//        map.addAnnotation(newPin)
-//        
-//    }
-
 
 }
 

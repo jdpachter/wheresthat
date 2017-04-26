@@ -93,6 +93,9 @@ class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     @IBAction func tappedOut(sender : AnyObject) {
+        if(typePicker.selectedRow(inComponent: 0) == 0) {
+            type.text = typeOpts[0]
+        }
         type.resignFirstResponder()
         self.view.endEditing(true)
     }

@@ -71,6 +71,11 @@ class eventForm: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate 
    }
     
     @IBAction func tappedOut(sender : AnyObject) {
+        print("asdfasdf")
+        print(type.selectedRow(inComponent: 0))
+        if(type.selectedRow(inComponent: 0) == 0) {
+            typeText.text = typeOpts[0]
+        }
         type.resignFirstResponder()
         self.view.endEditing(true)
     }
