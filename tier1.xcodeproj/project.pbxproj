@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0662AC1EAEB7CE001CB99A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C0662AB1EAEB7CE001CB99A /* Assets.xcassets */; };
 		3C42C3051EABED0F007CF319 /* formVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C42C3041EABED0F007CF319 /* formVC.swift */; };
 		3C479B771E90321500E98998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B761E90321500E98998 /* AppDelegate.swift */; };
 		3C479B791E90321500E98998 /* NearMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B781E90321500E98998 /* NearMe.swift */; };
 		3C479B7C1E90321500E98998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C479B7A1E90321500E98998 /* Main.storyboard */; };
-		3C479B811E90321500E98998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C479B801E90321500E98998 /* Assets.xcassets */; };
 		3C479B841E90321500E98998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C479B821E90321500E98998 /* LaunchScreen.storyboard */; };
 		3C479B8C1E90328100E98998 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B8B1E90328100E98998 /* Events.swift */; };
 		3C479B8E1E903FC000E98998 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B8D1E903FC000E98998 /* Model.swift */; };
@@ -24,12 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C0662AB1EAEB7CE001CB99A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C42C3041EABED0F007CF319 /* formVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = formVC.swift; sourceTree = "<group>"; };
 		3C479B731E90321500E98998 /* tier1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tier1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C479B761E90321500E98998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C479B781E90321500E98998 /* NearMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMe.swift; sourceTree = "<group>"; };
 		3C479B7B1E90321500E98998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3C479B801E90321500E98998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C479B831E90321500E98998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C479B851E90321500E98998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C479B8B1E90328100E98998 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 				3CBC57601EA6C40800038D84 /* tier1.entitlements */,
 				3C479B761E90321500E98998 /* AppDelegate.swift */,
 				3C479B7A1E90321500E98998 /* Main.storyboard */,
-				3C479B801E90321500E98998 /* Assets.xcassets */,
 				3C479B821E90321500E98998 /* LaunchScreen.storyboard */,
+				3C0662AB1EAEB7CE001CB99A /* Assets.xcassets */,
 				3C479B851E90321500E98998 /* Info.plist */,
 				3C479B8B1E90328100E98998 /* Events.swift */,
 				3CD9453F1EA28874003C66AC /* GoogleService-Info.plist */,
@@ -187,7 +187,7 @@
 			files = (
 				3C479B841E90321500E98998 /* LaunchScreen.storyboard in Resources */,
 				3CD945401EA28874003C66AC /* GoogleService-Info.plist in Resources */,
-				3C479B811E90321500E98998 /* Assets.xcassets in Resources */,
+				3C0662AC1EAEB7CE001CB99A /* Assets.xcassets in Resources */,
 				3C479B7C1E90321500E98998 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,21 +16,29 @@ class event : NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D
     
+    var key: String //UID
     var type: Int
     var location: String        //user reported location
     var desc: String
     var eventTime: NSDate      //timestamp for when event to take place
     var submitTime: NSDate     //timestamp for when event reported
+    var upVote: Int
+    var downVote: Int
+    var didVote: Int
     
-    init(_ type : Int, _ location : String, _ desc : String, _ eventTime : NSDate, _ submitTime : NSDate,
-         _ lat:CLLocationDegrees, _ long:CLLocationDegrees) {
+    init(_ key: String, _ type : Int, _ location : String, _ desc : String, _ eventTime : NSDate, _ submitTime : NSDate,
+         _ lat:CLLocationDegrees, _ long:CLLocationDegrees, _ up: Int, _ down: Int) {
         self.type = type
+        self.key = key
         self.title = desc
         self.location = location
         self.coordinate =  CLLocationCoordinate2DMake(lat, long)
         self.desc = desc
         self.eventTime = eventTime
         self.submitTime = submitTime
+        self.upVote = up
+        self.downVote = down
+        self.didVote = 0    //-1 for downVote; 0 for no vote; 1 for upVote
     }
     
     func getImg(_ big: Bool) -> String? {
@@ -122,14 +130,13 @@ class Model {
         return nil
     }
     
-    //change to UID instead of desc
-    func contains(_ e: event) -> Bool {
-        for i in allEvents {
-            if i.desc == e.desc {
-                return true
+    func get(withKey key: String) -> event? {
+        for e in allEvents {
+            if e.key == key {
+                return e
             }
         }
-        return false
+        return nil
     }
     
     func typeToString(_ type: Int) -> String {
