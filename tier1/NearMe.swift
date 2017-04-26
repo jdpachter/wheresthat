@@ -112,7 +112,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     
     func makeFence() {
         let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(43.1284, -77.6289)
-        let radius:CLLocationDistance = CLLocationDistance(3219)
+        let radius:CLLocationDistance = CLLocationDistance(1200)
         NearMe.fence =  CLCircularRegion(center: center, radius: radius, identifier: "UR")
     }
     
