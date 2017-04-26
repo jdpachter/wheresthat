@@ -122,6 +122,26 @@ class Model {
         return nil
     }
     
+    func getEvents(ofType type: Int) -> [event] {
+        var eventsOfType = [event]()
+        for i in allEvents {
+            if i.type == type {
+                eventsOfType.append(i)
+            }
+        }
+        return eventsOfType
+    }
+    
+    func getCount(_ section: Int) -> Int {
+        var count = 0
+        for i in allEvents {
+            if i.type == section {
+                count += 1
+            }
+        }
+        return count
+    }
+    
     //change to UID instead of desc
     func contains(_ e: event) -> Bool {
         for i in allEvents {
