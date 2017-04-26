@@ -18,7 +18,7 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
     var model: Model!
     
     let locationManager = CLLocationManager()
-    var locValue: CLLocationCoordinate2D!
+    var locValue = CLLocationCoordinate2D()
     
     var curEvent: event!
     
@@ -36,13 +36,13 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        locValue = CLLocationCoordinate2D()
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        locValue = locationManager.location!.coordinate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -119,7 +119,11 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-        let distance = myLoc.distance(from: otherLoc)
+        var distance = myLoc.distance(from: otherLoc)
+        
+        distance /= 1609.344
+        distance = Double(round(distance*100)/100)
+        
         cell.distance.text = String(describing: distance)
         return cell
     }
