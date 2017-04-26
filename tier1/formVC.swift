@@ -23,7 +23,7 @@ class formVC: UIViewController {
     @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet var name: UITextField!
     @IBOutlet var location: UITextField!
-//    @IBOutlet var typePicker: UIPickerView! = UIPickerView()
+    //    @IBOutlet var typePicker: UIPickerView! = UIPickerView()
     
     @IBAction func submit(sender: AnyObject) {
         
@@ -34,44 +34,48 @@ class formVC: UIViewController {
                 let long = locManager.location?.coordinate.longitude
                 let now = NSDate().timeIntervalSince1970
                 
-                let post:[String: String] = [
-                    "date":String(now),
-                    "desc":desc,
-                    "location":loc,
-                    "type":String(describing: typeOpts.index(of: eType)!),
-                    "lat":String(describing: lat!),
-                    "long":String(describing: long!),
-                    "submitted":String(now),
-                    "up":"0",
-                    "down":"0"]
                 
-                ref.child("events-v2").childByAutoId().setValue(post)
-                
-                let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
-                navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+                let coor = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+                if(!NearMe.fence.contains(coor)) {
+                    self.alert("Out of Bounds","Please enter an event happening on or near campus.", true)
+                }
+                else {
+                    let post:[String: String] = [
+                        "date":String(now),
+                        "desc":desc,
+                        "location":loc,
+                        "type":String(describing: typeOpts.index(of: eType)!),
+                        "lat":String(describing: lat!),
+                        "long":String(describing: long!),
+                        "submitted":String(now),
+                        "up":"0",
+                        "down":"0"]
+                    
+                    ref.child("events-v2").childByAutoId().setValue(post)
+                    
+                    let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
+                    navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+                }
             }
             else {
-                let saveMyAlert = UIAlertController(title: "Missing Information", message: "Please fill in all fields.", preferredStyle: UIAlertControllerStyle.alert)
-                saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:
-                    UIAlertAction!) in
-                }))
-                present(saveMyAlert, animated: true, completion: nil)
+                self.alert("Missing Information", "Please fill in all fields.", false)
             }
         }
     }
-
+    
+    
     
     @IBAction func cancel(sender: AnyObject) {
         let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
         navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         type.text = presetType
         typeIcon.image = presetIcon
-
+        
         ref = FIRDatabase.database().reference()
         
         self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
@@ -85,8 +89,24 @@ class formVC: UIViewController {
     }
     
     @IBAction func tappedOut(sender : AnyObject) {
-
+        
         self.view.endEditing(true)
     }
-    
+
+    func alert(_ title: String, _ msg: String, _ ret: Bool) {
+        let saveMyAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:
+            UIAlertAction!) in
+        }))
+        if(ret) {
+            present(saveMyAlert, animated: true) {
+                self.cancel(sender: self)
+            }
+        }
+        else {
+           present(saveMyAlert, animated: true, completion: nil)
+        }
+     
+        
+    }
 }

@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 import CoreLocation
+import CoreData
 
 
 class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate  {
@@ -19,6 +20,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var signInButton: GIDSignInButton!
 
+    var container: NSPersistentContainer!
     
     var barViewControllers: [UIViewController]!
     var svc : eventTableView!
@@ -27,6 +29,8 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     
     let locManager = CLLocationManager()
     var locValue: CLLocationCoordinate2D!
+
+    static var fence: CLCircularRegion!
     
     var model = Model()
     var ref: FIRDatabaseReference!
@@ -40,6 +44,9 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         mapView.setRegion(region, animated: true)
     }
     
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -50,6 +57,16 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         ref = FIRDatabase.database().reference()
         
         update()
+    
+        makeFence()
+        
+        container = NSPersistentContainer(name: "WheresThat")
+        
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error {
+                print("Unresolved error \(error)")
+            }
+        }
         
         timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
@@ -81,6 +98,22 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
+    }
+    
+    func saveContext() {
+        if container.viewContext.hasChanges {
+            do {
+                try container.viewContext.save()
+            } catch {
+                print("An error occurred while saving: \(error)")
+            }
+        }
+    }
+    
+    func makeFence() {
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(43.1284, -77.6289)
+        let radius:CLLocationDistance = CLLocationDistance(3219)
+        NearMe.fence =  CLCircularRegion(center: center, radius: radius, identifier: "UR")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -188,7 +221,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                         self.svc.model = self.model
                         self.mapView.addAnnotation(newEvent)
                     }
-                    
                 }
             }
         }
@@ -206,6 +238,8 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 
 //    func mapView(_ mapView: MKMapView, didUpdate
 //        userLocation: MKUserLocation) {
