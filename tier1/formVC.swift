@@ -23,17 +23,17 @@ class formVC: UIViewController {
     @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet var name: UITextField!
     @IBOutlet var location: UITextField!
+    @IBOutlet var details: UITextField!
     //    @IBOutlet var typePicker: UIPickerView! = UIPickerView()
     
     @IBAction func submit(sender: AnyObject) {
         
-        if let desc = name.text, let loc = location.text, let eType = type.text {
+        if let desc = name.text, let loc = location.text, let eType = type.text, let deets = details.text {
             if desc != "" && loc != "" && eType != "" {
                 let locManager = CLLocationManager()
                 let lat = locManager.location?.coordinate.latitude
                 let long = locManager.location?.coordinate.longitude
                 let now = NSDate().timeIntervalSince1970
-                
                 
                 let coor = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
                 if(!NearMe.fence.contains(coor)) {
@@ -49,9 +49,10 @@ class formVC: UIViewController {
                         "long":String(describing: long!),
                         "submitted":String(now),
                         "up":"0",
-                        "down":"0"]
+                        "down":"0",
+                        "details": deets]
                     
-                    ref.child("events-v2").childByAutoId().setValue(post)
+                    ref.child("events-v3").childByAutoId().setValue(post)
                     
                     let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
                     navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
@@ -62,8 +63,6 @@ class formVC: UIViewController {
             }
         }
     }
-    
-    
     
     @IBAction func cancel(sender: AnyObject) {
         let viewControllers: [UIViewController] = (navigationController?.viewControllers)!

@@ -624,30 +624,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXz-pr-axF" userLabel="BlueBar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                                 <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="3rK-H6-Prm"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-dq-hUA" userLabel="FormContainer" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
-                                <rect key="frame" x="16" y="78" width="288" height="355"/>
+                                <rect key="frame" x="16" y="78" width="288" height="390"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-Cc-aOS">
-                                        <rect key="frame" x="111" y="15" width="65.5" height="36"/>
+                                        <rect key="frame" x="111.5" y="15" width="65.5" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bxm-1u-Pcs" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                         <rect key="frame" x="94" y="59" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Rl9-RV-LgH"/>
-                                            <constraint firstAttribute="height" constant="100" id="mAF-bw-CdV"/>
-                                        </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="2" verticalHuggingPriority="3" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJu-0I-3sl" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
                                         <rect key="frame" x="20" y="229" width="248" height="40"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="7Tb-Tn-CAg"/>
+                                            <constraint firstAttribute="height" constant="40" id="Yxj-98-d9A"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -657,14 +650,14 @@
                                         <rect key="frame" x="20" y="174" width="248" height="40"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="8me-YB-3n7"/>
+                                            <constraint firstAttribute="height" constant="40" id="gOl-rI-Tna"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="snM-R3-hUL">
-                                        <rect key="frame" x="20" y="304" width="248" height="36"/>
+                                        <rect key="frame" x="20" y="339" width="248" height="36"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-F5-YMw" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="116.5" height="36"/>
@@ -691,35 +684,51 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="2" verticalHuggingPriority="3" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opr-de-b0T" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="285" width="248" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="OGe-eo-Dy3"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="snM-R3-hUL" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="0gE-eP-wwG"/>
-                                    <constraint firstAttribute="trailing" secondItem="cR0-sl-pce" secondAttribute="trailing" constant="20" id="520-C5-NUL"/>
-                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="top" secondItem="SmR-Cc-aOS" secondAttribute="bottom" constant="8" id="CGZ-wS-bca"/>
-                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Gc2-oE-0Ed"/>
-                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="OHE-uA-Ifw"/>
-                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="15" id="QEy-UP-VeJ"/>
-                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="15" id="QXk-gb-hHj"/>
-                                    <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Szv-yP-5VT"/>
-                                    <constraint firstItem="cR0-sl-pce" firstAttribute="top" secondItem="bxm-1u-Pcs" secondAttribute="bottom" constant="15" id="Ufh-br-abc"/>
-                                    <constraint firstAttribute="trailing" secondItem="tJu-0I-3sl" secondAttribute="trailing" constant="20" id="YQ2-bQ-HPW"/>
-                                    <constraint firstAttribute="bottom" secondItem="snM-R3-hUL" secondAttribute="bottom" constant="15" id="urb-ba-2xC"/>
-                                    <constraint firstAttribute="trailing" secondItem="snM-R3-hUL" secondAttribute="trailing" constant="20" id="vUy-r3-pWU"/>
-                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="wFE-hW-ev4"/>
+                                    <constraint firstItem="opr-de-b0T" firstAttribute="top" secondItem="tJu-0I-3sl" secondAttribute="bottom" constant="16" id="0qU-Sb-jS5"/>
+                                    <constraint firstItem="cR0-sl-pce" firstAttribute="top" secondItem="bxm-1u-Pcs" secondAttribute="bottom" constant="15" id="750-Q9-Jd6"/>
+                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="top" secondItem="SmR-Cc-aOS" secondAttribute="bottom" constant="8" symbolic="YES" id="DTn-vD-pUJ"/>
+                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="centerX" secondItem="cR0-sl-pce" secondAttribute="centerX" id="GaA-9a-pWA"/>
+                                    <constraint firstItem="opr-de-b0T" firstAttribute="leading" secondItem="snM-R3-hUL" secondAttribute="leading" id="Jfi-1p-2Rc"/>
+                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="15" id="LYH-bG-2RG"/>
+                                    <constraint firstAttribute="bottom" secondItem="snM-R3-hUL" secondAttribute="bottom" constant="15" id="PUm-5D-Iw0"/>
+                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="R7o-dH-2tW"/>
+                                    <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="R91-4r-bre"/>
+                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="94" id="S1W-IH-8Jy"/>
+                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="trailing" secondItem="opr-de-b0T" secondAttribute="trailing" id="bch-Ac-v3d"/>
+                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="bxm-1u-Pcs" secondAttribute="centerX" id="bqI-YA-qQt"/>
+                                    <constraint firstItem="cR0-sl-pce" firstAttribute="trailing" secondItem="tJu-0I-3sl" secondAttribute="trailing" id="dhX-38-vLb"/>
+                                    <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="tJu-0I-3sl" secondAttribute="leading" id="f4V-X7-Y9x"/>
+                                    <constraint firstItem="opr-de-b0T" firstAttribute="trailing" secondItem="snM-R3-hUL" secondAttribute="trailing" id="h52-2N-4Lp"/>
+                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="leading" secondItem="opr-de-b0T" secondAttribute="leading" id="iId-cF-nm7"/>
+                                    <constraint firstItem="snM-R3-hUL" firstAttribute="top" secondItem="opr-de-b0T" secondAttribute="bottom" constant="14" id="p3Z-hv-FRU"/>
+                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="15" id="v7l-Zi-ksm"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="trailing" secondItem="PTd-c7-wFB" secondAttribute="trailingMargin" id="2gS-5y-ydF"/>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leadingMargin" id="8q1-Ux-ctk"/>
-                            <constraint firstItem="fXz-pr-axF" firstAttribute="top" secondItem="PTd-c7-wFB" secondAttribute="top" id="WgQ-0u-f4C"/>
-                            <constraint firstAttribute="trailing" secondItem="fXz-pr-axF" secondAttribute="trailing" id="gvB-dR-v5T"/>
-                            <constraint firstItem="fXz-pr-axF" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leading" id="kDH-Bh-8Tb"/>
-                            <constraint firstItem="sTa-Ui-GOY" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="bottom" constant="135" id="oso-Gx-JVe"/>
-                            <constraint firstItem="hu6-dq-hUA" firstAttribute="top" secondItem="fXz-pr-axF" secondAttribute="bottom" constant="-50" id="v1u-2X-HXF"/>
+                            <constraint firstAttribute="trailing" secondItem="fXz-pr-axF" secondAttribute="trailing" id="02N-aY-lat"/>
+                            <constraint firstItem="hu6-dq-hUA" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leadingMargin" id="0t6-3k-BUq"/>
+                            <constraint firstItem="sTa-Ui-GOY" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="bottom" constant="100" id="E9a-Wi-YEa"/>
+                            <constraint firstItem="sTa-Ui-GOY" firstAttribute="top" secondItem="fXz-pr-axF" secondAttribute="bottom" constant="440" id="Y7Q-kG-HIG"/>
+                            <constraint firstItem="fXz-pr-axF" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="a3G-DM-NHW"/>
+                            <constraint firstItem="hu6-dq-hUA" firstAttribute="top" secondItem="uhl-D5-qDN" secondAttribute="bottom" constant="14" id="ebz-sm-zyb"/>
+                            <constraint firstItem="fXz-pr-axF" firstAttribute="top" secondItem="PTd-c7-wFB" secondAttribute="top" id="rST-KT-gSf"/>
+                            <constraint firstItem="fXz-pr-axF" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leading" id="tH1-rk-nKP"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="JWm-yD-0kK" appends="YES" id="Gej-eL-O2P"/>
@@ -730,6 +739,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="details" destination="opr-de-b0T" id="E0K-Z6-m9C"/>
                         <outlet property="location" destination="tJu-0I-3sl" id="8k7-CY-kXp"/>
                         <outlet property="name" destination="cR0-sl-pce" id="DGy-z4-Er4"/>
                         <outlet property="type" destination="SmR-Cc-aOS" id="Iat-ZG-PjU"/>

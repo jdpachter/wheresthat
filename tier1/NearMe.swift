@@ -19,8 +19,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var signInButton: GIDSignInButton!
-
-    var container: NSPersistentContainer!
     
     var barViewControllers: [UIViewController]!
     var svc : eventTableView!
@@ -60,14 +58,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     
         makeFence()
         
-        container = NSPersistentContainer(name: "WheresThat")
-        
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error {
-                print("Unresolved error \(error)")
-            }
-        }
-        
         timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         barViewControllers = self.tabBarController?.viewControllers
@@ -98,16 +88,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
-    }
-    
-    func saveContext() {
-        if container.viewContext.hasChanges {
-            do {
-                try container.viewContext.save()
-            } catch {
-                print("An error occurred while saving: \(error)")
-            }
-        }
     }
     
     func makeFence() {
@@ -149,9 +129,9 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
             }
         }
         
-        ref.child("events-v2").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
+        ref.child("events-v3").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
-                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double()
+                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double(), details = String()
                 
                 let key = (child as! FIRDataSnapshot).key
                 
@@ -205,6 +185,11 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                         submitted = NSDate(timeIntervalSince1970: uStamp)
                     }
                     
+                    //get details
+                    if let data = (child as AnyObject).childSnapshot(forPath: "details").value {
+                        details = String(describing: data)
+                    }
+                    
                     //get distance
                     let myLoc = CLLocation(latitude: self.locValue.latitude, longitude: self.locValue.longitude)
                     let otherLoc = CLLocation(latitude: lat, longitude: long)
@@ -213,7 +198,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     dist /= 1609.344
                     dist = Double(round(dist*100)/100)
                     
-                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down, dist)
+                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down, dist, details)
                     
                     if(down < 5) {
                         self.model.allEvents.append(newEvent)
