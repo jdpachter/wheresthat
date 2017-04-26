@@ -194,6 +194,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        update()
         mapView.layoutSubviews()
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
         let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
