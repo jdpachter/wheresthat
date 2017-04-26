@@ -52,7 +52,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-I5-bWQ" customClass="toEventPage">
                                 <rect key="frame" x="0.0" y="64" width="320" height="554"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-Br-Vcu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-Br-Vcu" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="270" y="406" width="34" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="MuS-22-pqo"/>
@@ -345,8 +345,8 @@
                                                             <color key="textColor" red="0.4431372549" green="0.66274509800000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7O-EQ-B3Q">
-                                                            <rect key="frame" x="13" y="83" width="93" height="14.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7O-EQ-B3Q">
+                                                            <rect key="frame" x="0.0" y="91" width="93" height="14.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="93" id="1lt-hW-bDF"/>
                                                             </constraints>
@@ -376,15 +376,15 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="L0x-RP-DHK" firstAttribute="top" secondItem="Ur3-aJ-cKZ" secondAttribute="top" constant="33" id="AUh-2l-V3e"/>
+                                                        <constraint firstItem="D7O-EQ-B3Q" firstAttribute="leading" secondItem="Ur3-aJ-cKZ" secondAttribute="leading" id="EzF-3P-oAQ"/>
                                                         <constraint firstItem="9f5-Kk-5Tc" firstAttribute="top" secondItem="Ur3-aJ-cKZ" secondAttribute="top" constant="8" id="GFQ-yC-RSz"/>
                                                         <constraint firstAttribute="trailing" secondItem="O3N-qc-bsV" secondAttribute="trailing" constant="40" id="JZD-af-reJ"/>
                                                         <constraint firstItem="L0x-RP-DHK" firstAttribute="leading" secondItem="9f5-Kk-5Tc" secondAttribute="trailing" constant="8" id="Pd8-1S-1fD"/>
                                                         <constraint firstItem="9f5-Kk-5Tc" firstAttribute="leading" secondItem="Ur3-aJ-cKZ" secondAttribute="leading" constant="8" id="RD1-zk-ikn"/>
                                                         <constraint firstAttribute="bottom" secondItem="O3N-qc-bsV" secondAttribute="bottom" constant="5.5" id="WZL-ca-aj7"/>
-                                                        <constraint firstItem="D7O-EQ-B3Q" firstAttribute="top" secondItem="9f5-Kk-5Tc" secondAttribute="bottom" id="ahz-4B-2b7"/>
+                                                        <constraint firstItem="D7O-EQ-B3Q" firstAttribute="top" secondItem="9f5-Kk-5Tc" secondAttribute="bottom" constant="8" id="ahz-4B-2b7"/>
                                                         <constraint firstAttribute="bottom" secondItem="SvC-tj-I9r" secondAttribute="bottom" constant="5.5" id="j9r-UU-ms3"/>
                                                         <constraint firstAttribute="trailing" secondItem="SvC-tj-I9r" secondAttribute="trailing" constant="8" id="qIZ-vL-lNb"/>
-                                                        <constraint firstItem="D7O-EQ-B3Q" firstAttribute="leading" secondItem="Ur3-aJ-cKZ" secondAttribute="leading" constant="13" id="xs6-j0-aQM"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -510,7 +510,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMh-pE-mlg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMh-pE-mlg" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="16" y="397" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="7DF-gR-RdR"/>
@@ -521,7 +521,7 @@
                                     <action selector="upVoteWithSender:" destination="FuN-3n-din" eventType="touchUpInside" id="2Cn-2J-UvR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-5v-tQq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-5v-tQq" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="254" y="397" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="T8r-0v-Dj0"/>
