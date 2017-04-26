@@ -8,18 +8,35 @@
 
 import Foundation
 import UIKit
+import MapKit
+import CoreLocation
 
-class eventTableView: UITableViewController{
+class eventTableView: UITableViewController, CLLocationManagerDelegate {
     
-    var mapview:
     var model: Model!
+    
+    let locationManager = CLLocationManager()
+    var locValue: CLLocationCoordinate2D!
     
     var curEvent: event!
     
     override func viewDidLoad() {
         self.tableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(eventTableView.unblur), name:NSNotification.Name(rawValue: "unblur"), object: nil)
+        
+        locValue = CLLocationCoordinate2D()
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locValue = manager.location!.coordinate
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
@@ -110,45 +127,88 @@ class eventTableView: UITableViewController{
             
         switch(indexPath.section) {
         case 0:
-            
-            let eventName = model.getEvents(ofType: 0)[indexPath.row].desc
+            let event = model.getEvents(ofType: 0)[indexPath.row]
+            let eventName = event.desc
             //need to get current location and location by section.
             //go through getEvents and calculate location for each event. Similar method to getEvents.
             //var distance = myLocation.distanceFromLocation(eventPinLoc) / 1000 this converstion is from meters--> miles.
-            let eventType = 0
+           // let eventType = 0
+            
+            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+            let distance = myLoc.distance(from: otherLoc)
             
             cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = "0"
+            cell.detailTextLabel?.text = String(describing: distance)
             
         
         case 1:
             
-            let eventName = model.getEvents(ofType: 1)[indexPath.row].desc
-            let eventType = 1
+            let event = model.getEvents(ofType: 1)[indexPath.row]
+            let eventName = event.desc 
+            
+            
+           // let eventType = 1
+            
+            
+            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+            let distance = myLoc.distance(from: otherLoc)
+        
             
             cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = "1"
+            cell.detailTextLabel?.text = String(describing: distance)
         case 2:
             
-            let eventName = model.getEvents(ofType: 2)[indexPath.row].desc
-            let eventType = 2
+            let event = model.getEvents(ofType: 2)[indexPath.row]
+            let eventName = event.desc
+            
+            
+            // let eventType = 1
+            
+            
+            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+            let distance = myLoc.distance(from: otherLoc)
+            
             
             cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = "2"
+            cell.detailTextLabel?.text = String(describing: distance)
+
         case 3:
             
-            let eventName = model.getEvents(ofType: 3)[indexPath.row].desc
-            let eventType = 3
+            let event = model.getEvents(ofType: 3)[indexPath.row]
+            let eventName = event.desc
+            
+            
+            // let eventType = 1
+            
+            
+            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+            let distance = myLoc.distance(from: otherLoc)
+            
             
             cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = "3"
+            cell.detailTextLabel?.text = String(describing: distance)
+
         case 4:
             
-            let eventName = model.getEvents(ofType: 4)[indexPath.row].desc
-            let eventType = 4
+            let event = model.getEvents(ofType: 4)[indexPath.row]
+            let eventName = event.desc
+            
+            
+            // let eventType = 1
+            
+            
+            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+            let distance = myLoc.distance(from: otherLoc)
+            
             
             cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = "4"
+            cell.detailTextLabel?.text = String(describing: distance)
+
         default:
             break
         }
