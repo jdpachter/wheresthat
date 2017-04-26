@@ -85,12 +85,12 @@ class eventTypeSelector: UIViewController {
     }
     
     func selectedCampus(_ sender: Any) {
-        type = "Campus"
+        type = "Campus Event"
         sendTypeToForm()
         print("CLICKED CAMPUS")
     }
     func selectedFree(_ sender: Any) {
-        type = "Free"
+        type = "Free Stuff"
         sendTypeToForm()
         print("CLICKED FREE")
     }

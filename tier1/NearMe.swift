@@ -11,6 +11,7 @@ import MapKit
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import CoreLocation
 
 
 class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate  {
@@ -116,7 +117,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         
         ref.child("events-v2").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
-                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int()
+                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double()
                 
                 let key = (child as! FIRDataSnapshot).key
                 
@@ -170,7 +171,15 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                         submitted = NSDate(timeIntervalSince1970: uStamp)
                     }
                     
-                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down)
+                    //get distance
+                    let myLoc = CLLocation(latitude: self.locValue.latitude, longitude: self.locValue.longitude)
+                    let otherLoc = CLLocation(latitude: lat, longitude: long)
+                    dist = myLoc.distance(from: otherLoc)
+                    
+                    dist /= 1609.344
+                    dist = Double(round(dist*100)/100)
+                    
+                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down, dist)
                     
                     if(down < 5) {
                         self.model.allEvents.append(newEvent)

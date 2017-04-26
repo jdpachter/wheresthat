@@ -25,9 +25,10 @@ class event : NSObject, MKAnnotation {
     var upVote: Int
     var downVote: Int
     var didVote: Int
+    var dist: Double    //distance from current location
     
     init(_ key: String, _ type : Int, _ location : String, _ desc : String, _ eventTime : NSDate, _ submitTime : NSDate,
-         _ lat:CLLocationDegrees, _ long:CLLocationDegrees, _ up: Int, _ down: Int) {
+         _ lat:CLLocationDegrees, _ long:CLLocationDegrees, _ up: Int, _ down: Int, _ dist: Double) {
         self.type = type
         self.key = key
         self.title = desc
@@ -39,6 +40,7 @@ class event : NSObject, MKAnnotation {
         self.upVote = up
         self.downVote = down
         self.didVote = 0    //-1 for downVote; 0 for no vote; 1 for upVote
+        self.dist = dist
     }
     
     func getImg(_ big: Bool) -> String? {
@@ -130,6 +132,10 @@ class Model {
         return nil
     }
     
+    func sort() {
+        allEvents = allEvents.sorted(by: { $0.dist < $1.dist })
+    }
+    
     func get(withKey key: String) -> event? {
         for e in allEvents {
             if e.key == key {
@@ -144,7 +150,7 @@ class Model {
         case 0:
             return "Free Stuff"
         case 1:
-            return "Social Gathering"
+            return "Social Event"
         case 2:
             return "Campus Event"
         case 3:
