@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,7 +35,6 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.layer.shadowRadius = 2
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        NotificationCenter.default.addObserver(self, selector: #selector(eventTableView.unblur), name:NSNotification.Name(rawValue: "unblur"), object: nil)
         
         locValue = CLLocationCoordinate2D()
         self.locationManager.requestWhenInUseAuthorization()
@@ -69,51 +68,8 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.allEvents.count
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch(section) {
-        case 0:
-            return "Free Stuff"
-        case 1:
-            return "Social Gathering"
-        case 2:
-            return "Campus Event"
-        case 3:
-            return "Study Group"
-        case 4:
-            return "Public Safety"
-        default:
-            break
-        }
-        return nil
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.model.getCount(section)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
-
-        let eventName = model.allEvents[indexPath.row].desc
-        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
-        cell.eventTitle.text = eventName
-        cell.eventType.text = eventType
-        
-        let typeNum = model.allEvents[indexPath.row].type
-        var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
-        
-        switch(typeNum){
-            case 0: typeImage = #imageLiteral(resourceName: "freeStuffBig")
-            case 1: typeImage = #imageLiteral(resourceName: "socialGatheringBig")
-            case 2: typeImage = #imageLiteral(resourceName: "campusGatheringBig")
-            case 3: typeImage = #imageLiteral(resourceName: "studyGroupBig")
-            case 4: typeImage = #imageLiteral(resourceName: "publicSafetyBig")
-        default:
-            print("Event Icon Grab Error!")
-        }
-        cell.eventTypeIcon.image = typeImage
-        return cell
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEventPageT" {
@@ -124,124 +80,47 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    /*func getTableCell(_ path: IndexPath ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: path) as! customCell
-        
-        cell.updateLabels()
-
-        let current = model.allEvents[path.row]
-        cell.desc?.text = current.desc
-        cell.type?.text = model.typeToString(current.type)
-        if let im = current.getImg(false) {
-            cell.img?.image = UIImage(named: im)
-        }
-        return cell
-    }*/
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let e = self.model.lookupEvent(byCoordinate: (model.allEvents[indexPath.row].coordinate)) {
             curEvent = e
         }
         performSegue(withIdentifier: "toEventPageT", sender: self.view)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        print(String(describing: indexPath.row) + "\n")
-      
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
         
-
-            
-        switch(indexPath.section) {
-        case 0:
-            let event = model.getEvents(ofType: 0)[indexPath.row]
-            let eventName = event.desc
-            //need to get current location and location by section.
-            //go through getEvents and calculate location for each event. Similar method to getEvents.
-            //var distance = myLocation.distanceFromLocation(eventPinLoc) / 1000 this converstion is from meters--> miles.
-           // let eventType = 0
-            
-            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
-            
-            cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = String(describing: distance)
-            
+        let eventName = model.allEvents[indexPath.row].desc
+        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
+        cell.eventTitle.text = eventName
+        cell.eventType.text = eventType
         
-        case 1:
-            
-            let event = model.getEvents(ofType: 1)[indexPath.row]
-            let eventName = event.desc 
-            
-            
-           // let eventType = 1
-            
-            
-            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
+        let typeNum = model.allEvents[indexPath.row].type
+        var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
         
-            
-            cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = String(describing: distance)
-        case 2:
-            
-            let event = model.getEvents(ofType: 2)[indexPath.row]
-            let eventName = event.desc
-            
-            
-            // let eventType = 1
-            
-            
-            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
-            
-            
-            cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = String(describing: distance)
-
-        case 3:
-            
-            let event = model.getEvents(ofType: 3)[indexPath.row]
-            let eventName = event.desc
-            
-            
-            // let eventType = 1
-            
-            
-            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
-            
-            
-            cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = String(describing: distance)
-
-        case 4:
-            
-            let event = model.getEvents(ofType: 4)[indexPath.row]
-            let eventName = event.desc
-            
-            
-            // let eventType = 1
-            
-            
-            let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-            let distance = myLoc.distance(from: otherLoc)
-            
-            
-            cell.textLabel?.text = eventName
-            cell.detailTextLabel?.text = String(describing: distance)
-
+        switch(typeNum){
+        case 0: typeImage = #imageLiteral(resourceName: "freeStuffBig")
+        case 1: typeImage = #imageLiteral(resourceName: "socialGatheringBig")
+        case 2: typeImage = #imageLiteral(resourceName: "campusGatheringBig")
+        case 3: typeImage = #imageLiteral(resourceName: "studyGroupBig")
+        case 4: typeImage = #imageLiteral(resourceName: "publicSafetyBig")
         default:
-            break
+            print("Event Icon Grab Error!")
         }
-       
+        cell.eventTypeIcon.image = typeImage
+        let event = model.allEvents[indexPath.row]
         
-//        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
+        //need to get current location and location by section.
+        //go through getEvents and calculate location for each event. Similar method to getEvents.
+        //var distance = myLocation.distanceFromLocation(eventPinLoc) / 1000 this converstion is from meters--> miles.
+        // let eventType = 0
+        
+        let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+        let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+        let distance = myLoc.distance(from: otherLoc)
+        cell.distance.text = String(describing: distance)
         return cell
     }
 }
