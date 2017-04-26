@@ -25,7 +25,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289) //UR coordinates
     
-    let locationManager = CLLocationManager()
+    let locManager = CLLocationManager()
     var locValue: CLLocationCoordinate2D!
     
     var model = Model()
@@ -60,16 +60,17 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         
         
         locValue = CLLocationCoordinate2D()
-        self.locationManager.requestWhenInUseAuthorization()
+        self.locManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+            locManager.delegate = self
+            locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locManager.startUpdatingLocation()
         }
         
+        locationManager(locManager, didUpdateLocations: [])
         mapView.showsUserLocation = true
-        let region = MKCoordinateRegionMakeWithDistance(UR, 950, 950)
+        let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
         mapView.setRegion(region, animated: true)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -195,6 +196,8 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     override func viewWillAppear(_ animated: Bool) {
         mapView.layoutSubviews()
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
+        mapView.setRegion(region, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
