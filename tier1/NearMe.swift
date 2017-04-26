@@ -30,7 +30,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
     
     var timer = Timer()
     
-    
   /*  @IBAction func addCard(sender: AnyObject) {
         self.definesPresentationContext = true
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
@@ -93,60 +92,77 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate  {
         let earliest = String(NSDate().timeIntervalSince1970 - 14400)
         //get rid of events created more than 4 hours ago
         for e in 0..<self.model.allEvents.count {
-            if self.model.allEvents[e].eventTime.timeIntervalSince1970 < Double(earliest)! {
+            if (self.model.allEvents[e].eventTime.timeIntervalSince1970 < Double(earliest)! || self.model.allEvents[e].downVote >= 5) {
                 self.mapView.removeAnnotation(self.model.allEvents[e])  //remove expired annotation from map
                 self.model.allEvents.remove(at: e)  //remove expired event from internal model
             }
         }
         
-        ref.child("events").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
+        ref.child("events-v2").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
-                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int()
-                //get date
-                if let data = (child as AnyObject).childSnapshot(forPath: "date").value {
-                    let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
-                    date = NSDate(timeIntervalSince1970: uStamp)
+                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int()
+                
+                let key = (child as! FIRDataSnapshot).key
+                
+                if let data =  (child as AnyObject).childSnapshot(forPath: "up").value {
+                    up = (Int(String(describing: data))!)
                 }
                 
-                //get desc
-                if let data = (child as AnyObject).childSnapshot(forPath: "desc").value {
-                    desc = (String(describing: data))
+                if let data =  (child as AnyObject).childSnapshot(forPath: "down").value {
+                    down = (Int(String(describing: data))!)
                 }
                 
-                //get type
-                if let data = (child as AnyObject).childSnapshot(forPath: "type").value {
-                    type = (Int(String(describing: data))!)
+                if let hasKey = self.model.get(withKey: key) {
+                    hasKey.upVote = up
+                    hasKey.downVote = down
                 }
-                
-                //get location
-                if let data = (child as AnyObject).childSnapshot(forPath: "location").value {
-                    location = (String(describing: data))
+                else {
+                    //get date
+                    if let data = (child as AnyObject).childSnapshot(forPath: "date").value {
+                        let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
+                        date = NSDate(timeIntervalSince1970: uStamp)
+                    }
+                    
+                    //get desc
+                    if let data = (child as AnyObject).childSnapshot(forPath: "desc").value {
+                        desc = (String(describing: data))
+                    }
+                    
+                    //get type
+                    if let data = (child as AnyObject).childSnapshot(forPath: "type").value {
+                        type = (Int(String(describing: data))!)
+                    }
+                    
+                    //get location
+                    if let data = (child as AnyObject).childSnapshot(forPath: "location").value {
+                        location = (String(describing: data))
+                    }
+                    
+                    //get long
+                    if let data = (child as AnyObject).childSnapshot(forPath: "long").value {
+                        long = (Double(String(describing: data))!)
+                    }
+                    
+                    //get lat
+                    if let data = (child as AnyObject).childSnapshot(forPath: "lat").value {
+                        lat = (Double(String(describing: data))!)
+                    }
+                    
+                    //get submitted
+                    if let data = (child as AnyObject).childSnapshot(forPath: "submitted").value {
+                        let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
+                        submitted = NSDate(timeIntervalSince1970: uStamp)
+                    }
+                    
+                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down)
+                    
+                    if(down < 5) {
+                        self.model.allEvents.append(newEvent)
+                        self.svc.model = self.model
+                        self.mapView.addAnnotation(newEvent)
+                    }
+                    
                 }
-                
-                //get long
-                if let data = (child as AnyObject).childSnapshot(forPath: "long").value {
-                    long = (Double(String(describing: data))!)
-                }
-                
-                //get lat
-                if let data = (child as AnyObject).childSnapshot(forPath: "lat").value {
-                    lat = (Double(String(describing: data))!)
-                }
-                
-                //get submitted
-                if let data = (child as AnyObject).childSnapshot(forPath: "submitted").value {
-                    let uStamp = (Double(String(describing: data))!)    //convert to unix timestamp
-                    submitted = NSDate(timeIntervalSince1970: uStamp)
-                }
-                
-                let newEvent = event(type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long))
-                
-                if(!self.model.contains(newEvent)) {
-                    self.model.allEvents.append(newEvent)
-                    self.svc.model = self.model
-                    self.mapView.addAnnotation(newEvent)
-                }
-               
             }
         }
     }

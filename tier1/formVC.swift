@@ -12,7 +12,7 @@ import CoreLocation
 import Firebase
 import FirebaseAuth
 
-class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var ref: FIRDatabaseReference!
     
@@ -39,9 +39,11 @@ class formVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
                     "type":String(describing: typeOpts.index(of: eType)!),
                     "lat":String(describing: lat!),
                     "long":String(describing: long!),
-                    "submitted":String(now)]
+                    "submitted":String(now),
+                    "up":"0",
+                    "down":"0"]
                 
-                ref.child("events").childByAutoId().setValue(post)
+                ref.child("events-v2").childByAutoId().setValue(post)
                 
                 let saveMyAlert = UIAlertController(title: "Event Submitted!", message: "Go see it on the map!", preferredStyle: UIAlertControllerStyle.alert)
                 saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:

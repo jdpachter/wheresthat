@@ -335,17 +335,45 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1c-Yb-L0o">
                                 <rect key="frame" x="114" y="116" width="147" height="110"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMh-pE-mlg">
+                                <rect key="frame" x="16" y="485" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="7DF-gR-RdR"/>
+                                    <constraint firstAttribute="height" constant="125" id="Ovr-6s-zt1"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="thumbs-up-black"/>
+                                <connections>
+                                    <action selector="upVoteWithSender:" destination="FuN-3n-din" eventType="touchUpInside" id="2Cn-2J-UvR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-5v-tQq">
+                                <rect key="frame" x="234" y="485" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="T8r-0v-Dj0"/>
+                                    <constraint firstAttribute="height" constant="125" id="rKz-FS-MOZ"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="thumbs-down-black"/>
+                                <connections>
+                                    <action selector="downVoteWithSender:" destination="FuN-3n-din" eventType="touchUpInside" id="gRR-aC-41b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96452668829999999" green="1" blue="0.96490205549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.76441454379999996" green="0.92523421390000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="fZn-eD-7Xe" secondAttribute="trailing" id="1Jr-z1-a6R"/>
+                            <constraint firstItem="ZMh-pE-mlg" firstAttribute="leading" secondItem="PSP-Ls-HSp" secondAttribute="leadingMargin" id="1Wr-43-aZZ"/>
                             <constraint firstItem="fZn-eD-7Xe" firstAttribute="top" secondItem="tqt-7Y-jRO" secondAttribute="bottom" constant="209" id="1ry-D4-mCa"/>
+                            <constraint firstItem="9sT-bz-chv" firstAttribute="top" secondItem="ZMh-pE-mlg" secondAttribute="bottom" constant="8" id="5lX-oz-0KC"/>
+                            <constraint firstItem="9sT-bz-chv" firstAttribute="top" secondItem="fkG-5v-tQq" secondAttribute="bottom" constant="8" id="Eh5-Sf-YAr"/>
                             <constraint firstItem="x1c-Yb-L0o" firstAttribute="top" secondItem="4YA-so-vXt" secondAttribute="bottom" constant="8" id="FJV-Ty-SoU"/>
                             <constraint firstItem="4YA-so-vXt" firstAttribute="centerX" secondItem="PSP-Ls-HSp" secondAttribute="centerX" id="GM3-1g-hCP"/>
                             <constraint firstItem="fZn-eD-7Xe" firstAttribute="leading" secondItem="PSP-Ls-HSp" secondAttribute="leadingMargin" id="HEI-9Z-ij9"/>
+                            <constraint firstItem="fkG-5v-tQq" firstAttribute="trailing" secondItem="PSP-Ls-HSp" secondAttribute="trailingMargin" id="SBh-ys-X1h"/>
+                            <constraint firstItem="9sT-bz-chv" firstAttribute="top" secondItem="ZMh-pE-mlg" secondAttribute="bottom" constant="8" id="YZw-Rn-r2T"/>
                             <constraint firstItem="x1c-Yb-L0o" firstAttribute="centerX" secondItem="PSP-Ls-HSp" secondAttribute="centerX" id="dFC-Le-zJC"/>
                             <constraint firstItem="9sT-bz-chv" firstAttribute="top" secondItem="fZn-eD-7Xe" secondAttribute="bottom" constant="170" id="hWc-Rj-ezE"/>
+                            <constraint firstItem="ZMh-pE-mlg" firstAttribute="leading" secondItem="PSP-Ls-HSp" secondAttribute="leadingMargin" id="pKs-pb-wbG"/>
                             <constraint firstItem="4YA-so-vXt" firstAttribute="top" secondItem="tqt-7Y-jRO" secondAttribute="bottom" constant="8" id="uxX-AT-Gix"/>
                         </constraints>
                     </view>
@@ -353,6 +381,8 @@
                         <outlet property="eventName" destination="rqr-d1-IOD" id="tcm-ma-X6z"/>
                         <outlet property="img" destination="x1c-Yb-L0o" id="tuX-5U-zJc"/>
                         <outlet property="location" destination="3sG-6r-x8S" id="NMi-F3-XtT"/>
+                        <outlet property="thumbsDown" destination="fkG-5v-tQq" id="mQS-GL-kGY"/>
+                        <outlet property="thumbsUp" destination="ZMh-pE-mlg" id="MBq-GF-l7Q"/>
                         <outlet property="time" destination="GIi-He-F3Q" id="OJ9-Dv-ScF"/>
                         <outlet property="type" destination="4YA-so-vXt" id="Fkf-yB-RIm"/>
                     </connections>
@@ -365,6 +395,8 @@
     <resources>
         <image name="event" width="29" height="29"/>
         <image name="nearMe" width="29" height="29"/>
+        <image name="thumbs-down-black" width="2000" height="2000"/>
+        <image name="thumbs-up-black" width="2000" height="2000"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GKv-hK-q63"/>
