@@ -52,7 +52,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-I5-bWQ" customClass="toEventPage">
                                 <rect key="frame" x="0.0" y="64" width="320" height="554"/>
                             </mapView>
-
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-Br-Vcu" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="270" y="406" width="34" height="34"/>
                                 <constraints>
@@ -214,7 +213,6 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9HA-Gn-KN5" userLabel="Bottom Stack View">
-
                                                 <rect key="frame" x="0.0" y="133" width="268" height="122"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CsW-WY-V5O">
@@ -235,7 +233,6 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-mZ-Whp">
-
                                                         <rect key="frame" x="144" y="0.0" width="124" height="122"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_StudyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="lFa-GW-q91" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
@@ -436,6 +433,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="bJF-FB-hs3">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="wcA-kX-vxk">
+                            <view key="customView" contentMode="scaleToFill" id="Vc9-Px-lqw">
+                                <rect key="frame" x="16" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WheresThat_LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-KC-Fv0">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KDz-KC-Fv0" firstAttribute="top" secondItem="Vc9-Px-lqw" secondAttribute="top" id="5Gz-RP-Mv3"/>
+                                    <constraint firstAttribute="bottom" secondItem="KDz-KC-Fv0" secondAttribute="bottom" constant="-2" id="And-Vq-MOF"/>
+                                    <constraint firstAttribute="trailing" secondItem="KDz-KC-Fv0" secondAttribute="trailing" constant="36" id="rJW-51-gdo"/>
+                                    <constraint firstItem="KDz-KC-Fv0" firstAttribute="leading" secondItem="Vc9-Px-lqw" secondAttribute="leading" id="rdT-0e-6pI"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tlr-3S-3M6">
                             <connections>
                                 <segue destination="Kxb-Te-lyS" kind="show" id="Qv5-Pb-KF4"/>
@@ -745,7 +760,7 @@
         <image name="thumbs-up-black" width="2000" height="2000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4U4-dH-clm"/>
-        <segue reference="PoC-IW-j7r"/>
+        <segue reference="TxF-x8-cPL"/>
+        <segue reference="Qv5-Pb-KF4"/>
     </inferredMetricsTieBreakers>
 </document>
