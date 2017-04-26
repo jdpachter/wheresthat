@@ -43,18 +43,35 @@ class event : NSObject, MKAnnotation {
         self.dist = dist
     }
     
-    func getImg(_ big: Bool) -> String? {
+    func getImg() -> UIImage? {
         switch(type) {
         case 0:
-            return (big ? "freeStuffBig":"freeStuff.png")
+            return #imageLiteral(resourceName: "Icon_FreeStuff")
         case 1:
-            return (big ? "socialGatheringBig":"socialGathering.png")
+            return #imageLiteral(resourceName: "Icon_SocialEvent")
         case 2:
-            return (big ? "campusGatheringBig":"campusGathering.png")
+            return #imageLiteral(resourceName: "Icon_CampusEvent")
         case 3:
-            return (big ? "studyGroupBig":"studyGroup.png")
+            return #imageLiteral(resourceName: "Icon_StudyGroup")
         case 4:
-            return (big ? "publicSafetyBig":"publicSafety.png")
+            return #imageLiteral(resourceName: "Icon_PublicSafety")
+        default:
+            return nil
+        }
+    }
+    
+    func getPin() -> UIImage? {
+        switch(type) {
+        case 0:
+            return #imageLiteral(resourceName: "Pin_FreeStuff_Small")
+        case 1:
+            return #imageLiteral(resourceName: "Pin_SocialEvent_Small")
+        case 2:
+            return #imageLiteral(resourceName: "Pin_CampusEvent_Small")
+        case 3:
+            return #imageLiteral(resourceName: "Pin_Studygroup_Small")
+        case 4:
+            return #imageLiteral(resourceName: "Pin_PublicSafety_Small")
         default:
             return nil
         }

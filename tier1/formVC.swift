@@ -17,8 +17,10 @@ class formVC: UIViewController {
     var ref: FIRDatabaseReference!
     
     var presetType: String!
+    var presetIcon: UIImage!
     
-    @IBOutlet var type: UITextField!
+    @IBOutlet weak var type: UILabel!
+    @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet var name: UITextField!
     @IBOutlet var location: UITextField!
 //    @IBOutlet var typePicker: UIPickerView! = UIPickerView()
@@ -68,15 +70,15 @@ class formVC: UIViewController {
 
     
     @IBAction func cancel(sender: AnyObject) {
-        let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
-        tabController?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        present(tabController!, animated: true, completion: nil)
+        let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
+        navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         type.text = presetType
+        typeIcon.image = presetIcon
 
         ref = FIRDatabase.database().reference()
         

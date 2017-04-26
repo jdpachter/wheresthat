@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="height" constant="34" id="MuS-22-pqo"/>
                                     <constraint firstAttribute="width" constant="34" id="Y5l-Zd-3kq"/>
                                 </constraints>
-                                <state key="normal" image="quickaction_icon_location_2x"/>
+                                <state key="normal" image="loc_finder"/>
                                 <connections>
                                     <action selector="goToCurrentLocWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ZK-4F-z32"/>
                                 </connections>
@@ -443,7 +443,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-so-vXt">
-                                <rect key="frame" x="127.5" y="8" width="65.5" height="36"/>
+                                <rect key="frame" x="126.5" y="8" width="65.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -488,14 +488,11 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1c-Yb-L0o">
-                                <rect key="frame" x="114" y="116" width="147" height="110"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMh-pE-mlg">
-                                <rect key="frame" x="16" y="322" width="125" height="125"/>
+                                <rect key="frame" x="16" y="397" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="7DF-gR-RdR"/>
-                                    <constraint firstAttribute="height" constant="125" id="Ovr-6s-zt1"/>
+                                    <constraint firstAttribute="width" constant="50" id="7DF-gR-RdR"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ovr-6s-zt1"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="thumbs-up-black"/>
                                 <connections>
@@ -503,16 +500,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-5v-tQq">
-                                <rect key="frame" x="179" y="322" width="125" height="125"/>
+                                <rect key="frame" x="254" y="397" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="T8r-0v-Dj0"/>
-                                    <constraint firstAttribute="height" constant="125" id="rKz-FS-MOZ"/>
+                                    <constraint firstAttribute="width" constant="50" id="T8r-0v-Dj0"/>
+                                    <constraint firstAttribute="height" constant="50" id="rKz-FS-MOZ"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="thumbs-down-black"/>
                                 <connections>
                                     <action selector="downVoteWithSender:" destination="FuN-3n-din" eventType="touchUpInside" id="gRR-aC-41b"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x1c-Yb-L0o" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
+                                <rect key="frame" x="109.5" y="52" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ZrS-zj-QRa"/>
+                                    <constraint firstAttribute="height" constant="100" id="yvR-F8-vYv"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96452668829999999" green="1" blue="0.96490205549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.76441454379999996" green="0.92523421390000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -569,18 +573,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-dq-hUA" userLabel="FormContainer" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="16" y="78" width="288" height="355"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-xP-hx9" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="40" width="248" height="40"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-Cc-aOS">
+                                        <rect key="frame" x="111" y="8" width="65.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bxm-1u-Pcs" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
+                                        <rect key="frame" x="94" y="52" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="oMa-aP-L3L"/>
+                                            <constraint firstAttribute="width" constant="100" id="Rl9-RV-LgH"/>
+                                            <constraint firstAttribute="height" constant="100" id="mAF-bw-CdV"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="2" verticalHuggingPriority="3" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJu-0I-3sl" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="200" width="248" height="40"/>
+                                        <rect key="frame" x="20" y="234" width="248" height="40"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7Tb-Tn-CAg"/>
@@ -590,7 +596,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cR0-sl-pce" customClass="HoveringTextField" customModule="tier1" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="120" width="248" height="40"/>
+                                        <rect key="frame" x="20" y="164" width="248" height="40"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="8me-YB-3n7"/>
@@ -600,7 +606,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="snM-R3-hUL">
-                                        <rect key="frame" x="20" y="280" width="248" height="36"/>
+                                        <rect key="frame" x="20" y="304" width="248" height="36"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-F5-YMw" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="116.5" height="36"/>
@@ -632,16 +638,17 @@
                                 <constraints>
                                     <constraint firstItem="snM-R3-hUL" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="0gE-eP-wwG"/>
                                     <constraint firstAttribute="trailing" secondItem="cR0-sl-pce" secondAttribute="trailing" constant="20" id="520-C5-NUL"/>
-                                    <constraint firstItem="vfF-xP-hx9" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Fit-gQ-Tm3"/>
+                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="top" secondItem="SmR-Cc-aOS" secondAttribute="bottom" constant="8" id="CGZ-wS-bca"/>
                                     <constraint firstItem="tJu-0I-3sl" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Gc2-oE-0Ed"/>
-                                    <constraint firstItem="cR0-sl-pce" firstAttribute="top" secondItem="vfF-xP-hx9" secondAttribute="bottom" constant="40" id="NiN-f5-BzJ"/>
+                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="OHE-uA-Ifw"/>
+                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="8" id="QXk-gb-hHj"/>
                                     <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="Szv-yP-5VT"/>
+                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="30" id="XiP-4g-Eg2"/>
                                     <constraint firstAttribute="trailing" secondItem="tJu-0I-3sl" secondAttribute="trailing" constant="20" id="YQ2-bQ-HPW"/>
-                                    <constraint firstAttribute="trailing" secondItem="vfF-xP-hx9" secondAttribute="trailing" constant="20" id="bVS-ro-efZ"/>
-                                    <constraint firstItem="snM-R3-hUL" firstAttribute="top" secondItem="tJu-0I-3sl" secondAttribute="bottom" constant="40" id="cuj-7r-68m"/>
-                                    <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="40" id="fXF-9o-u6p"/>
+                                    <constraint firstItem="snM-R3-hUL" firstAttribute="top" secondItem="tJu-0I-3sl" secondAttribute="bottom" constant="30" id="m1d-Cb-4Vl"/>
+                                    <constraint firstAttribute="bottom" secondItem="snM-R3-hUL" secondAttribute="bottom" constant="15" id="urb-ba-2xC"/>
                                     <constraint firstAttribute="trailing" secondItem="snM-R3-hUL" secondAttribute="trailing" constant="20" id="vUy-r3-pWU"/>
-                                    <constraint firstItem="vfF-xP-hx9" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="40" id="yYi-ky-Kea"/>
+                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="wFE-hW-ev4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -667,7 +674,8 @@
                     <connections>
                         <outlet property="location" destination="tJu-0I-3sl" id="8k7-CY-kXp"/>
                         <outlet property="name" destination="cR0-sl-pce" id="DGy-z4-Er4"/>
-                        <outlet property="type" destination="vfF-xP-hx9" id="pP7-Q3-iMD"/>
+                        <outlet property="type" destination="SmR-Cc-aOS" id="Iat-ZG-PjU"/>
+                        <outlet property="typeIcon" destination="bxm-1u-Pcs" id="zLL-90-WWj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5C-JN-Pus" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -687,13 +695,13 @@
         <image name="Icon_SocialEvent" width="2000" height="2000"/>
         <image name="Icon_StudyGroup" width="2000" height="2000"/>
         <image name="event" width="29" height="29"/>
+        <image name="loc_finder" width="512" height="512"/>
         <image name="nearMe" width="29" height="29"/>
-        <image name="quickaction_icon_location_2x" width="57" height="54"/>
         <image name="thumbs-down-black" width="2000" height="2000"/>
         <image name="thumbs-up-black" width="2000" height="2000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TxF-x8-cPL"/>
-        <segue reference="Qv5-Pb-KF4"/>
+        <segue reference="4U4-dH-clm"/>
+        <segue reference="PoC-IW-j7r"/>
     </inferredMetricsTieBreakers>
 </document>

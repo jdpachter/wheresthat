@@ -215,13 +215,10 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                 if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
                 annotationView.canShowCallout = true
                 let e = annotation as! event
-                if let img = e.getImg(true) {
+                if let img = e.getPin() {
                     annotationView.canShowCallout = true
-                    annotationView.image = UIImage(named: img)
-                    let sizedImage = UIImage(named: img)
-                    annotationView.image = sizedImage
-//                    annotationView.backgroundColor = UIColor.clear
-           
+                    annotationView.image = img
+                    
                 }
                 return annotationView
             } else {
@@ -233,9 +230,9 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                 annotationView.rightCalloutAccessoryView = btn
                 let e = annotation as! event
 
-                if let img = e.getImg(true) {
+                if let img = e.getPin() {
                     annotationView.canShowCallout = true
-                    annotationView.image = UIImage(named: img)
+                    annotationView.image = img
                 }
                 return annotationView
             }

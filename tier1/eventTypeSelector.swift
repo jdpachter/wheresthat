@@ -21,6 +21,7 @@ class eventTypeSelector: UIViewController {
     
     var ref: FIRDatabaseReference!    
     var type: String!
+    var typeIcon: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +61,7 @@ class eventTypeSelector: UIViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
-        tabController?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        present(tabController!, animated: true, completion: nil)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,6 +72,7 @@ class eventTypeSelector: UIViewController {
         if segue.identifier == "toFormVC"{
             if let formVC = segue.destination as? formVC{
                 formVC.presetType = type
+                formVC.presetIcon = typeIcon
                 let backItem = UIBarButtonItem()
                 backItem.title = "Back"
                 navigationItem.backBarButtonItem = backItem
@@ -86,26 +86,31 @@ class eventTypeSelector: UIViewController {
     
     func selectedCampus(_ sender: Any) {
         type = "Campus Event"
+        typeIcon = #imageLiteral(resourceName: "Icon_CampusEvent")
         sendTypeToForm()
         print("CLICKED CAMPUS")
     }
     func selectedFree(_ sender: Any) {
         type = "Free Stuff"
+        typeIcon = #imageLiteral(resourceName: "Icon_FreeStuff")
         sendTypeToForm()
         print("CLICKED FREE")
     }
     func selectedPS(_ sender: Any) {
         type = "Public Safety"
+        typeIcon = #imageLiteral(resourceName: "Icon_PublicSafety")
         sendTypeToForm()
         print("CLICKED PS")
     }
     func selectedSocial(_ sender: Any) {
         type = "Social Event"
+        typeIcon = #imageLiteral(resourceName: "Icon_SocialEvent")
         sendTypeToForm()
         print("CLICKED SOCIAL")
     }
     func selectedStudy(_ sender: Any) {
         type = "Study Group"
+        typeIcon = #imageLiteral(resourceName: "Icon_StudyGroup")
         sendTypeToForm()
         print("CLICKED STUDY")
     }

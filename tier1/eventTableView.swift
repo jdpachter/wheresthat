@@ -36,6 +36,9 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         self.locationManager.requestWhenInUseAuthorization()
@@ -100,19 +103,7 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.eventTitle.text = eventName
         cell.eventType.text = eventType
         
-        let typeNum = event.type
-        var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
-        
-        switch(typeNum){
-        case 0: typeImage = #imageLiteral(resourceName: "Icon_CampusEvent")
-        case 1: typeImage = #imageLiteral(resourceName: "Icon_FreeStuff")
-        case 2: typeImage = #imageLiteral(resourceName: "Icon_PublicSafety")
-        case 3: typeImage = #imageLiteral(resourceName: "Icon_SocialEvent")
-        case 4: typeImage = #imageLiteral(resourceName: "Icon_StudyGroup")
-        default:
-            print("Event Icon Grab Error!")
-        }
-        cell.eventTypeIcon.image = typeImage
+        cell.eventTypeIcon.image = event.getImg()
 
         cell.distance.text = String(describing: event.dist)
         return cell
