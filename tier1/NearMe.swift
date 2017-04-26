@@ -184,6 +184,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     
                     if(down < 5) {
                         self.model.allEvents.append(newEvent)
+                        self.model.sort()
                         self.svc.model = self.model
                         self.mapView.addAnnotation(newEvent)
                     }
