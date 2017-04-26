@@ -46,17 +46,9 @@ class formVC: UIViewController {
                     "down":"0"]
                 
                 ref.child("events-v2").childByAutoId().setValue(post)
-                let tabController = storyboard?.instantiateViewController(withIdentifier: "tabController")
-                tabController?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                present(tabController!, animated: true, completion: nil)
-
-//                let saveMyAlert = UIAlertController(title: "Event Submitted!", message: "Go see it on the map!", preferredStyle: UIAlertControllerStyle.alert)
-//                saveMyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:
-//                    UIAlertAction!) in
-//                }))
-//                present(saveMyAlert, animated: true, completion: nil)
                 
-
+                let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
+                navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
             }
             else {
                 let saveMyAlert = UIAlertController(title: "Missing Information", message: "Please fill in all fields.", preferredStyle: UIAlertControllerStyle.alert)
