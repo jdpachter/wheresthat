@@ -52,9 +52,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         
         timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(NearMe.onReturnUpdate), name:NSNotification.Name(rawValue: "unblurUpdate"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(NearMe.onReturn), name:NSNotification.Name(rawValue: "unblur"), object: nil)
-        
         barViewControllers = self.tabBarController?.viewControllers
         svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView!
         svc.model = self.model  //shared model
@@ -73,7 +70,15 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         mapView.showsUserLocation = true
         let region = MKCoordinateRegionMakeWithDistance(UR, 950, 950)
         mapView.setRegion(region, animated: true)
-
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationController?.navigationBar.layer.masksToBounds = false
+        navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+        navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        navigationController?.navigationBar.layer.shadowRadius = 2
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -180,6 +185,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
 
     override func viewWillAppear(_ animated: Bool) {
         mapView.layoutSubviews()
+        navigationController?.navigationBar.layer.shadowOpacity = 0.8
     }
     
     override func didReceiveMemoryWarning() {
@@ -200,9 +206,12 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                 if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
                 annotationView.canShowCallout = true
                 let e = annotation as! event
-                if let img = e.getImg(false) {
+                if let img = e.getImg(true) {
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
+                    let sizedImage = UIImage(named: img)
+                    annotationView.image = sizedImage
+//                    annotationView.backgroundColor = UIColor.clear
            
                 }
                 return annotationView
@@ -214,7 +223,8 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                 let btn = UIButton(type: .detailDisclosure)
                 annotationView.rightCalloutAccessoryView = btn
                 let e = annotation as! event
-                if let img = e.getImg(false) {
+
+                if let img = e.getImg(true) {
                     annotationView.canShowCallout = true
                     annotationView.image = UIImage(named: img)
                 }
@@ -245,14 +255,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
             if let eventPage = segue.destination as? eventPage {
                 eventPage.event = curEvent
             }
-        }
-        else if segue.identifier == "newEvent" {
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(blurEffectView)
-            
         }
     }
     

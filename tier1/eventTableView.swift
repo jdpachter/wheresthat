@@ -8,41 +8,68 @@
 
 import Foundation
 import UIKit
+import MapKit
+import CoreLocation
 
-class eventTableView: UITableViewController {
+class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var model: Model!
+    
+    let locationManager = CLLocationManager()
+    var locValue = CLLocationCoordinate2D()
     
     var curEvent: event!
     
     override func viewDidLoad() {
         self.tableView.reloadData()
-        NotificationCenter.default.addObserver(self, selector: #selector(eventTableView.unblur), name:NSNotification.Name(rawValue: "unblur"), object: nil)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        navigationController?.navigationBar.layer.masksToBounds = false
+        navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+        navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        navigationController?.navigationBar.layer.shadowRadius = 2
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        locValue = locationManager.location!.coordinate
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locValue = manager.location!.coordinate
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.layer.shadowOpacity = 0.8
     }
     
     override func didReceiveMemoryWarning() {
         
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.allEvents.count
     }
     
-    func unblur() {
-        for subview in view.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEventPageT" {
@@ -50,46 +77,54 @@ class eventTableView: UITableViewController {
                 eventPage.event = curEvent
             }
         }
-        else if segue.identifier == "newFromTV" {
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(blurEffectView)
-            
-        }
         
     }
     
-    /*func getTableCell(_ path: IndexPath ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: path) as! customCell
-        
-        cell.updateLabels()
-
-        let current = model.allEvents[path.row]
-        cell.desc?.text = current.desc
-        cell.type?.text = model.typeToString(current.type)
-        if let im = current.getImg(false) {
-            cell.img?.image = UIImage(named: im)
-        }
-        return cell
-    }*/
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let e = self.model.lookupEvent(byCoordinate: (model.allEvents[indexPath.row].coordinate)) {
             curEvent = e
         }
         performSegue(withIdentifier: "toEventPageT", sender: self.view)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
         
         let eventName = model.allEvents[indexPath.row].desc
         let eventType = model.typeToString(model.allEvents[indexPath.row].type)
-        cell.textLabel?.text = eventName
-        cell.detailTextLabel?.text = eventType
-//        cell.textLabel?.textColor = model.typeToColor(model.allEvents[indexPath.row].type)
+        cell.eventTitle.text = eventName
+        cell.eventType.text = eventType
+        
+        let typeNum = model.allEvents[indexPath.row].type
+        var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
+        
+        switch(typeNum){
+        case 0: typeImage = #imageLiteral(resourceName: "freeStuffBig")
+        case 1: typeImage = #imageLiteral(resourceName: "socialGatheringBig")
+        case 2: typeImage = #imageLiteral(resourceName: "campusGatheringBig")
+        case 3: typeImage = #imageLiteral(resourceName: "studyGroupBig")
+        case 4: typeImage = #imageLiteral(resourceName: "publicSafetyBig")
+        default:
+            print("Event Icon Grab Error!")
+        }
+        cell.eventTypeIcon.image = typeImage
+        let event = model.allEvents[indexPath.row]
+        
+        //need to get current location and location by section.
+        //go through getEvents and calculate location for each event. Similar method to getEvents.
+        //var distance = myLocation.distanceFromLocation(eventPinLoc) / 1000 this converstion is from meters--> miles.
+        // let eventType = 0
+        
+        let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+        let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
+        var distance = myLoc.distance(from: otherLoc)
+        
+        distance /= 1609.344
+        distance = Double(round(distance*100)/100)
+        
+        cell.distance.text = String(describing: distance)
         return cell
     }
 }

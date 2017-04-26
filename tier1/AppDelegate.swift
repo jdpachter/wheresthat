@@ -53,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
+//        UINavigationBar.appearance().tintColor = LIGHT_BLUE
+//        UITabBar.appearance().tintColor = LIGHT_BLUE
+        
         // Override point for customization after application launch.
         return true
     }

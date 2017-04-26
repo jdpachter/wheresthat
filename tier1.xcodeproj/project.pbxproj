@@ -15,11 +15,16 @@
 		3C479B841E90321500E98998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C479B821E90321500E98998 /* LaunchScreen.storyboard */; };
 		3C479B8C1E90328100E98998 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B8B1E90328100E98998 /* Events.swift */; };
 		3C479B8E1E903FC000E98998 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B8D1E903FC000E98998 /* Model.swift */; };
-		3C479B901E903FF900E98998 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B8F1E903FF900E98998 /* customCell.swift */; };
 		3C479B921E91FEE500E98998 /* eventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C479B911E91FEE500E98998 /* eventPage.swift */; };
 		3CBC575D1EA42C5C00038D84 /* eventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC575C1EA42C5C00038D84 /* eventForm.swift */; };
 		3CBC575F1EA56A5900038D84 /* eventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC575E1EA56A5900038D84 /* eventTableView.swift */; };
 		3CD945401EA28874003C66AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9453F1EA28874003C66AC /* GoogleService-Info.plist */; };
+		D00F261A1EB0366E0039BB2F /* eventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F26141EB0366E0039BB2F /* eventCell.swift */; };
+		D00F261B1EB0366E0039BB2F /* HoveringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F26151EB0366E0039BB2F /* HoveringButton.swift */; };
+		D00F261C1EB0366E0039BB2F /* HoveringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F26161EB0366E0039BB2F /* HoveringTextField.swift */; };
+		D00F261D1EB0366E0039BB2F /* HoveringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F26171EB0366E0039BB2F /* HoveringView.swift */; };
+		D00F261E1EB0366E0039BB2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F26191EB0366E0039BB2F /* Constants.swift */; };
+		D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */; };
 		F5144004FA5649459CBA3A60 /* Pods_tier1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +39,6 @@
 		3C479B851E90321500E98998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C479B8B1E90328100E98998 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		3C479B8D1E903FC000E98998 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		3C479B8F1E903FF900E98998 /* customCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		3C479B911E91FEE500E98998 /* eventPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventPage.swift; sourceTree = "<group>"; };
 		3CBC575C1EA42C5C00038D84 /* eventForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventForm.swift; sourceTree = "<group>"; };
 		3CBC575E1EA56A5900038D84 /* eventTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTableView.swift; sourceTree = "<group>"; };
@@ -43,6 +47,12 @@
 		8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tier1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.release.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.release.xcconfig"; sourceTree = "<group>"; };
 		AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tier1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tier1/Pods-tier1.debug.xcconfig"; sourceTree = "<group>"; };
+		D00F26141EB0366E0039BB2F /* eventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventCell.swift; sourceTree = "<group>"; };
+		D00F26151EB0366E0039BB2F /* HoveringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringButton.swift; sourceTree = "<group>"; };
+		D00F26161EB0366E0039BB2F /* HoveringTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringTextField.swift; sourceTree = "<group>"; };
+		D00F26171EB0366E0039BB2F /* HoveringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringView.swift; sourceTree = "<group>"; };
+		D00F26191EB0366E0039BB2F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTypeSelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,8 @@
 		3C479B751E90321500E98998 /* tier1 */ = {
 			isa = PBXGroup;
 			children = (
+				D00F26131EB0366E0039BB2F /* View */,
+				D00F26181EB0366E0039BB2F /* Util */,
 				3CBC57601EA6C40800038D84 /* tier1.entitlements */,
 				3C479B761E90321500E98998 /* AppDelegate.swift */,
 				3C479B7A1E90321500E98998 /* Main.storyboard */,
@@ -87,14 +99,33 @@
 				3C479B8B1E90328100E98998 /* Events.swift */,
 				3CD9453F1EA28874003C66AC /* GoogleService-Info.plist */,
 				3C479B8D1E903FC000E98998 /* Model.swift */,
-				3C479B8F1E903FF900E98998 /* customCell.swift */,
 				3C479B911E91FEE500E98998 /* eventPage.swift */,
 				3C479B781E90321500E98998 /* NearMe.swift */,
 				3CBC575C1EA42C5C00038D84 /* eventForm.swift */,
 				3CBC575E1EA56A5900038D84 /* eventTableView.swift */,
 				3C42C3041EABED0F007CF319 /* formVC.swift */,
+				D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */,
 			);
 			path = tier1;
+			sourceTree = "<group>";
+		};
+		D00F26131EB0366E0039BB2F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D00F26141EB0366E0039BB2F /* eventCell.swift */,
+				D00F26151EB0366E0039BB2F /* HoveringButton.swift */,
+				D00F26161EB0366E0039BB2F /* HoveringTextField.swift */,
+				D00F26171EB0366E0039BB2F /* HoveringView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D00F26181EB0366E0039BB2F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D00F26191EB0366E0039BB2F /* Constants.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		D6E7F18C9A5384EFE70CD30E /* Pods */ = {
@@ -149,7 +180,6 @@
 				TargetAttributes = {
 					3C479B721E90321500E98998 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = YVK5BU4LA5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
@@ -248,13 +278,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C479B8C1E90328100E98998 /* Events.swift in Sources */,
+				D00F261D1EB0366E0039BB2F /* HoveringView.swift in Sources */,
+				D00F261C1EB0366E0039BB2F /* HoveringTextField.swift in Sources */,
 				3CBC575D1EA42C5C00038D84 /* eventForm.swift in Sources */,
 				3C42C3051EABED0F007CF319 /* formVC.swift in Sources */,
+				D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */,
 				3C479B791E90321500E98998 /* NearMe.swift in Sources */,
-				3C479B901E903FF900E98998 /* customCell.swift in Sources */,
 				3C479B771E90321500E98998 /* AppDelegate.swift in Sources */,
+				D00F261A1EB0366E0039BB2F /* eventCell.swift in Sources */,
 				3C479B921E91FEE500E98998 /* eventPage.swift in Sources */,
 				3C479B8E1E903FC000E98998 /* Model.swift in Sources */,
+				D00F261E1EB0366E0039BB2F /* Constants.swift in Sources */,
+				D00F261B1EB0366E0039BB2F /* HoveringButton.swift in Sources */,
 				3CBC575F1EA56A5900038D84 /* eventTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,11 +414,11 @@
 			baseConfigurationReference = AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YVK5BU4LA5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tier1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WT.tier1;
+				PRODUCT_BUNDLE_IDENTIFIER = WT.justin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -395,11 +430,11 @@
 			baseConfigurationReference = A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YVK5BU4LA5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tier1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WT.tier1;
+				PRODUCT_BUNDLE_IDENTIFIER = WT.justin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
