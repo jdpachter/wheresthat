@@ -52,8 +52,6 @@ class eventForm: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate 
         
     }
     
-    var typeOpts = ["Free Stuff", "Social Gathering", "Campus Event", "Study Group", "Public Safety"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()

@@ -57,8 +57,8 @@ class eventPage: UIViewController {
         eventName.text = event.desc
         location.text = event.location
         type.text = event.getType()
-        if let typeImage = event.getImg(true) {
-            img.image = UIImage(named: typeImage)
+        if let typeImage = event.getImg() {
+            img.image = typeImage
             img.sizeToFit()
 
         }

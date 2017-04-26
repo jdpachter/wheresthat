@@ -11,6 +11,7 @@ import MapKit
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import CoreLocation
 
 
 class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate  {
@@ -24,7 +25,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289) //UR coordinates
     
-    let locationManager = CLLocationManager()
+    let locManager = CLLocationManager()
     var locValue: CLLocationCoordinate2D!
     
     var model = Model()
@@ -59,16 +60,17 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         
         
         locValue = CLLocationCoordinate2D()
-        self.locationManager.requestWhenInUseAuthorization()
+        self.locManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+            locManager.delegate = self
+            locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locManager.startUpdatingLocation()
         }
         
+        locationManager(locManager, didUpdateLocations: [])
         mapView.showsUserLocation = true
-        let region = MKCoordinateRegionMakeWithDistance(UR, 950, 950)
+        let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
         mapView.setRegion(region, animated: true)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -116,7 +118,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         
         ref.child("events-v2").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
-                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int()
+                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double()
                 
                 let key = (child as! FIRDataSnapshot).key
                 
@@ -170,10 +172,19 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                         submitted = NSDate(timeIntervalSince1970: uStamp)
                     }
                     
-                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down)
+                    //get distance
+                    let myLoc = CLLocation(latitude: self.locValue.latitude, longitude: self.locValue.longitude)
+                    let otherLoc = CLLocation(latitude: lat, longitude: long)
+                    dist = myLoc.distance(from: otherLoc)
+                    
+                    dist /= 1609.344
+                    dist = Double(round(dist*100)/100)
+                    
+                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down, dist)
                     
                     if(down < 5) {
                         self.model.allEvents.append(newEvent)
+                        self.model.sort()
                         self.svc.model = self.model
                         self.mapView.addAnnotation(newEvent)
                     }
@@ -184,8 +195,11 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        update()
         mapView.layoutSubviews()
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
+        mapView.setRegion(region, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -206,14 +220,14 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                 if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
                 annotationView.canShowCallout = true
                 let e = annotation as! event
-                if let img = e.getImg(true) {
+                if let img = e.getPin() {
                     annotationView.canShowCallout = true
-                    annotationView.image = UIImage(named: img)
-                    let sizedImage = UIImage(named: img)
-                    annotationView.image = sizedImage
-//                    annotationView.backgroundColor = UIColor.clear
-           
+                    annotationView.image = img
+                    
                 }
+                    annotationView.layer.cornerRadius = 2.0
+                    annotationView.layer.borderColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.1).cgColor
+                    annotationView.layer.borderWidth = 1.0
                 return annotationView
             } else {
                 let annotationView = MKAnnotationView(annotation:annotation, reuseIdentifier:identifier)
@@ -224,10 +238,13 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                 annotationView.rightCalloutAccessoryView = btn
                 let e = annotation as! event
 
-                if let img = e.getImg(true) {
+                if let img = e.getPin() {
                     annotationView.canShowCallout = true
-                    annotationView.image = UIImage(named: img)
+                    annotationView.image = img
                 }
+                    annotationView.layer.cornerRadius = 2.0
+                    annotationView.layer.borderColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.1).cgColor
+                    annotationView.layer.borderWidth = 1.0
                 return annotationView
             }
         }

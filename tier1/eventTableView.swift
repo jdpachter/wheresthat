@@ -28,11 +28,16 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.model.sort()
+        
         navigationController?.navigationBar.layer.masksToBounds = false
         navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
@@ -90,41 +95,17 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
         
-        let eventName = model.allEvents[indexPath.row].desc
-        let eventType = model.typeToString(model.allEvents[indexPath.row].type)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
+        let event = model.allEvents[indexPath.row]
+        let eventName = event.desc
+        let eventType = model.typeToString(event.type)
         cell.eventTitle.text = eventName
         cell.eventType.text = eventType
         
-        let typeNum = model.allEvents[indexPath.row].type
-        var typeImage = #imageLiteral(resourceName: "WheresThat_LogoIcon")
-        
-        switch(typeNum){
-        case 0: typeImage = #imageLiteral(resourceName: "freeStuffBig")
-        case 1: typeImage = #imageLiteral(resourceName: "socialGatheringBig")
-        case 2: typeImage = #imageLiteral(resourceName: "campusGatheringBig")
-        case 3: typeImage = #imageLiteral(resourceName: "studyGroupBig")
-        case 4: typeImage = #imageLiteral(resourceName: "publicSafetyBig")
-        default:
-            print("Event Icon Grab Error!")
-        }
-        cell.eventTypeIcon.image = typeImage
-        let event = model.allEvents[indexPath.row]
-        
-        //need to get current location and location by section.
-        //go through getEvents and calculate location for each event. Similar method to getEvents.
-        //var distance = myLocation.distanceFromLocation(eventPinLoc) / 1000 this converstion is from meters--> miles.
-        // let eventType = 0
-        
-        let myLoc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        let otherLoc = CLLocation(latitude: event.coordinate.latitude, longitude: event.coordinate.longitude)
-        var distance = myLoc.distance(from: otherLoc)
-        
-        distance /= 1609.344
-        distance = Double(round(distance*100)/100)
-        
-        cell.distance.text = String(describing: distance)
+        cell.eventTypeIcon.image = event.getImg()
+
+        cell.distance.text = String(describing: event.dist)
         return cell
     }
 }

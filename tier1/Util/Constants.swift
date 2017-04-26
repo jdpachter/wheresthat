@@ -12,4 +12,4 @@ import UIKit
 let SHADOW_COLOR: CGFloat = 157.0/255.0
 let LIGHT_BLUE = UIColor(red: 207/255, green: 226/255, blue: 243/255, alpha: 0)
 let DARK_BLUE = UIColor(red: 113/255, green: 169/255, blue: 198/255, alpha: 0)
-let typeOpts = ["Free", "Social Event", "Campus", "Study Group", "Public Safety"]
+let typeOpts = ["Free Stuff", "Social Event", "Campus Event", "Study Group", "Public Safety"]
