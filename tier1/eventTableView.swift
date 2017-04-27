@@ -98,7 +98,7 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
         let event = model.allEvents[indexPath.row]
-        let eventName = event.desc
+        let eventName = event.title
         cell.eventTitle.text = eventName
         
         cell.eventTypeIcon.image = event.getImg()

@@ -20,6 +20,7 @@ class eventPage: UIViewController {
     @IBOutlet var time: UILabel!
     @IBOutlet var img: UIImageView!
     @IBOutlet var type: UILabel!
+    @IBOutlet weak var details: UILabel!
     
     @IBOutlet var thumbsUp: UIButton!
     @IBOutlet var thumbsDown: UIButton!
@@ -54,7 +55,7 @@ class eventPage: UIViewController {
         
         ref = FIRDatabase.database().reference()
         
-        eventName.text = event.desc
+        eventName.text = event.title
         location.text = event.location
         type.text = event.getType()
         if let typeImage = event.getImg() {
