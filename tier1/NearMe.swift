@@ -20,8 +20,12 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var signInButton: GIDSignInButton!
     
+    @IBOutlet var add: UIBarButtonItem!
+    @IBOutlet var goToLoc: UIButton!
+    
     var barViewControllers: [UIViewController]!
     var svc : eventTableView!
+    var locEnabled = false
     
     let UR = CLLocationCoordinate2DMake(43.1284, -77.6289) //UR coordinates
     
@@ -42,12 +46,26 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         mapView.setRegion(region, animated: true)
     }
     
-    
-
+    //http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled
+    func locStatus() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                locEnabled = false
+                locValue = UR
+            case .authorizedAlways, .authorizedWhenInUse:
+                locEnabled = true
+            }
+        } else {
+            locEnabled = false
+            locValue = UR
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        locStatus()
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
@@ -55,7 +73,6 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         ref = FIRDatabase.database().reference()
         
         update()
-    
         makeFence()
         
         timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
@@ -65,20 +82,26 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         svc.model = self.model  //shared model
 
         
+        if(locEnabled) {
+            locValue = CLLocationCoordinate2D()
+            self.locManager.requestWhenInUseAuthorization()
         
-        locValue = CLLocationCoordinate2D()
-        self.locManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locManager.delegate = self
-            locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locManager.startUpdatingLocation()
+            if CLLocationManager.locationServicesEnabled() {
+                locManager.delegate = self
+                locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locManager.startUpdatingLocation()
+            }
+            mapView.showsUserLocation = true
+            locationManager(locManager, didUpdateLocations: [])
         }
-        
-        locationManager(locManager, didUpdateLocations: [])
-        mapView.showsUserLocation = true
+        else {
+            add.isEnabled = false
+            goToLoc.isHidden = true
+        }
+
         let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
         mapView.setRegion(region, animated: true)
+        
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -97,7 +120,10 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locValue = manager.location?.coordinate
+        if let val = manager.location {
+            locValue = val.coordinate
+        }
+        
     }
     
     func onReturn() {

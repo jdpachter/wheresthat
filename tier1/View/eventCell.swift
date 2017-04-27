@@ -12,7 +12,8 @@ class eventCell: UITableViewCell {
     @IBOutlet weak var eventTypeIcon: UIImageView!
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var distance: UILabel!
-    @IBOutlet weak var eventType: UILabel!
+    @IBOutlet var miles: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
