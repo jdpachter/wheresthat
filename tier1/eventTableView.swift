@@ -27,10 +27,13 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
     var curEvent: event!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        locStatus()
         self.tableView.reloadData()
         
         tableView.delegate = self
         tableView.dataSource = self
+
         
         self.model.sort()
         
