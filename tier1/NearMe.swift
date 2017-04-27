@@ -131,7 +131,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         
         ref.child("events-v3").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
             for child in snap.children {
-                var date = NSDate(), desc = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double(), details = String()
+                var date = NSDate(), title = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double(), details = String()
                 
                 let key = (child as! FIRDataSnapshot).key
                 
@@ -156,7 +156,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     
                     //get desc
                     if let data = (child as AnyObject).childSnapshot(forPath: "desc").value {
-                        desc = (String(describing: data))
+                        title = (String(describing: data))
                     }
                     
                     //get type
@@ -198,7 +198,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     dist /= 1609.344
                     dist = Double(round(dist*100)/100)
                     
-                    let newEvent = event(key, type, location, desc, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down, dist, details)
+                    let newEvent = event(key, type, location, title, date, submitted, CLLocationDegrees(lat), CLLocationDegrees(long), up, down, dist, details)
                     
                     if(down < 5) {
                         self.model.allEvents.append(newEvent)

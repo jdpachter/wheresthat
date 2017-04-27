@@ -739,7 +739,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="details" destination="opr-de-b0T" id="E0K-Z6-m9C"/>
+                        <outlet property="details" destination="opr-de-b0T" id="ymr-6h-yi5"/>
                         <outlet property="location" destination="tJu-0I-3sl" id="8k7-CY-kXp"/>
                         <outlet property="name" destination="cR0-sl-pce" id="DGy-z4-Er4"/>
                         <outlet property="type" destination="SmR-Cc-aOS" id="Iat-ZG-PjU"/>

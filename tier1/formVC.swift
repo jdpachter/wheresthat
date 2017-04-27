@@ -28,8 +28,8 @@ class formVC: UIViewController {
     
     @IBAction func submit(sender: AnyObject) {
         
-        if let desc = name.text, let loc = location.text, let eType = type.text, let deets = details.text {
-            if desc != "" && loc != "" && eType != "" {
+        if let title = name.text, let loc = location.text, let eType = type.text, let deets = details.text {
+            if title != "" && loc != "" && eType != "" {
                 let locManager = CLLocationManager()
                 let lat = locManager.location?.coordinate.latitude
                 let long = locManager.location?.coordinate.longitude
@@ -42,7 +42,7 @@ class formVC: UIViewController {
                 else {
                     let post:[String: String] = [
                         "date":String(now),
-                        "desc":desc,
+                        "title":title,
                         "location":loc,
                         "type":String(describing: typeOpts.index(of: eType)!),
                         "lat":String(describing: lat!),
