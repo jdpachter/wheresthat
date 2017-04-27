@@ -62,7 +62,6 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
             add.isEnabled = false
         }
         
-        
        
     }
     
