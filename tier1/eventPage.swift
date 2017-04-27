@@ -65,25 +65,28 @@ class eventPage: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "EST") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "EEEE, MMMM dd"
-        let strDateM = dateFormatter.string(from: event.eventTime as Date)
+//        dateFormatter.dateFormat = "EEEE, MMMM dd"
+//        let strDateM = dateFormatter.string(from: event.eventTime as Date)
         dateFormatter.dateFormat = "h:mm a"
         let strDateTime = dateFormatter.string(from: event.eventTime as Date)
-        time.text = strDateM + " at " + strDateTime
+        time.text = strDateTime//strDateM + " at " + strDateTime
+        navigationController?.navigationBar.layer.shadowOpacity = 0
         
         updateThumbs()
         
     }
     
+    
+    
     func updateThumbs() {
         switch(event.didVote) {
         case -1:
-            let img = UIImage(named: "thumbs-down-red")
+            let img = UIImage(named: "Vote_Red_down")
             thumbsDown.setBackgroundImage(img, for: .normal)
             thumbsUp.isEnabled = false
             thumbsDown.isEnabled = false
         case 1:
-            let img = UIImage(named: "thumbs-up-green")
+            let img = UIImage(named: "Vote_Green_up")
             thumbsUp.setBackgroundImage(img, for: .normal)
             thumbsUp.isEnabled = false
             thumbsDown.isEnabled = false
