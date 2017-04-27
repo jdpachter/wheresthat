@@ -63,15 +63,15 @@ class event : NSObject, MKAnnotation {
     func getPin() -> UIImage? {
         switch(type) {
         case 0:
-            return #imageLiteral(resourceName: "Pin_FreeStuff_Small")
+            return #imageLiteral(resourceName: "Pin_FreeStuff")
         case 1:
-            return #imageLiteral(resourceName: "Pin_SocialEvent_Small")
+            return #imageLiteral(resourceName: "Pin_SocialEvent")
         case 2:
-            return #imageLiteral(resourceName: "Pin_CampusEvent_Small")
+            return #imageLiteral(resourceName: "Pin_CampusEvent")
         case 3:
-            return #imageLiteral(resourceName: "Pin_Studygroup_Small")
+            return #imageLiteral(resourceName: "Pin_StudyGroup")
         case 4:
-            return #imageLiteral(resourceName: "Pin_PublicSafety_Small")
+            return #imageLiteral(resourceName: "Pin_PublicSafety")
         default:
             return nil
         }

@@ -11,6 +11,7 @@ import CoreData
 import CoreLocation
 import GoogleSignIn
 import Firebase
+import Instabug
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -52,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        Instabug.start(withToken: "21627bc83189e04364fac72ca2881abd", invocationEvent: .shake)
         
 //        UINavigationBar.appearance().tintColor = LIGHT_BLUE
 //        UITabBar.appearance().tintColor = LIGHT_BLUE

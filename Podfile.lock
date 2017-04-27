@@ -46,6 +46,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - Instabug (7.2.3)
 
 DEPENDENCIES:
   - Firebase
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - GoogleSignIn
+  - Instabug
 
 SPEC CHECKSUMS:
   Firebase: 21bf4a89d3f01bfbe11adc3a5d934a4a3d3a5fd6
@@ -65,7 +67,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  Instabug: fe62d90218ff56d1f54c869bba7a1dc75e1cbafa
 
-PODFILE CHECKSUM: d423be4f7e099b64337ef662fbcdd95cd85bf641
+PODFILE CHECKSUM: a754430d9fb248fc55c714a466d4f914e5de166b
 
 COCOAPODS: 1.2.1
