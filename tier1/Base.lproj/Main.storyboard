@@ -643,12 +643,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXz-pr-axF" userLabel="BlueBar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                                 <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="WuM-g8-Nml"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-dq-hUA" userLabel="FormContainer" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
-                                <rect key="frame" x="16" y="78" width="288" height="390"/>
+                                <rect key="frame" x="16" y="78" width="288" height="408"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-Cc-aOS">
-                                        <rect key="frame" x="111.5" y="15" width="65.5" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-Cc-aOS">
+                                        <rect key="frame" x="8" y="15" width="272" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="272" id="dfx-xK-PyG"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -680,10 +686,10 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="snM-R3-hUL">
-                                        <rect key="frame" x="20" y="339" width="248" height="36"/>
+                                        <rect key="frame" x="20" y="358" width="248" height="35"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-F5-YMw" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="116.5" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="116.5" height="35"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                 <state key="normal" title="Cancel">
@@ -694,7 +700,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpL-7W-ap6" customClass="HoveringButton" customModule="tier1" customModuleProvider="target">
-                                                <rect key="frame" x="131.5" y="0.0" width="116.5" height="36"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="116.5" height="35"/>
                                                 <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
@@ -724,20 +730,19 @@
                                     <constraint firstItem="tJu-0I-3sl" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="5ez-B7-gIP"/>
                                     <constraint firstItem="snM-R3-hUL" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="6lX-JT-8iE"/>
                                     <constraint firstItem="cR0-sl-pce" firstAttribute="top" secondItem="bxm-1u-Pcs" secondAttribute="bottom" constant="15" id="750-Q9-Jd6"/>
+                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="7Hy-e6-kPu"/>
+                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="CTS-Lc-VWo"/>
                                     <constraint firstItem="opr-de-b0T" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="D5y-qJ-fTJ"/>
                                     <constraint firstItem="bxm-1u-Pcs" firstAttribute="top" secondItem="SmR-Cc-aOS" secondAttribute="bottom" constant="8" symbolic="YES" id="DTn-vD-pUJ"/>
-                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="centerX" secondItem="cR0-sl-pce" secondAttribute="centerX" id="GaA-9a-pWA"/>
+                                    <constraint firstAttribute="height" constant="408" id="HQw-3n-INP"/>
                                     <constraint firstItem="SmR-Cc-aOS" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="top" constant="15" id="LYH-bG-2RG"/>
                                     <constraint firstAttribute="bottom" secondItem="snM-R3-hUL" secondAttribute="bottom" constant="15" id="PUm-5D-Iw0"/>
                                     <constraint firstAttribute="trailing" secondItem="snM-R3-hUL" secondAttribute="trailing" constant="20" id="QOf-qc-N5J"/>
                                     <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="R7o-dH-2tW"/>
                                     <constraint firstItem="cR0-sl-pce" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="20" id="R91-4r-bre"/>
-                                    <constraint firstItem="bxm-1u-Pcs" firstAttribute="leading" secondItem="hu6-dq-hUA" secondAttribute="leading" constant="94" id="S1W-IH-8Jy"/>
-                                    <constraint firstItem="SmR-Cc-aOS" firstAttribute="centerX" secondItem="bxm-1u-Pcs" secondAttribute="centerX" id="bqI-YA-qQt"/>
                                     <constraint firstAttribute="trailing" secondItem="cR0-sl-pce" secondAttribute="trailing" constant="20" id="gqw-y5-6vU"/>
                                     <constraint firstAttribute="trailing" secondItem="opr-de-b0T" secondAttribute="trailing" constant="20" id="juo-Uc-Dhs"/>
                                     <constraint firstAttribute="trailing" secondItem="tJu-0I-3sl" secondAttribute="trailing" constant="20" id="o88-cx-ajN"/>
-                                    <constraint firstItem="snM-R3-hUL" firstAttribute="top" secondItem="opr-de-b0T" secondAttribute="bottom" constant="14" id="p3Z-hv-FRU"/>
                                     <constraint firstItem="tJu-0I-3sl" firstAttribute="top" secondItem="cR0-sl-pce" secondAttribute="bottom" constant="15" id="v7l-Zi-ksm"/>
                                 </constraints>
                             </view>
@@ -745,12 +750,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fXz-pr-axF" secondAttribute="trailing" id="02N-aY-lat"/>
                             <constraint firstItem="hu6-dq-hUA" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leadingMargin" id="0t6-3k-BUq"/>
-                            <constraint firstItem="sTa-Ui-GOY" firstAttribute="top" secondItem="hu6-dq-hUA" secondAttribute="bottom" constant="100" id="E9a-Wi-YEa"/>
-                            <constraint firstItem="sTa-Ui-GOY" firstAttribute="top" secondItem="fXz-pr-axF" secondAttribute="bottom" constant="440" id="Y7Q-kG-HIG"/>
-                            <constraint firstItem="fXz-pr-axF" firstAttribute="centerX" secondItem="hu6-dq-hUA" secondAttribute="centerX" id="a3G-DM-NHW"/>
+                            <constraint firstAttribute="trailing" secondItem="fXz-pr-axF" secondAttribute="trailing" id="Bad-aM-vvO"/>
                             <constraint firstItem="hu6-dq-hUA" firstAttribute="top" secondItem="uhl-D5-qDN" secondAttribute="bottom" constant="14" id="ebz-sm-zyb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hu6-dq-hUA" secondAttribute="trailing" id="ncy-Sg-rtA"/>
                             <constraint firstItem="fXz-pr-axF" firstAttribute="top" secondItem="PTd-c7-wFB" secondAttribute="top" id="rST-KT-gSf"/>
                             <constraint firstItem="fXz-pr-axF" firstAttribute="leading" secondItem="PTd-c7-wFB" secondAttribute="leading" id="tH1-rk-nKP"/>
                         </constraints>

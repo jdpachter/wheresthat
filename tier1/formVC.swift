@@ -107,7 +107,7 @@ class formVC: UIViewController,UITextFieldDelegate {
         let screenSize = UIScreen.main.bounds
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0  {
-                self.view.frame.origin.y -= (keyboardSize.height - (screenSize.height/10))
+                self.view.frame.origin.y -= (keyboardSize.height - (screenSize.height/5))
             }
         }
         
@@ -117,7 +117,7 @@ class formVC: UIViewController,UITextFieldDelegate {
         let screenSize = UIScreen.main.bounds
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += (keyboardSize.height - (screenSize.height/10))
+                self.view.frame.origin.y += (keyboardSize.height - (screenSize.height/5))
             }
         }
     }
