@@ -315,11 +315,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUD-0f-dOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3Uf-Xg-DKM">
-                    <connections>
-                        <action selector="tappedOutWithSender:" destination="Kxb-Te-lyS" id="5ut-Ol-Ro0"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3Uf-Xg-DKM"/>
             </objects>
             <point key="canvasLocation" x="2778" y="610"/>
         </scene>
