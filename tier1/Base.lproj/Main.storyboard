@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UVM-xb-QEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sSt-pf-xRu">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -104,6 +104,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="add" destination="Exe-ba-oLE" id="jnA-8m-rCC"/>
+                        <outlet property="goToLoc" destination="ezV-Br-Vcu" id="WrR-xZ-nmC"/>
                         <outlet property="mapView" destination="cmH-I5-bWQ" id="4SP-4I-ma9"/>
                         <segue destination="FuN-3n-din" kind="show" identifier="toEventPage" id="PoC-IW-j7r"/>
                     </connections>
@@ -450,6 +452,7 @@
                                             <outlet property="distance" destination="O3N-qc-bsV" id="k5S-JD-5iD"/>
                                             <outlet property="eventTitle" destination="L0x-RP-DHK" id="ld5-7D-osX"/>
                                             <outlet property="eventTypeIcon" destination="9f5-Kk-5Tc" id="Nc3-SO-StJ"/>
+                                            <outlet property="miles" destination="SvC-tj-I9r" id="z7L-I5-UJ0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -491,6 +494,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="add" destination="tlr-3S-3M6" id="sy6-sB-3oh"/>
                         <outlet property="tableView" destination="j3P-FH-7Y6" id="Yh9-WJ-KrY"/>
                         <segue destination="FuN-3n-din" kind="show" identifier="toEventPageT" id="TxF-x8-cPL"/>
                     </connections>
@@ -541,7 +545,7 @@
                                 <rect key="frame" x="16" y="162" width="288" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8if-oY-TaW">
-                                        <rect key="frame" x="8" y="8" width="42" height="20"/>
+                                        <rect key="frame" x="8" y="8" width="272" height="20"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -567,6 +571,7 @@
                                     <constraint firstItem="8if-oY-TaW" firstAttribute="top" secondItem="mjg-7N-hUV" secondAttribute="topMargin" id="FNP-SN-tuA"/>
                                     <constraint firstItem="WIX-uT-IgC" firstAttribute="top" secondItem="Zbk-e7-6qu" secondAttribute="bottom" constant="2.5" id="Lm2-mW-PNc"/>
                                     <constraint firstItem="WIX-uT-IgC" firstAttribute="leading" secondItem="mjg-7N-hUV" secondAttribute="leading" constant="227" id="R4L-Zy-a6a"/>
+                                    <constraint firstAttribute="trailing" secondItem="8if-oY-TaW" secondAttribute="trailing" constant="8" id="TW7-1G-GoW"/>
                                     <constraint firstItem="WIX-uT-IgC" firstAttribute="bottom" secondItem="mjg-7N-hUV" secondAttribute="bottomMargin" id="Tqw-lR-cAI"/>
                                     <constraint firstItem="Zbk-e7-6qu" firstAttribute="top" secondItem="8if-oY-TaW" secondAttribute="bottom" constant="9" id="ayM-aM-5il"/>
                                     <constraint firstItem="8if-oY-TaW" firstAttribute="leading" secondItem="mjg-7N-hUV" secondAttribute="leadingMargin" id="sqL-oW-Syr"/>
@@ -838,7 +843,7 @@
         <image name="nearMe" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qv5-Pb-KF4"/>
         <segue reference="TxF-x8-cPL"/>
+        <segue reference="Qv5-Pb-KF4"/>
     </inferredMetricsTieBreakers>
 </document>

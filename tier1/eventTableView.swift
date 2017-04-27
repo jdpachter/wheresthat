@@ -14,11 +14,15 @@ import CoreLocation
 class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var add: UIBarButtonItem!
     
     var model: Model!
     
     let locationManager = CLLocationManager()
     var locValue = CLLocationCoordinate2D()
+    let UR = CLLocationCoordinate2DMake(43.1284, -77.6289) //UR coordinates
+    var locEnabled = false
+
     
     var curEvent: event!
     
@@ -41,14 +45,41 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
+        
+        if(locEnabled) {
+            self.locationManager.requestWhenInUseAuthorization()
+            if CLLocationManager.locationServicesEnabled() {
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.startUpdatingLocation()
+            }
+            locValue = locationManager.location!.coordinate
         }
-        locValue = locationManager.location!.coordinate
+        else {
+            add.isEnabled = false
+        }
+        
+        
+       
     }
+    
+    //http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled
+    func locStatus() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                locEnabled = false
+                locValue = UR
+            case .authorizedAlways, .authorizedWhenInUse:
+                locEnabled = true
+            }
+        } else {
+            locEnabled = false
+            locValue = UR
+        }
+    }
+    
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locValue = manager.location!.coordinate
@@ -103,7 +134,12 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.eventTypeIcon.image = event.getImg()
 
-        cell.distance.text = String(describing: event.dist)
+        if(locEnabled) {
+            cell.distance.text = String(describing: event.dist)
+        } else {
+            cell.distance.text = ""
+            cell.miles.text = ""
+        }
         return cell
     }
 }
