@@ -19,7 +19,7 @@ class eventPage: UIViewController {
     @IBOutlet var location : UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var img: UIImageView!
-    @IBOutlet var type: UILabel!
+    @IBOutlet var name: UILabel!
     @IBOutlet weak var details: UILabel!
     
     @IBOutlet var thumbsUp: UIButton!
@@ -57,7 +57,8 @@ class eventPage: UIViewController {
         
         eventName.text = event.title
         location.text = event.location
-        type.text = event.getType()
+        name.text = event.title
+        details.text = event.details
         if let typeImage = event.getImg() {
             img.image = typeImage
             img.sizeToFit()
