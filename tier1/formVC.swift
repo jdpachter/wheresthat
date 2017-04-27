@@ -104,18 +104,20 @@ class formVC: UIViewController,UITextFieldDelegate {
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        let screenSize = UIScreen.main.bounds
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0  {
-                self.view.frame.origin.y -= (keyboardSize.height - 70)
+                self.view.frame.origin.y -= (keyboardSize.height - (screenSize.height/10))
             }
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        let screenSize = UIScreen.main.bounds
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += (keyboardSize.height - 70)
+                self.view.frame.origin.y += (keyboardSize.height - (screenSize.height/10))
             }
         }
     }
