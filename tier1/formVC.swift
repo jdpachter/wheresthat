@@ -12,7 +12,7 @@ import CoreLocation
 import Firebase
 import FirebaseAuth
 
-class formVC: UIViewController {
+class formVC: UIViewController,UITextFieldDelegate {
     
     var ref: FIRDatabaseReference!
     
@@ -74,11 +74,17 @@ class formVC: UIViewController {
         super.viewDidLoad()
         type.text = presetType
         typeIcon.image = presetIcon
+        name.delegate = self
+        location.delegate = self
+        details.delegate = self
         
         ref = FIRDatabase.database().reference()
         
         self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(formVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(formVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         navigationController?.navigationBar.layer.shadowOpacity = 0
     }
@@ -90,6 +96,28 @@ class formVC: UIViewController {
     @IBAction func tappedOut(sender : AnyObject) {
         
         self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0  {
+                self.view.frame.origin.y -= (keyboardSize.height - 70)
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += (keyboardSize.height - 70)
+            }
+        }
     }
 
     func alert(_ title: String, _ msg: String, _ ret: Bool) {

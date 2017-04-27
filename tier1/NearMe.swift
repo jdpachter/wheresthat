@@ -155,7 +155,7 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
                     }
                     
                     //get desc
-                    if let data = (child as AnyObject).childSnapshot(forPath: "desc").value {
+                    if let data = (child as AnyObject).childSnapshot(forPath: "title").value {
                         title = (String(describing: data))
                     }
                     

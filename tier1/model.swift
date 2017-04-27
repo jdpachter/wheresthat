@@ -19,7 +19,6 @@ class event : NSObject, MKAnnotation {
     var key: String //UID
     var type: Int
     var location: String        //user reported location
-    var desc: String
     var eventTime: NSDate      //timestamp for when event to take place
     var submitTime: NSDate     //timestamp for when event reported
     var upVote: Int
@@ -35,7 +34,6 @@ class event : NSObject, MKAnnotation {
         self.title = desc
         self.location = location
         self.coordinate =  CLLocationCoordinate2DMake(lat, long)
-        self.desc = desc
         self.eventTime = eventTime
         self.submitTime = submitTime
         self.upVote = up
