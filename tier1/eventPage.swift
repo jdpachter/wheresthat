@@ -24,12 +24,13 @@ class eventPage: UIViewController {
     
     @IBOutlet var thumbsUp: UIButton!
     @IBOutlet var thumbsDown: UIButton!
+    @IBOutlet var votes: UILabel!
     
     @IBAction func upVote(sender: AnyObject) {
         if(event.didVote == 0) {
             let uid = event.key
             let newUp = event.upVote + 1
-            ref.child("events-v2/"+uid+"/up").setValue(newUp)
+            ref.child("events-v3/"+uid+"/up").setValue(newUp)
             event.didVote = 1
             event.upVote = newUp
             updateThumbs()
@@ -40,9 +41,9 @@ class eventPage: UIViewController {
         if(event.didVote == 0) {
             let uid = event.key
             let newDown = event.downVote + 1
-            ref.child("events-v2/"+uid+"/down").setValue(newDown)
+            ref.child("events-v3/"+uid+"/down").setValue(newDown)
             event.didVote = -1
-            event.upVote = newDown
+            event.downVote = newDown
             updateThumbs()
             
         }
@@ -59,6 +60,7 @@ class eventPage: UIViewController {
         location.text = event.location
         name.text = event.title
         details.text = event.details
+        votes.text = String(describing: event.upVote - event.downVote)
         if let typeImage = event.getImg() {
             img.image = typeImage
             img.sizeToFit()
@@ -87,11 +89,13 @@ class eventPage: UIViewController {
             thumbsDown.setBackgroundImage(img, for: .normal)
             thumbsUp.isEnabled = false
             thumbsDown.isEnabled = false
+            votes.text = String(describing: event.upVote - event.downVote)
         case 1:
             let img = UIImage(named: "Vote_Green_up")
             thumbsUp.setBackgroundImage(img, for: .normal)
             thumbsUp.isEnabled = false
             thumbsDown.isEnabled = false
+            votes.text = String(describing: event.upVote - event.downVote)
         default:
             break
         }
