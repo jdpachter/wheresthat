@@ -14,7 +14,7 @@ import Firebase
 import Instabug
 import FBSDKCoreKit
 import FBSDKLoginKit
-//import Google
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -32,19 +32,99 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        print("GOOGLE TOKEN:"+authentication.idToken)
+        print(user.userID)
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             //changed some syntax to supress warnings pt2
+            
             if error != nil {
                 print("\(String(describing: error))")
+                
+                let nsError = (error! as NSError)
+                // Error: 17007 The email address is already in use by another account. ERROR_EMAIL_ALREADY_IN_USE
+                
+                if nsError.code == 17007{
+                    let email = nsError.userInfo["FIRAuthErrorUserInfoEmailKey"] as? String
+                    self.signInUserWithFacebook(email!)
+                    print("email",email!)
+                    GOOGLEcredentialStorage[(user?.email)!] = credential
+                    GOOGLEidTokenStorage[(user?.email)!] = authentication.idToken
+                    GOOGLEtokenStorage[(user?.email)!] = authentication.accessToken
+                }
+                
                 return
             }
             else{
                 OperationQueue.main.addOperation {
                     [weak self] in
-                    self?.window?.rootViewController?.performSegue(withIdentifier: "loggedIn", sender: self)
+                    self?.window?.rootViewController?.performSegue(withIdentifier: "loggedIn", sender: nil)
+                }
+                GOOGLEcredentialStorage[(user?.email)!] = credential
+                GOOGLEidTokenStorage[(user?.email)!] = authentication.idToken
+                GOOGLEtokenStorage[(user?.email)!] = authentication.accessToken
+            }
+        }
+    }
+    
+    func signInUserWithFacebook(_ email: String){
+        if let credential = FBcredentialStorage[email]{
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if user != nil{
+                    
+                    self.linkAccountWithFacebook(user!)
+                    print((user?.uid)!)
+                
+                }else{
+                
+                    print((error?.localizedDescription)!)
                 }
             }
+        }
+    }
+    
+    func linkAccountWithFacebook(_ user: FIRUser){
+        let credential = GOOGLEcredentialStorage[user.email!]
+//        let idToken = GOOGLEidTokenStorage[user.email!]
+//        let tok = GOOGLEtokenStorage[user.email!]
+        FIRAuth.auth()?.currentUser?.link(with: credential!, completion: { (user:FIRUser?, error:Error?) in
+            
+            if let LinkedUser = user{
+                
+                print("NEW USER:",LinkedUser.uid)
+                
+            }
+            
+            if let error = error as NSError?{
+                
+                //Indicates an attempt to link a provider of a type already linked to this account.
+                if error.code == FIRAuthErrorCode.errorCodeProviderAlreadyLinked.rawValue{
+                    print("FIRAuthErrorCode.errorCodeProviderAlreadyLinked")
+                }
+                
+                //This credential is already associated with a different user account.
+                if error.code == 17025{
+                    
+                }
+                
+                print("MyError",error)
+            }
+            
+        })
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            OperationQueue.main.addOperation {
+                [weak self] in
+                self?.window?.rootViewController?.performSegue(withIdentifier: "logOut", sender: nil)
+            }
+            print("logout")
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
     
@@ -53,7 +133,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         locationManager?.requestWhenInUseAuthorization()
         FIRApp.configure()
         
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
+        
+        GIDSignIn.sharedInstance().delegate = self
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -69,6 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         else if url.scheme == "com.googleusercontent.apps.917894496812-affgl3lrakq5ovbvf42cemnt2qtkvsse"{
+            print("In google url scheme")
             return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
         }
         else{

@@ -153,29 +153,33 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-4g-ok5" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="16" y="346.5" width="288" height="206.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJu-jv-oFE" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="52" y="80.5" width="185" height="45"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="185" id="Rej-jo-etl"/>
-                                            <constraint firstAttribute="height" constant="45" id="SGS-au-7in"/>
-                                        </constraints>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJu-jv-oFE" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="52" y="80.5" width="184" height="45"/>
+                                        <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKs-K3-uhn" customClass="GIDSignInButton">
-                                        <rect key="frame" x="56" y="135.5" width="177" height="45"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="177" id="6A8-cP-4LV"/>
-                                            <constraint firstAttribute="height" constant="45" id="Eul-kq-YPF"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hU-LJ-Wqv">
+                                        <rect key="frame" x="112.5" y="20" width="63" height="29.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKs-K3-uhn" customClass="GIDSignInButton">
+                                        <rect key="frame" x="52" y="135.5" width="184" height="45"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="aKs-K3-uhn" firstAttribute="top" secondItem="lJu-jv-oFE" secondAttribute="bottom" constant="10" id="eVT-mF-ZsT"/>
-                                    <constraint firstItem="aKs-K3-uhn" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="ghb-xO-vrE"/>
-                                    <constraint firstItem="lJu-jv-oFE" firstAttribute="centerY" secondItem="UMa-4g-ok5" secondAttribute="centerY" id="mxO-WJ-3mL"/>
-                                    <constraint firstItem="lJu-jv-oFE" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="uNz-MK-3xZ"/>
+                                    <constraint firstItem="lJu-jv-oFE" firstAttribute="top" secondItem="7hU-LJ-Wqv" secondAttribute="bottom" constant="25" id="4GE-ky-bDb"/>
+                                    <constraint firstItem="lJu-jv-oFE" firstAttribute="leading" secondItem="UMa-4g-ok5" secondAttribute="leading" constant="52" id="DXn-RB-64n"/>
+                                    <constraint firstItem="aKs-K3-uhn" firstAttribute="leading" secondItem="UMa-4g-ok5" secondAttribute="leading" constant="52" id="SDI-cW-U0v"/>
+                                    <constraint firstAttribute="trailing" secondItem="lJu-jv-oFE" secondAttribute="trailing" constant="52" id="VSW-LB-lyC"/>
+                                    <constraint firstItem="aKs-K3-uhn" firstAttribute="top" secondItem="lJu-jv-oFE" secondAttribute="bottom" constant="25" id="eVT-mF-ZsT"/>
+                                    <constraint firstAttribute="trailing" secondItem="7hU-LJ-Wqv" secondAttribute="trailing" constant="112.5" id="i6j-jA-jq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="aKs-K3-uhn" secondAttribute="trailing" constant="52" id="nZ6-ZI-yMn"/>
+                                    <constraint firstAttribute="bottom" secondItem="aKs-K3-uhn" secondAttribute="bottom" constant="25" id="oxF-Q9-gPS"/>
+                                    <constraint firstItem="7hU-LJ-Wqv" firstAttribute="leading" secondItem="UMa-4g-ok5" secondAttribute="leading" constant="112.5" id="wWH-eE-Yb3"/>
+                                    <constraint firstItem="7hU-LJ-Wqv" firstAttribute="top" secondItem="UMa-4g-ok5" secondAttribute="top" constant="20" id="ylX-Sl-oka"/>
                                 </constraints>
                             </view>
                         </subviews>
