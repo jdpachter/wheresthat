@@ -1,4 +1,16 @@
 PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.21.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.21.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.21.0):
+    - FBSDKCoreKit
   - Firebase (3.16.0):
     - Firebase/Core (= 3.16.0)
   - Firebase/Auth (3.16.0):
@@ -49,6 +61,10 @@ PODS:
   - Instabug (7.2.3)
 
 DEPENDENCIES:
+  - Bolts
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -57,6 +73,10 @@ DEPENDENCIES:
   - Instabug
 
 SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: 8a372ab194b5c7c26355c1920ef52dbeb44bc222
+  FBSDKLoginKit: a1a5f4b4ac445823a020fbeeaf5f03714a67ff9c
+  FBSDKShareKit: 649a7acfd01a3e056a33994c1bfbb997814cc8a2
   Firebase: 21bf4a89d3f01bfbe11adc3a5d934a4a3d3a5fd6
   FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -69,6 +89,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Instabug: fe62d90218ff56d1f54c869bba7a1dc75e1cbafa
 
-PODFILE CHECKSUM: a754430d9fb248fc55c714a466d4f914e5de166b
+PODFILE CHECKSUM: bf88f84ee41cba36bee63cdc4d184eb7c4887dd8
 
 COCOAPODS: 1.2.1

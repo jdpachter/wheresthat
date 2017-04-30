@@ -13,12 +13,14 @@ import FirebaseAuth
 import GoogleSignIn
 import CoreLocation
 import CoreData
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 
-class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocationManagerDelegate  {
+class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
     
     @IBOutlet var mapView: MKMapView!
-    @IBOutlet weak var signInButton: GIDSignInButton!
+//    @IBOutlet weak var signInButton: GIDSignInButton!
     
     @IBOutlet var add: UIBarButtonItem!
     @IBOutlet var goToLoc: UIButton!
@@ -46,6 +48,21 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         mapView.setRegion(region, animated: true)
     }
     
+    @IBAction func logout(sender: AnyObject){
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            OperationQueue.main.addOperation {
+                [weak self] in
+                self?.performSegue(withIdentifier: "logOut", sender: self)
+            }
+            print("logout")
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     //http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled
     func locStatus() {
         if CLLocationManager.locationServicesEnabled() {
@@ -67,8 +84,8 @@ class NearMe: UIViewController, MKMapViewDelegate, GIDSignInUIDelegate, CLLocati
         mapView.delegate = self
         locStatus()
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+//        GIDSignIn.sharedInstance().uiDelegate = self
+//        GIDSignIn.sharedInstance().signIn()
 
         ref = FIRDatabase.database().reference()
         

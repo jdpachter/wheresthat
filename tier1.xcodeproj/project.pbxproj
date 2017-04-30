@@ -27,6 +27,7 @@
 		D0575FD01EAEB1CB00880355 /* eventTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */; };
 		D0C61E8E1EB073870045208C /* HoveringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C61E8D1EB073870045208C /* HoveringImageView.swift */; };
 		D0C61E901EB16F630045208C /* HoveringSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C61E8F1EB16F630045208C /* HoveringSubview.swift */; };
+		D0CD167C1EB586A700650FA6 /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD167B1EB586A700650FA6 /* loginVC.swift */; };
 		F5144004FA5649459CBA3A60 /* Pods_tier1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTypeSelector.swift; sourceTree = "<group>"; };
 		D0C61E8D1EB073870045208C /* HoveringImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringImageView.swift; sourceTree = "<group>"; };
 		D0C61E8F1EB16F630045208C /* HoveringSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringSubview.swift; sourceTree = "<group>"; };
+		D0CD167B1EB586A700650FA6 /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				3CBC575E1EA56A5900038D84 /* eventTableView.swift */,
 				3C42C3041EABED0F007CF319 /* formVC.swift */,
 				D0575FCF1EAEB1CB00880355 /* eventTypeSelector.swift */,
+				D0CD167B1EB586A700650FA6 /* loginVC.swift */,
 			);
 			path = tier1;
 			sourceTree = "<group>";
@@ -186,7 +189,6 @@
 				TargetAttributes = {
 					3C479B721E90321500E98998 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = YVK5BU4LA5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
@@ -299,6 +301,7 @@
 				3C479B8E1E903FC000E98998 /* Model.swift in Sources */,
 				D00F261E1EB0366E0039BB2F /* Constants.swift in Sources */,
 				D00F261B1EB0366E0039BB2F /* HoveringButton.swift in Sources */,
+				D0CD167C1EB586A700650FA6 /* loginVC.swift in Sources */,
 				3CBC575F1EA56A5900038D84 /* eventTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,11 +426,11 @@
 			baseConfigurationReference = AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YVK5BU4LA5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tier1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WT.tier1;
+				PRODUCT_BUNDLE_IDENTIFIER = WT.justin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -439,11 +442,11 @@
 			baseConfigurationReference = A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YVK5BU4LA5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tier1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WT.tier1;
+				PRODUCT_BUNDLE_IDENTIFIER = WT.justin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

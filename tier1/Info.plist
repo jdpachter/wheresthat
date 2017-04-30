@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Where'sThat?</string>
+	<string>Where&apos;sThat?</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,11 +26,23 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.917894496812-affgl3lrakq5ovbvf42cemnt2qtkvsse</string>
+				<string>fb309917576105536</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>2</string>
+	<key>FacebookAppID</key>
+	<string>309917576105536</string>
+	<key>FacebookDisplayName</key>
+	<string>Where&apos;sThat?</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationUsageDescription</key>
@@ -38,9 +50,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location to show nearby events?</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Where'sThat needs access to the microphone to be able to attach voice notes.</string>
+	<string>Where&apos;sThat needs access to the microphone to be able to attach voice notes.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Where'sThat needs access to your photo library for you to be able to attach images.</string>
+	<string>Where&apos;sThat needs access to your photo library for you to be able to attach images.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

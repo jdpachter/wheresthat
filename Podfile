@@ -14,3 +14,7 @@ pod ‘Firebase/Database’
 pod ‘Firebase/Auth’
 pod ‘GoogleSignIn’
 pod 'Instabug'
+pod ‘FBSDKCoreKit’
+pod ‘FBSDKLoginKit’
+pod ‘FBSDKShareKit’
+pod ‘Bolts’

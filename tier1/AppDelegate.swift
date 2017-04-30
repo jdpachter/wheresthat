@@ -12,38 +12,33 @@ import CoreLocation
 import GoogleSignIn
 import Firebase
 import Instabug
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var locationManager: CLLocationManager?
 
     
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        //changed some syntax to supress warnings
-        if (error) != nil {
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            //changed some syntax to supress warnings pt2
-            if error != nil {
-                return
-            }
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        //
-    }
-    
-    
-
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        //changed some syntax to supress warnings
+//        if (error) != nil {
+//            return
+//        }
+//        
+//        guard let authentication = user.authentication else { return }
+//        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+//        
+//        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+//            //changed some syntax to supress warnings pt2
+//            if error != nil {
+//                return
+//            }
+//        }
+//    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -51,8 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         locationManager?.requestWhenInUseAuthorization()
         FIRApp.configure()
         
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+//        GIDSignIn.sharedInstance().delegate = self
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         Instabug.start(withToken: "21627bc83189e04364fac72ca2881abd", invocationEvent: .shake)
         
@@ -62,10 +59,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         return true
     }
-
+    
     @available(iOS 9.0, *)
-     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        print("URL SCHEME:" + url.scheme!)
+        if url.scheme == "fb309917576105536"{
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        }
+//        else if url.scheme == "y"{
+//            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+//        }
+        else{
+            return false
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -84,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
