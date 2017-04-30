@@ -14,49 +14,51 @@ import Firebase
 import Instabug
 import FBSDKCoreKit
 import FBSDKLoginKit
+//import Google
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
     var locationManager: CLLocationManager?
 
-    
-    
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        //changed some syntax to supress warnings
-//        if (error) != nil {
-//            return
-//        }
-//        
-//        guard let authentication = user.authentication else { return }
-//        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-//        
-//        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-//            //changed some syntax to supress warnings pt2
-//            if error != nil {
-//                return
-//            }
-//        }
-//    }
 
-
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        //changed some syntax to supress warnings
+        if (error) != nil {
+            print("\(error.localizedDescription)")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            //changed some syntax to supress warnings pt2
+            if error != nil {
+                print("\(String(describing: error))")
+                return
+            }
+            else{
+                OperationQueue.main.addOperation {
+                    [weak self] in
+                    self?.window?.rootViewController?.performSegue(withIdentifier: "loggedIn", sender: self)
+                }
+            }
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
         FIRApp.configure()
         
-//        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-//        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         Instabug.start(withToken: "21627bc83189e04364fac72ca2881abd", invocationEvent: .shake)
-        
-//        UINavigationBar.appearance().tintColor = LIGHT_BLUE
-//        UITabBar.appearance().tintColor = LIGHT_BLUE
-        
-        // Override point for customization after application launch.
+
         return true
     }
     
@@ -66,9 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.scheme == "fb309917576105536"{
             return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         }
-//        else if url.scheme == "y"{
-//            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
-//        }
+        else if url.scheme == "com.googleusercontent.apps.917894496812-affgl3lrakq5ovbvf42cemnt2qtkvsse"{
+            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        }
         else{
             return false
         }

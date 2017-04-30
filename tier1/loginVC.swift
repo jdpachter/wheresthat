@@ -13,10 +13,10 @@ import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
 
-class loginVC: UIViewController, FBSDKLoginButtonDelegate{
+class loginVC: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate{
     @IBOutlet weak var loginView: UIView!
-    var fbLoginButton: FBSDKLoginButton!
-//    @IBOutlet weak var fbLoginButton: UIButton!
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var googleLoginButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,44 +29,12 @@ class loginVC: UIViewController, FBSDKLoginButtonDelegate{
         }
         else{
             print("Not Logged In")
-//            fbLoginButton.addTarget(self, action: #selector(pressedFBLogin(_:)), for: UIControlEvents.touchUpInside)
-            fbLoginButton = FBSDKLoginButton()
             fbLoginButton.readPermissions = ["public_profile","email"]
             fbLoginButton.delegate = self
-            fbLoginButton.center = loginView.center
-            loginView.addSubview(fbLoginButton)
-            loginView.translatesAutoresizingMaskIntoConstraints = false
-            fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
+            GIDSignIn.sharedInstance().uiDelegate = self
         }
-        
-//        googleLoginButton.addTarget(self, action: #selector(googleLoginClicked(_:)), for: UIControlEvents.touchUpInside)
     }
     
-//    func pressedFBLogin(_ sender: Any){
-//        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-//        fbLoginManager.logIn(withReadPermissions: ["public_profile","email"], from: self, handler: {(result, error) -> Void in
-//            if (error == nil){
-//                let fbloginresult : FBSDKLoginManagerLoginResult = result!
-//                if fbloginresult.grantedPermissions != nil {
-//                    if(fbloginresult.grantedPermissions.contains("email"))
-//                    {
-//                        self.getFBUserData()
-//                    }
-//                }
-//            }
-//        })
-//    }
-//    
-//    func getFBUserData(){
-//        if((FBSDKAccessToken.current()) != nil){
-//            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
-//                if (error == nil){
-//                    //everything works print the user data
-//                    print(result!)
-//                }
-//            })
-//        }
-//    }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         if let error = error {
@@ -85,6 +53,10 @@ class loginVC: UIViewController, FBSDKLoginButtonDelegate{
                 }
                 else{
                     print("Logged in with facebook")
+                    OperationQueue.main.addOperation {
+                        [weak self] in
+                        self?.performSegue(withIdentifier: "loggedIn", sender: self)
+                    }
                 }
             }
         }
@@ -94,8 +66,4 @@ class loginVC: UIViewController, FBSDKLoginButtonDelegate{
         
     }
     
-//    func googleLoginClicked(_ sender: Any){
-//        GIDSignIn.sharedInstance().uiDelegate = self
-//        GIDSignIn.sharedInstance().signIn()
-//    }
 }

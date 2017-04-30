@@ -153,22 +153,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-4g-ok5" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
                                 <rect key="frame" x="16" y="346.5" width="288" height="206.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-RQ-fcQ">
-                                        <rect key="frame" x="56" y="88" width="177" height="30"/>
-                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJu-jv-oFE" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="52" y="80.5" width="185" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="177" id="SaL-sV-0Ty"/>
+                                            <constraint firstAttribute="width" constant="185" id="Rej-jo-etl"/>
+                                            <constraint firstAttribute="height" constant="45" id="SGS-au-7in"/>
                                         </constraints>
-                                        <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                        <state key="normal" title="Login with Facebook">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKs-K3-uhn" customClass="GIDSignInButton">
+                                        <rect key="frame" x="56" y="135.5" width="177" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="177" id="6A8-cP-4LV"/>
+                                            <constraint firstAttribute="height" constant="45" id="Eul-kq-YPF"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Wgv-RQ-fcQ" firstAttribute="centerY" secondItem="UMa-4g-ok5" secondAttribute="centerY" id="EKr-Rh-yIX"/>
-                                    <constraint firstItem="Wgv-RQ-fcQ" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="f7H-AI-6hF"/>
+                                    <constraint firstItem="aKs-K3-uhn" firstAttribute="top" secondItem="lJu-jv-oFE" secondAttribute="bottom" constant="10" id="eVT-mF-ZsT"/>
+                                    <constraint firstItem="aKs-K3-uhn" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="ghb-xO-vrE"/>
+                                    <constraint firstItem="lJu-jv-oFE" firstAttribute="centerY" secondItem="UMa-4g-ok5" secondAttribute="centerY" id="mxO-WJ-3mL"/>
+                                    <constraint firstItem="lJu-jv-oFE" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="uNz-MK-3xZ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -185,6 +192,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fbLoginButton" destination="lJu-jv-oFE" id="5tV-wM-kX5"/>
+                        <outlet property="googleLoginButton" destination="aKs-K3-uhn" id="h7g-zm-4ZJ"/>
                         <outlet property="loginView" destination="UMa-4g-ok5" id="ceg-bp-J8R"/>
                         <segue destination="sSt-pf-xRu" kind="show" identifier="loggedIn" id="0Mn-A8-ZA2"/>
                     </connections>
