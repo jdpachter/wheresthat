@@ -79,6 +79,17 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == CLAuthorizationStatus.authorizedAlways || status == CLAuthorizationStatus.authorizedWhenInUse) {
+            self.add.isEnabled = true
+            self.goToLoc.isHidden = false
+        }
+        else if (status == CLAuthorizationStatus.denied) {
+            self.add.isEnabled = false
+            self.goToLoc.isHidden = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -97,14 +108,12 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
         barViewControllers = self.tabBarController?.viewControllers
         svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView!
         svc.model = self.model  //shared model
-
-        
+        locManager.delegate = self
         if(locEnabled) {
             locValue = CLLocationCoordinate2D()
             self.locManager.requestWhenInUseAuthorization()
         
             if CLLocationManager.locationServicesEnabled() {
-                locManager.delegate = self
                 locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                 locManager.startUpdatingLocation()
             }
@@ -129,6 +138,7 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
     }
+    
     
     func makeFence() {
         let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(43.1284, -77.6289)
@@ -352,6 +362,6 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
        
     }
-
+    
 }
 
