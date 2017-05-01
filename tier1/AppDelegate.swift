@@ -12,6 +12,9 @@ import CoreLocation
 import GoogleSignIn
 import Firebase
 import Instabug
+import FBSDKCoreKit
+import FBSDKLoginKit
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -19,53 +22,92 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
     var locationManager: CLLocationManager?
 
-    
-    
+
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         //changed some syntax to supress warnings
         if (error) != nil {
+            print("\(error.localizedDescription)")
             return
         }
         
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        print("GOOGLE TOKEN:"+authentication.idToken)
+        print(user.userID)
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            //changed some syntax to supress warnings pt2
             if error != nil {
+                print("\(String(describing: error))")
                 return
+            }
+            else{
+                print("SHOULD PERFORM SEGUE")
+                let vc = currentViewController()
+                vc.performSegue(withIdentifier: "loggedIn", sender: self)
             }
         }
     }
     
+    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        //
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            OperationQueue.main.addOperation {
+                [weak self] in
+                self?.window?.rootViewController?.performSegue(withIdentifier: "logOut", sender: nil)
+            }
+            print("logout")
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
-    
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
         FIRApp.configure()
         
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        if let _ = FIRAuth.auth()?.currentUser{
+            print("Logged In")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier :"tabController") as! UITabBarController
+            self.window?.rootViewController = viewController
+        }
+        else{
+            print("Not Logged In")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier :"loginVC") as! loginVC
+            self.window?.rootViewController = viewController
+        }
+        
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
+        
         GIDSignIn.sharedInstance().delegate = self
         
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         Instabug.start(withToken: "21627bc83189e04364fac72ca2881abd", invocationEvent: .shake)
-        
-//        UINavigationBar.appearance().tintColor = LIGHT_BLUE
-//        UITabBar.appearance().tintColor = LIGHT_BLUE
-        
-        // Override point for customization after application launch.
+
         return true
     }
-
+    
     @available(iOS 9.0, *)
-     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        print("URL SCHEME:" + url.scheme!)
+        if url.scheme == "fb309917576105536"{
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        }
+        else if url.scheme == "com.googleusercontent.apps.917894496812-affgl3lrakq5ovbvf42cemnt2qtkvsse"{
+            print("In google url scheme")
+            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        }
+        else{
+            return false
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -84,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

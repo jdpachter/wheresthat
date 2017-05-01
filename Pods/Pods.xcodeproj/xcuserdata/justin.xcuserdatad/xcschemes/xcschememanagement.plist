@@ -4,6 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKShareKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -63,11 +83,6 @@
 			<true/>
 		</dict>
 		<key>E396A93E4C79B22B7816E9F02F62ECED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FBE53BCB1523E899D78B3C5A4B5A6D0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
