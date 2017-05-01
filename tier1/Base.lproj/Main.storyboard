@@ -89,19 +89,10 @@
                                             <constraint firstAttribute="width" constant="35" id="PZi-Tn-Uhv"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-E0-11e">
-                                        <rect key="frame" x="35" y="1.5" width="48" height="30"/>
-                                        <state key="normal" title="Logout"/>
-                                        <connections>
-                                            <action selector="logoutWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H6b-OK-fYX"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.81176470590000005" green="0.8862745098" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Sfq-E0-11e" firstAttribute="leading" secondItem="qhr-u0-Qqf" secondAttribute="trailing" id="GVr-gN-ET4"/>
                                     <constraint firstItem="qhr-u0-Qqf" firstAttribute="leading" secondItem="qb8-si-VqM" secondAttribute="leading" id="PMX-rL-tEJ"/>
-                                    <constraint firstItem="Sfq-E0-11e" firstAttribute="centerY" secondItem="qb8-si-VqM" secondAttribute="centerY" id="qZT-qv-4Vl"/>
                                     <constraint firstItem="qhr-u0-Qqf" firstAttribute="top" secondItem="qb8-si-VqM" secondAttribute="top" constant="-3" id="t1S-xt-Lan"/>
                                 </constraints>
                             </view>
