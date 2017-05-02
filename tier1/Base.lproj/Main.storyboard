@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UVM-xb-QEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UVM-xb-QEy">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -141,15 +141,9 @@
                                     <constraint firstAttribute="height" constant="125" id="Jp9-Xt-xuF"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-4g-ok5" customClass="HoveringView" customModule="tier1" customModuleProvider="target">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-4g-ok5">
                                 <rect key="frame" x="16" y="346.5" width="288" height="206.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hU-LJ-Wqv">
-                                        <rect key="frame" x="105" y="20" width="78" height="29.5"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="25"/>
-                                        <color key="textColor" red="0.4431372549" green="0.66274509800000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKs-K3-uhn" customClass="GIDSignInButton">
                                         <rect key="frame" x="52" y="80" width="184" height="45"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,12 +153,10 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="aKs-K3-uhn" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="PHq-Mk-j9F"/>
-                                    <constraint firstItem="7hU-LJ-Wqv" firstAttribute="centerX" secondItem="UMa-4g-ok5" secondAttribute="centerX" id="U9Z-Mz-Yac"/>
                                     <constraint firstItem="aKs-K3-uhn" firstAttribute="centerY" secondItem="UMa-4g-ok5" secondAttribute="centerY" id="xc8-Uj-yyV"/>
-                                    <constraint firstItem="7hU-LJ-Wqv" firstAttribute="top" secondItem="UMa-4g-ok5" secondAttribute="top" constant="20" id="ylX-Sl-oka"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -244,9 +236,13 @@
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_CampusEvent" translatesAutoresizingMaskIntoConstraints="NO" id="keJ-VB-oYk" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="za6-gB-VqD"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="hIW-FJ-zuw" appends="YES" id="Ahg-CV-e2v"/>
+                                                                </connections>
                                                             </imageView>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="200" text="Campus Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-n7-Npn">
                                                                 <rect key="frame" x="14.5" y="76" width="47.5" height="37"/>
@@ -259,11 +255,15 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sk9-88-SJY">
                                                         <rect key="frame" x="96" y="0.0" width="76" height="113"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_FreeStuff" translatesAutoresizingMaskIntoConstraints="NO" id="76f-Tt-R9n" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
+                                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Free Stuff" image="Icon_FreeStuff" translatesAutoresizingMaskIntoConstraints="NO" id="76f-Tt-R9n" userLabel="Free Stuff" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="JSg-Yp-MPR"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="xVY-qG-pEd" appends="YES" id="kJL-Ip-yeH"/>
+                                                                </connections>
                                                             </imageView>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="200" text="Free Stuff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hy-ej-MwT">
                                                                 <rect key="frame" x="0.0" y="76" width="76" height="37"/>
@@ -276,11 +276,15 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qLW-Ma-dcf">
                                                         <rect key="frame" x="192" y="0.0" width="76" height="113"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_PublicSafety" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-4j-YU1" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
+                                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_PublicSafety" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-4j-YU1" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="76" height="76.5"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="iWN-pQ-2Lp"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="ZdQ-Ao-1IL" appends="YES" id="TKJ-4S-XbP"/>
+                                                                </connections>
                                                             </imageView>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="200" text="Public Safety" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOC-Nj-Jhc">
                                                                 <rect key="frame" x="0.0" y="76.5" width="76" height="36.5"/>
@@ -298,11 +302,15 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CsW-WY-V5O">
                                                         <rect key="frame" x="0.0" y="0.0" width="124" height="122"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="2" verticalCompressionResistancePriority="2" image="Icon_SocialEvent" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-1a-qGP" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
+                                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="2" verticalCompressionResistancePriority="2" image="Icon_SocialEvent" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-1a-qGP" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="76"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="4cr-UH-YQ5"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="KPF-qF-zJv" appends="YES" id="qpw-hb-QC9"/>
+                                                                </connections>
                                                             </imageView>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Social Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5C-4X-ZvC">
                                                                 <rect key="frame" x="0.0" y="76" width="124" height="46"/>
@@ -315,11 +323,15 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-mZ-Whp">
                                                         <rect key="frame" x="144" y="0.0" width="124" height="122"/>
                                                         <subviews>
-                                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_StudyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="lFa-GW-q91" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
+                                                            <imageView tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_StudyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="lFa-GW-q91" customClass="HoveringImageView" customModule="tier1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="76"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="76" id="icp-6f-rBo"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="itH-7A-5Zj" appends="YES" id="NVy-YM-saL"/>
+                                                                </connections>
                                                             </imageView>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="200" text="Study Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zft-jV-EZ4">
                                                                 <rect key="frame" x="0.0" y="76" width="124" height="46"/>
@@ -377,9 +389,6 @@
                             <constraint firstItem="V2H-bO-Cpe" firstAttribute="top" secondItem="Igm-Ce-qyA" secondAttribute="top" id="lQf-gL-xKK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NsB-1A-g0j" secondAttribute="trailing" id="vQV-9V-wZl"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="3Uf-Xg-DKM" appends="YES" id="6yv-xI-dqt"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Add Event" id="8Q9-Is-OBk"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -393,7 +402,31 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUD-0f-dOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3Uf-Xg-DKM"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="itH-7A-5Zj">
+                    <connections>
+                        <action selector="buttonTappedWithSender:" destination="Kxb-Te-lyS" id="pbW-Bd-mp3"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="KPF-qF-zJv">
+                    <connections>
+                        <action selector="buttonTappedWithSender:" destination="Kxb-Te-lyS" id="FMA-S1-bYG"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="ZdQ-Ao-1IL">
+                    <connections>
+                        <action selector="buttonTappedWithSender:" destination="Kxb-Te-lyS" id="C1b-Bl-gcH"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="xVY-qG-pEd">
+                    <connections>
+                        <action selector="buttonTappedWithSender:" destination="Kxb-Te-lyS" id="Uoi-dw-vTK"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="hIW-FJ-zuw">
+                    <connections>
+                        <action selector="buttonTappedWithSender:" destination="Kxb-Te-lyS" id="EdO-T3-Xx8"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2778" y="610"/>
         </scene>
@@ -874,7 +907,7 @@
         <image name="nearMe" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PoC-IW-j7r"/>
-        <segue reference="4U4-dH-clm"/>
+        <segue reference="TxF-x8-cPL"/>
+        <segue reference="Qv5-Pb-KF4"/>
     </inferredMetricsTieBreakers>
 </document>

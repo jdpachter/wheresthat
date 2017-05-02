@@ -62,16 +62,19 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
             print ("Error signing out: %@", signOutError)
         }
     }
-    
-    //http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled
+
     func locStatus() {
         if CLLocationManager.locationServicesEnabled() {
             switch(CLLocationManager.authorizationStatus()) {
             case .notDetermined, .restricted, .denied:
                 locEnabled = false
                 locValue = UR
+                self.add.isEnabled = false
+                self.goToLoc.isHidden = true
             case .authorizedAlways, .authorizedWhenInUse:
                 locEnabled = true
+                self.add.isEnabled = true
+                self.goToLoc.isHidden = false
             }
         } else {
             locEnabled = false
@@ -80,14 +83,7 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if (status == CLAuthorizationStatus.authorizedAlways || status == CLAuthorizationStatus.authorizedWhenInUse) {
-            self.add.isEnabled = true
-            self.goToLoc.isHidden = false
-        }
-        else if (status == CLAuthorizationStatus.denied) {
-            self.add.isEnabled = false
-            self.goToLoc.isHidden = true
-        }
+        locStatus()
     }
     
     override func viewDidLoad() {

@@ -189,7 +189,7 @@
 				TargetAttributes = {
 					3C479B721E90321500E98998 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 8M4VS22RPP;
+						DevelopmentTeam = YVK5BU4LA5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
@@ -427,7 +427,7 @@
 			baseConfigurationReference = AB7D7FBF1DB55E0AA1BF79A0 /* Pods-tier1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8M4VS22RPP;
+				DEVELOPMENT_TEAM = YVK5BU4LA5;
 				INFOPLIST_FILE = tier1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -443,7 +443,7 @@
 			baseConfigurationReference = A5BE2FD37C37AEF512A4A1A0 /* Pods-tier1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8M4VS22RPP;
+				DEVELOPMENT_TEAM = YVK5BU4LA5;
 				INFOPLIST_FILE = tier1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

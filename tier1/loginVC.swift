@@ -30,7 +30,7 @@ class loginVC: UIViewController, GIDSignInUIDelegate{
         else{
             print("Not Logged In")
             GIDSignIn.sharedInstance().uiDelegate = self
-            googleLoginButton.colorScheme = GIDSignInButtonColorScheme.dark
+//            googleLoginButton.colorScheme = GIDSignInButtonColorScheme.dark
         }
     }
     
