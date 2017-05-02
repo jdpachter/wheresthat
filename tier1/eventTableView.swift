@@ -33,7 +33,8 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        locationManager.delegate = self
         
         self.model.sort()
         
@@ -65,15 +66,16 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
        
     }
     
-    //http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled
     func locStatus() {
         if CLLocationManager.locationServicesEnabled() {
             switch(CLLocationManager.authorizationStatus()) {
             case .notDetermined, .restricted, .denied:
                 locEnabled = false
                 locValue = UR
+                self.add.isEnabled = false
             case .authorizedAlways, .authorizedWhenInUse:
                 locEnabled = true
+                self.add.isEnabled = true
             }
         } else {
             locEnabled = false
@@ -82,6 +84,9 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        locStatus()
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locValue = manager.location!.coordinate
@@ -138,6 +143,7 @@ class eventTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         if(locEnabled) {
             cell.distance.text = String(describing: event.dist)
+            cell.miles.text = "miles"
         } else {
             cell.distance.text = ""
             cell.miles.text = ""

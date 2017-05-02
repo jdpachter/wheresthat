@@ -19,7 +19,48 @@ class eventTypeSelector: UIViewController {
     @IBOutlet weak var SocialImage: UIImageView!
     @IBOutlet weak var StudyImage: UIImageView!
     
-    var ref: FIRDatabaseReference!    
+    var tapped = false
+    
+    
+    @IBAction func buttonTapped(sender : UILongPressGestureRecognizer ) {
+        if tapped == false {
+            if let current = sender.view {
+                current.alpha = 0.5
+                switch(current.tag) {
+                case 0:
+                    type = "Campus Event"
+                    typeIcon = #imageLiteral(resourceName: "Icon_CampusEvent")
+                    sendTypeToForm()
+                    print("CLICKED CAMPUS")
+                case 1:
+                    type = "Free Stuff"
+                    typeIcon = #imageLiteral(resourceName: "Icon_FreeStuff")
+                    sendTypeToForm()
+                    print("CLICKED FREE")
+                case 2:
+                    type = "Public Safety"
+                    typeIcon = #imageLiteral(resourceName: "Icon_PublicSafety")
+                    sendTypeToForm()
+                    print("CLICKED PS")
+                case 3:
+                    type = "Social Event"
+                    typeIcon = #imageLiteral(resourceName: "Icon_SocialEvent")
+                    sendTypeToForm()
+                    print("CLICKED SOCIAL")
+                case 4:
+                    type = "Study Group"
+                    typeIcon = #imageLiteral(resourceName: "Icon_StudyGroup")
+                    sendTypeToForm()
+                    print("CLICKED STUDY")
+                default:
+                    break
+                }
+                tapped = true
+            }
+        }
+    }
+    
+    var ref: FIRDatabaseReference!
     var type: String!
     var typeIcon: UIImage!
     
@@ -28,36 +69,26 @@ class eventTypeSelector: UIViewController {
         
         ref = FIRDatabase.database().reference()
         
-        let tapCampus = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedCampus(_:)))
-        tapCampus.numberOfTapsRequired = 1
-        CampusImage.addGestureRecognizer(tapCampus)
-        
-        let tapFree = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedFree(_:)))
-        tapCampus.numberOfTapsRequired = 1
-        FreeImage.addGestureRecognizer(tapFree)
-        
-        let tapPS = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedPS(_:)))
-        tapCampus.numberOfTapsRequired = 1
-        PSImage.addGestureRecognizer(tapPS)
-        
-        let tapSocial = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedSocial(_:)))
-        tapCampus.numberOfTapsRequired = 1
-        SocialImage.addGestureRecognizer(tapSocial)
-        
-        let tapStudy = UITapGestureRecognizer(target: self, action: #selector(eventTypeSelector.selectedStudy(_:)))
-        tapCampus.numberOfTapsRequired = 1
-        StudyImage.addGestureRecognizer(tapStudy)
-        
         self.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
         navigationController?.navigationBar.layer.shadowOpacity = 0
         
-//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-//        titleLabel.text = "Add Event"
-//        titleLabel.textColor = DARK_BLUE
-//        titleLabel.font = UIFont(name: "Roboto-Bold", size: 25)
-//        navigationItem.titleView = titleLabel
+        //        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        //        titleLabel.text = "Add Event"
+        //        titleLabel.textColor = DARK_BLUE
+        //        titleLabel.font = UIFont(name: "Roboto-Bold", size: 25)
+        //        navigationItem.titleView = titleLabel
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tapped = false
+        
+        CampusImage.alpha = 1
+        FreeImage.alpha = 1
+        PSImage.alpha = 1
+        SocialImage.alpha = 1
+        StudyImage.alpha = 1
     }
     
     @IBAction func cancel(sender: AnyObject) {
@@ -83,37 +114,5 @@ class eventTypeSelector: UIViewController {
     func sendTypeToForm(){
         performSegue(withIdentifier: "toFormVC", sender: self)
     }
-    
-    func selectedCampus(_ sender: Any) {
-        type = "Campus Event"
-        typeIcon = #imageLiteral(resourceName: "Icon_CampusEvent")
-        sendTypeToForm()
-        print("CLICKED CAMPUS")
-    }
-    func selectedFree(_ sender: Any) {
-        type = "Free Stuff"
-        typeIcon = #imageLiteral(resourceName: "Icon_FreeStuff")
-        sendTypeToForm()
-        print("CLICKED FREE")
-    }
-    func selectedPS(_ sender: Any) {
-        type = "Public Safety"
-        typeIcon = #imageLiteral(resourceName: "Icon_PublicSafety")
-        sendTypeToForm()
-        print("CLICKED PS")
-    }
-    func selectedSocial(_ sender: Any) {
-        type = "Social Event"
-        typeIcon = #imageLiteral(resourceName: "Icon_SocialEvent")
-        sendTypeToForm()
-        print("CLICKED SOCIAL")
-    }
-    func selectedStudy(_ sender: Any) {
-        type = "Study Group"
-        typeIcon = #imageLiteral(resourceName: "Icon_StudyGroup")
-        sendTypeToForm()
-        print("CLICKED STUDY")
-    }
-    
     
 }
