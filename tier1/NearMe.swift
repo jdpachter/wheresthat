@@ -302,6 +302,7 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
                     annotationView.layer.shadowOpacity = 0.85
                     annotationView.layer.shadowRadius = 5.0
                     annotationView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+                    annotationView.centerOffset = CGPoint(x: 0, y: -annotationView.frame.size.height/2)
                     
                 return annotationView
             } else {
@@ -322,6 +323,7 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
                     annotationView.layer.shadowOpacity = 0.85
                     annotationView.layer.shadowRadius = 5.0
                     annotationView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+                    annotationView.centerOffset = CGPoint(x: 0, y: -annotationView.frame.size.height/2)
                 return annotationView
             }
         }
