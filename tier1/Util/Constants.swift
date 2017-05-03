@@ -22,6 +22,7 @@ var FBcredentialStorage: [String: FIRAuthCredential] = [:]
 var GOOGLEcredentialStorage: [String: FIRAuthCredential] = [:]
 var GOOGLEidTokenStorage: [String: String] = [:]
 var GOOGLEtokenStorage: [String: String] = [:]
+let KEY_UID = "uid"
 
 func findCurrentViewController(_ vc: UIViewController) -> UIViewController{
     if vc.presentedViewController != nil{

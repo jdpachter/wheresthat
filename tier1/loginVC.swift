@@ -20,18 +20,10 @@ class loginVC: UIViewController, GIDSignInUIDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let _ = FIRAuth.auth()?.currentUser{
-            print("Logged In")
-            OperationQueue.main.addOperation {
-                [weak self] in
-                self?.performSegue(withIdentifier: "loggedIn", sender: self)
-            }
-        }
-        else{
+        
             print("Not Logged In")
             GIDSignIn.sharedInstance().uiDelegate = self
 //            googleLoginButton.colorScheme = GIDSignInButtonColorScheme.dark
-        }
     }
     
 }

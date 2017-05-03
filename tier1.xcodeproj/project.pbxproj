@@ -28,6 +28,7 @@
 		D0C61E8E1EB073870045208C /* HoveringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C61E8D1EB073870045208C /* HoveringImageView.swift */; };
 		D0C61E901EB16F630045208C /* HoveringSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C61E8F1EB16F630045208C /* HoveringSubview.swift */; };
 		D0CD167C1EB586A700650FA6 /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD167B1EB586A700650FA6 /* loginVC.swift */; };
+		D0CD73CB1EB979B200A73163 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD73CA1EB979B200A73163 /* DataService.swift */; };
 		F5144004FA5649459CBA3A60 /* Pods_tier1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCF196C7E7C05F02B5AAC42 /* Pods_tier1.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		D0C61E8D1EB073870045208C /* HoveringImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringImageView.swift; sourceTree = "<group>"; };
 		D0C61E8F1EB16F630045208C /* HoveringSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoveringSubview.swift; sourceTree = "<group>"; };
 		D0CD167B1EB586A700650FA6 /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
+		D0CD73CA1EB979B200A73163 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		3C479B751E90321500E98998 /* tier1 */ = {
 			isa = PBXGroup;
 			children = (
+				D0CD73C91EB9799E00A73163 /* Services */,
 				D00F26131EB0366E0039BB2F /* View */,
 				D00F26181EB0366E0039BB2F /* Util */,
 				3CBC57601EA6C40800038D84 /* tier1.entitlements */,
@@ -135,6 +138,14 @@
 				D00F26191EB0366E0039BB2F /* Constants.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		D0CD73C91EB9799E00A73163 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D0CD73CA1EB979B200A73163 /* DataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		D6E7F18C9A5384EFE70CD30E /* Pods */ = {
@@ -296,6 +307,7 @@
 				3C479B791E90321500E98998 /* NearMe.swift in Sources */,
 				D0C61E901EB16F630045208C /* HoveringSubview.swift in Sources */,
 				3C479B771E90321500E98998 /* AppDelegate.swift in Sources */,
+				D0CD73CB1EB979B200A73163 /* DataService.swift in Sources */,
 				D0C61E8E1EB073870045208C /* HoveringImageView.swift in Sources */,
 				D00F261A1EB0366E0039BB2F /* eventCell.swift in Sources */,
 				3C479B921E91FEE500E98998 /* eventPage.swift in Sources */,

@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("SHOULD PERFORM SEGUE")
                 let vc = currentViewController()
                 vc.performSegue(withIdentifier: "loggedIn", sender: self)
+                let userObj = ["provider": "google", "email": user?.email]
+                DataService.ds.createFirebaseUser(uid: (user?.uid)!, user: userObj as! Dictionary<String, String>)
+                UserDefaults.standard.set((user?.uid)!, forKey: KEY_UID)
             }
         }
     }
@@ -69,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         locationManager?.requestWhenInUseAuthorization()
         FIRApp.configure()
         
-        if let _ = FIRAuth.auth()?.currentUser{
+        if UserDefaults.standard.value(forKey: KEY_UID) != nil{
             print("Logged In")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier :"tabController") as! UITabBarController

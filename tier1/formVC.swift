@@ -40,19 +40,20 @@ class formVC: UIViewController,UITextFieldDelegate {
                     self.alert("Out of Bounds","Please enter an event happening on or near campus.", true)
                 }
                 else {
-                    let post:[String: String] = [
-                        "date":String(now),
+                    let post = [
+                        "date":now,
                         "title":title,
                         "location":loc,
-                        "type":String(describing: typeOpts.index(of: eType)!),
-                        "lat":String(describing: lat!),
-                        "long":String(describing: long!),
-                        "submitted":String(now),
-                        "up":"0",
-                        "down":"0",
-                        "details": deets]
+                        "type":typeOpts.index(of: eType)!,
+                        "lat":lat!,
+                        "long":long!,
+                        "submitted":now,
+                        "up":0,
+                        "down":0,
+                        "details": deets] as [String : Any]
                     
-                    ref.child("events-v3").childByAutoId().setValue(post)
+                    DataService.ds.REF_EVENTS.childByAutoId().setValue(post)
+                    DataService.ds.REF_USER_CURRENT.child("events").setValue(post)
                     
                     let viewControllers: [UIViewController] = (navigationController?.viewControllers)!
                     navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)

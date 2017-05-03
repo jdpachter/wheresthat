@@ -30,7 +30,8 @@ class eventPage: UIViewController {
         if(event.didVote == 0) {
             let uid = event.key
             let newUp = event.upVote + 1
-            ref.child("events-v3/"+uid+"/up").setValue(newUp)
+            DataService.ds.REF_EVENTS.child(uid).updateChildValues(["up": newUp])
+            DataService.ds.REF_USER_CURRENT.child("upvotes").child(uid).setValue(true)
             event.didVote = 1
             event.upVote = newUp
             updateThumbs()
@@ -41,7 +42,8 @@ class eventPage: UIViewController {
         if(event.didVote == 0) {
             let uid = event.key
             let newDown = event.downVote + 1
-            ref.child("events-v3/"+uid+"/down").setValue(newDown)
+            DataService.ds.REF_EVENTS.child(uid).updateChildValues(["down": newDown])
+            DataService.ds.REF_USER_CURRENT.child("downvotes").child(uid).setValue(true)
             event.didVote = -1
             event.downVote = newDown
             updateThumbs()
@@ -83,18 +85,15 @@ class eventPage: UIViewController {
     
     
     func updateThumbs() {
+        
         switch(event.didVote) {
         case -1:
             let img = UIImage(named: "Vote_Red_down")
             thumbsDown.setBackgroundImage(img, for: .normal)
-            thumbsUp.isEnabled = false
-            thumbsDown.isEnabled = false
             votes.text = String(describing: event.upVote - event.downVote)
         case 1:
             let img = UIImage(named: "Vote_Green_up")
             thumbsUp.setBackgroundImage(img, for: .normal)
-            thumbsUp.isEnabled = false
-            thumbsDown.isEnabled = false
             votes.text = String(describing: event.upVote - event.downVote)
         default:
             break

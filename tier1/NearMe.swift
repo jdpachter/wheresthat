@@ -90,16 +90,8 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
         super.viewDidLoad()
         mapView.delegate = self
         locStatus()
-        
-//        GIDSignIn.sharedInstance().uiDelegate = self
-//        GIDSignIn.sharedInstance().signIn()
 
-        ref = FIRDatabase.database().reference()
-        
-        update()
         makeFence()
-        
-        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         barViewControllers = self.tabBarController?.viewControllers
         svc = (barViewControllers![1] as! UINavigationController).topViewController as! eventTableView!
@@ -133,53 +125,10 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 2
-    }
-    
-    
-    func makeFence() {
-        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(43.1284, -77.6289)
-        let radius:CLLocationDistance = CLLocationDistance(1200)
-        NearMe.fence =  CLCircularRegion(center: center, radius: radius, identifier: "UR")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let val = manager.location {
-            locValue = val.coordinate
-        }
         
-    }
-    
-    func onReturn() {
-        for subview in view.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
-        }
-    }
-    
-    func onReturnUpdate() {
-        update()
-        for subview in view.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
-        }
-    }
-    
-    
-    func update()
-    {
-        let earliest = String(NSDate().timeIntervalSince1970 - 14400)
-        //get rid of events created more than 4 hours ago
-        for e in 0..<self.model.allEvents.count {
-            if (self.model.allEvents[e].eventTime.timeIntervalSince1970 < Double(earliest)! || self.model.allEvents[e].downVote >= 5) {
-                self.mapView.removeAnnotation(self.model.allEvents[e])  //remove expired annotation from map
-                self.model.allEvents.remove(at: e)  //remove expired event from internal model
-            }
-        }
-        
-        ref.child("events-v3").queryOrdered(byChild: "date").queryStarting(atValue: earliest).observeSingleEvent(of: .value) { (snap: FIRDataSnapshot) in
-            for child in snap.children {
+        DataService.ds.REF_EVENTS.observe(.value, with: { (snapshot) in
+            print(snapshot.value)
+            for child in snapshot.children {
                 var date = NSDate(), title = String(), lat = Double(), long =  Double(), location = String(), submitted = NSDate(), type = Int(), up = Int(), down = Int(), dist = Double(), details = String()
                 
                 let key = (child as! FIRDataSnapshot).key
@@ -257,11 +206,24 @@ class NearMe: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
                     }
                 }
             }
-        }
+        })
     }
-
+    
+    
+    func makeFence() {
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(43.1284, -77.6289)
+        let radius:CLLocationDistance = CLLocationDistance(1200)
+        NearMe.fence =  CLCircularRegion(center: center, radius: radius, identifier: "UR")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let val = manager.location {
+            locValue = val.coordinate
+        }
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        update()
         mapView.layoutSubviews()
         navigationController?.navigationBar.layer.shadowOpacity = 0.8
 //        let region = MKCoordinateRegionMakeWithDistance(locValue, 950, 950)
